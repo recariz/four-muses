@@ -1,0 +1,49 @@
+
+.pink-button{
+  background-color: $blue;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 12px;
+  border-style: solid;
+  border-width: 0.7px;
+  border-color: $white;
+  display: inline-block;
+  box-shadow: 5px 10px 5px 0 rgba(245, 146, 133, 0.1);
+  a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+
+}
+// .pink-button:hover{
+//   color:rgb(255, 255, 255);
+//   background-color: #ee4640e1;
+//   text-decoration: none;
+// }
+.blue-button{
+  background-color: $blue;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  color: $white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 12px;
+  border-style: solid;
+  border-width: 0.7px;
+  border-color: rgba(111, 155, 173, 0.2);
+  display: inline-block;
+  box-shadow: 5px 10px 5px 0 rgba( 111, 155, 173, 0.1);
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+// .blue-button:hover{
+//   color:rgb(255, 255, 255);
+//   background-color: #ee4640e1;
+//   text-decoration: none;
+// }
