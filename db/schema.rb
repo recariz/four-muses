@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2020_06_22_150444) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.integer "sender_id", null: false
+    t.integer "receiver_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receiver_id"], name: "index_chatrooms_on_receiver_id"
+    t.index ["sender_id", "receiver_id"], name: "index_chatrooms_on_sender_id_and_receiver_id", unique: true
+    t.index ["sender_id"], name: "index_chatrooms_on_sender_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
@@ -29,6 +39,49 @@ ActiveRecord::Schema.define(version: 2020_06_22_150444) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "contest_applications", force: :cascade do |t|
+    t.string "status", default: "0", null: false
+    t.string "integer", default: "0", null: false
+    t.text "motivation"
+    t.bigint "user_id", null: false
+    t.bigint "contest_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contest_id"], name: "index_contest_applications_on_contest_id"
+    t.index ["user_id"], name: "index_contest_applications_on_user_id"
+  end
+
+  create_table "contest_tags", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "contest_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_contest_tags_on_category_id"
+    t.index ["contest_id"], name: "index_contest_tags_on_contest_id"
+  end
+
+  create_table "contests", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "location"
+    t.string "title"
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_contests_on_user_id"
+  end
+
+  create_table "followings", force: :cascade do |t|
+    t.integer "followed_id", null: false
+    t.integer "follower_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_id", "follower_id"], name: "index_followings_on_followed_id_and_follower_id", unique: true
+    t.index ["followed_id"], name: "index_followings_on_followed_id"
+    t.index ["follower_id"], name: "index_followings_on_follower_id"
   end
 
   create_table "interests", force: :cascade do |t|
@@ -47,6 +100,16 @@ ActiveRecord::Schema.define(version: 2020_06_22_150444) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "post_tags", force: :cascade do |t|
@@ -92,10 +155,17 @@ ActiveRecord::Schema.define(version: 2020_06_22_150444) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "contest_applications", "contests"
+  add_foreign_key "contest_applications", "users"
+  add_foreign_key "contest_tags", "categories"
+  add_foreign_key "contest_tags", "contests"
+  add_foreign_key "contests", "users"
   add_foreign_key "interests", "categories"
   add_foreign_key "interests", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "post_tags", "categories"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "posts", "users"
