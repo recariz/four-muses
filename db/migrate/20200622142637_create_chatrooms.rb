@@ -6,7 +6,7 @@ class CreateChatrooms < ActiveRecord::Migration[6.0]
       t.timestamps null: false
     end
     add_index :chatrooms, :sender_id
-    add_index :chatrooms, :reciever_id
-    add_index :chatrooms, [:sender_id, :reciever_id], unique: true
+    add_index :chatrooms, :receiver_id
+    add_index :chatrooms, [:sender_id, :receiver_id], unique: true
   end
 end
