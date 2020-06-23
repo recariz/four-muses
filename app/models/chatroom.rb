@@ -12,5 +12,5 @@ class Chatroom < ApplicationRecord
   scope :between, -> (user_A, user_B) {
     where("(chats.sender_id = ? AND chats.receiver_id = ?) OR (chats.sender_id = ? AND chats.receiver_id = ?)", user_A, user_B, user_B, user_A)
   }
-e
+
 end
