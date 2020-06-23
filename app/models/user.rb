@@ -39,7 +39,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :interests, dependent: :destroy
   has_many :categories, through: :interests
-  validates :email, :password, :nickname, :categories, :location, presence: true
+  validates :email, :type, :password, :nickname, :premium, :location, presence: true
   has_one_attached :avatar, dependent: :destroy
 
 
