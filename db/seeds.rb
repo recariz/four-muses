@@ -17,19 +17,15 @@ categories = []
 
 photography = Category.new(name: "Photography")
 categories << photography
-p photography
 
 painting = Category.new(name: "Painting")
 categories << painting
-p painting
 
 sculpture = Category.new(name: "Sculpture")
 categories << sculpture
-p sculpture
 
 architecture = Category.new(name: "Architecture")
 categories << architecture
-p architecture
 
 p "Creating users..."
 
@@ -71,6 +67,7 @@ marta = User.new(
     email: "marta@mail.com",
     password: "123456",
     location:  cities.sample(1)[0],
+    type: 'Business'
 )
 marta.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
   marta.save

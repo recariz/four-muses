@@ -14,7 +14,7 @@ class PostController < ApplicationController
     authorize @post
     @post.user = current_user
     if @post.save
-      redirect_to root_path
+      redirect_to root_path, notice: "Posting"
       # GUYS WE NEED TO CHANGE THE REDIRECT ONCE WE HAVE THE FEED
     else
       render :new
