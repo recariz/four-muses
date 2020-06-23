@@ -2,7 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-
+        <%= f.input :business_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "location"} %>
     <%= f.input :location,
                 required: true,
                 autofocus: true,
