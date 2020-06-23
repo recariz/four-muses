@@ -14,7 +14,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user.present?
 
   end
 
@@ -34,7 +34,7 @@ class PostPolicy < ApplicationPolicy
 
   def user_not_logged_in
     flash[:alert] = "You need to be logged in to upload a post"
-    redirect_to(request.referrer || new_artist_session_path)
+    redirect_to(request.referrer || new_user_session_path)
   end
 
 end

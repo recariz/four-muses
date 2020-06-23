@@ -10,12 +10,8 @@ class CommentPolicy < ApplicationPolicy
     true
   end
 
-  def show?
-    true
-  end
-
   def create?
-    true
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user.present
   end
 
   def update?
@@ -32,4 +28,8 @@ class CommentPolicy < ApplicationPolicy
     @user.id == @record.user.id || @user.admin
   end
 
+  def user_not_logged_in
+    flash[:alert] = "You need to be logged in to comment a post"
+    redirect_to(request.referrer || new_user_session_path)
+  end
 end
