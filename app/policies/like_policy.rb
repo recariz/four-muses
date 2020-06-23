@@ -8,6 +8,7 @@ class LikePolicy < ApplicationPolicy
 
   def create?
     rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user.present?
+    true
   end
 
   def destroy?
