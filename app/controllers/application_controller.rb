@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   # loading all the code of pundit generated so you can have access to all the method of the gem
   include Pundit
 
@@ -38,6 +40,14 @@ class ApplicationController < ActionController::Base
   # <% if policy(post).destroy? %>
   # <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
   # <% end %>
+
+  protected
+
+  def configure_permitted_parameters
+    # Devise implementation of Strong Params
+    # keys is an array of symbols
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[nickname first_name last_name location type])
+  end
 
   private
 

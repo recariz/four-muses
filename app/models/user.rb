@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_many :followed_relationships, foreign_key: :follower_id, class_name: 'Following'
   has_many :followeds, through: :followed_relationships, source: :followed
-  
+
 
 
   has_many :sender_relationships, foreign_key: :receiver_id, class_name: 'Chatroom'
@@ -39,7 +39,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :interests, dependent: :destroy
   has_many :categories, through: :interests
-  validates :email, :type, :password, :nickname, :premium, :location, presence: true
+
+  validates :email, :password, :nickname, :location, presence: true
+
+
   has_one_attached :avatar, dependent: :destroy
 
 
