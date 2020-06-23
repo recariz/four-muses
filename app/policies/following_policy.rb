@@ -7,13 +7,17 @@ class FollowingPolicy < ApplicationPolicy
   end
 
   def create?
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user.present?
+  end
+
+  def destroy?
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user.present?
   end
 
   private
 
   def user_not_logged_in
     flash[:alert] = "You need to be logged in to follow someone"
-    redirect_to(request.referrer || new_artist_session_path)
+    redirect_to(request.referrer || new_artistUSER_session_path)
   end
 end

@@ -7,13 +7,21 @@ class LikePolicy < ApplicationPolicy
   end
 
   def create?
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user.present?
+  end
+
+  def destroy?
+    is_an_owner_or_an_admin?
   end
 
   private
 
+  def is_an_owner_or_an_admin?
+    @user.id == @record.user.id || @user.admin
+  end
+
   def user_not_logged_in
     flash[:alert] = "You need to be logged in to like a post"
-    redirect_to(request.referrer || new_artist_session_path)
+    redirect_to(request.referrer || new_user_session_path)
   end
 end
