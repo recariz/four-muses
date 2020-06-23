@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     # before_action :set_params only:[]
 
     def new
-        @pool = Pool.new
+        @post = Post.new
     end
     
     def create
