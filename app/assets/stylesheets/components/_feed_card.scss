@@ -1,0 +1,118 @@
+.card-post {
+  background-color: $white;
+  padding: 7px;
+  text-align: center;
+  margin-bottom: 5px;
+  // box-shadow: 6px 6px 10px -5px #888888;
+}
+.card-post-top-infos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9px;
+}
+
+.user-avatar-nickname {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+  p {
+    margin-bottom: 0px;
+    margin-left: 4px;
+    font-size: 12px;
+  }
+}
+
+.post-reactions {
+  display: flex;
+  align-items: right;
+  width: auto;
+}
+
+.reaction-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 4px 4px;
+  p {
+    margin-bottom: 0px;
+    margin-right: 4px;
+    font-size: 12px;
+  }
+}
+
+.post-image {
+  object-fit: cover;
+  width: 100%;
+}
+
+.post-description {
+  margin-top: 4px;
+  text-align: left;
+  padding: 0 9px;
+  position: relative;
+}
+
+.post-description h5 {
+  margin-bottom: 5px;
+}
+.post-description p {
+  margin-bottom: 0px;
+  font-size: 12px;
+}
+
+#like-button {
+  position: absolute;
+  right: 9px;
+  font-size: 16px;
+}
+
+.line-divider {
+  height: 0px;
+  width: 80%;
+  border-bottom: 1px solid lightgrey;
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+.post-comments-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 0 9px;
+  p {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+}
+
+#display-comments {
+  color: $pink;
+  font-style: italic;
+}
+
+.comment-form {
+  height: 25px;
+  padding: 0 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  font-family: $body-font;
+  font-size: 12px;
+  border-radius: 50px;
+  flex-grow: 1;
+  display: flex;
+}
+
+#comment-input {
+  border: none;
+  background-color: transparent;
+  flex-grow: 1;
+}
+
+#comment-submit {
+  color: $pink;
+  font-weight: bolder;
+  border: none;
+  background-color: transparent;
+  flex-grow: 0;
+}
