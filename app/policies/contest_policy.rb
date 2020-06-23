@@ -28,11 +28,11 @@ class PostPolicy < ApplicationPolicy
   private
 
   def is_a_business?
-    @user.business?
+    user.business?
   end
 
   def is_an_owner_or_an_admin?
-    @user.id == @record.user.id || @user.admin
+    user.id == record.user.id || user.admin
   end
 
 end

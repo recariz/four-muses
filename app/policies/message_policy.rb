@@ -5,13 +5,8 @@ class PostPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user.present?
-
-  end
-
   def create?
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user.present?
+    true
   end
 
   def destroy?
@@ -21,12 +16,12 @@ class PostPolicy < ApplicationPolicy
   private
 
   def is_an_owner_or_an_admin?
-    @user.id == @record.user.id || @user.admin
+    user.id == @record.user.id || @user.admin
   end
 
-    def user_not_logged_in
-    flash[:alert] = "You need to be logged in to see or send a message"
-    redirect_to(request.referrer || new_user_session_path)
-  end
+  #   def user_not_logged_in
+  #   flash[:alert] = "You need to be logged in to see or send a message"
+  #   redirect_to(request.referrer || new_user_session_path)
+  # end
 
 end
