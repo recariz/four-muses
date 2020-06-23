@@ -93,7 +93,7 @@ ale.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/uploa
 p "Users created"
 
 users.each do |user|
-   p "Creating posts for #{user.nickname}"
+   p "Creating posts for #{user.nickname}..."
    2.times do
         post = Post.new(
             title: Faker::Artist.name,
@@ -103,3 +103,5 @@ users.each do |user|
         post.photos.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
     end
 end
+
+p "Seeds completed!"

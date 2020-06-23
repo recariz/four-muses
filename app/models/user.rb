@@ -54,5 +54,4 @@ class User < ApplicationRecord
     type == 'Business'
   end
 
-
 end
