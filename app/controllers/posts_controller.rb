@@ -1,7 +1,13 @@
-class PostController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
-  def edit
+class PostsController < ApplicationController
+  before_action :set_post, only:[:edit, :update, :destroy]
 
+  def index
+  end
+
+  def show
+  end
+
+  def edit
   end
 
   def new
