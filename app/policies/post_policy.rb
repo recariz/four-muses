@@ -14,8 +14,8 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless @user.present?
-
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless user.present?
+    true
   end
 
   def update?
@@ -29,7 +29,7 @@ class PostPolicy < ApplicationPolicy
   private
 
   def is_an_owner_or_an_admin?
-    @user.id == @record.user.id || @user.admin
+    user.id == record.user.id || user.admin
   end
 
   def user_not_logged_in
