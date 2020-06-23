@@ -4,5 +4,5 @@ class Contest < ApplicationRecord
   has_many :contest_applications, dependent: :destroy
   validates :start_date, :end_date, :location, :title, :content, presence: true
   geocoded_by :location
-  after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :geocode, if: :will_save_change_to_location?
 end
