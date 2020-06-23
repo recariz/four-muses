@@ -1,4 +1,5 @@
 
+
 <div class = "container">
 <h2> Live contests</h2>
 
@@ -10,9 +11,19 @@
     @contests.start_date
     @contests.end_date
   <% end %>
+
+
+
 </div>
 
 
-</div>
 
+
+
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+  </div>
 
