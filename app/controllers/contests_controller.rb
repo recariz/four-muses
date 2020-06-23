@@ -2,7 +2,7 @@ class ContestsController < ApplicationController
     before_action :set_post, only:[:show]
 
   def index
-    @contests = Contest.all
+    @contests = policy_scope(Contest)
     @contests = Flat.geocoded # returns flats with coordinates
     @markers = @contests.map do |contest|
         {
@@ -29,6 +29,3 @@ private
   def strong_params
     params.require(:contest).permit(:start_date, :end_date, :location, :title, :content)
   end
-
-
-end

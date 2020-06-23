@@ -9,14 +9,15 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <script src="https://kit.fontawesome.com/b1cd6d757e.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body style="min-height: 100vh; display:flex; flex-direction: column">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
-<div style="margin: 80px">
-    <%= yield %>
-</div>
+    <div class="page-container">
+      <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>
