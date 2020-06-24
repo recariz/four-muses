@@ -3,17 +3,21 @@ class ContestsController < ApplicationController
 
   def index
     @contests = policy_scope(Contest)
-    @contests = Contest.geocoded # returns flats with coordinates
+    if params[:query].present?
+      @contests = Contest.where("location ILIKE ?", "%#{params[:query]}%").geocoded
+    else
+      @contests = Contest.all.geocoded
+    end
     @markers = @contests.map do |contest|
       {
       lat: contest.latitude,
       lng: contest.longitude
       }
     end
-end
+  end
 
   def new
-    @contest = Contest.new(strong_params)
+    @contest = Contest.new
     authorize @contest
   end
 

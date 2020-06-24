@@ -24,6 +24,10 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import { toggleSwitch } from '../components/toggle';
+document.addEventListener('turbolinks:load', () => {
+  toggleSwitch();
+})
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';

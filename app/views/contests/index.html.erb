@@ -1,32 +1,53 @@
 
 
-<div class = "container">
- <h2> Live contests</h2>
-  <div class="contest">
-      <div class="contest-preview">
-        <h6> Contest </h6>
-        <h2> Analog Photograpy</h2>
-      </div>
-      <div class="contest-info">
-        <h6>Information</h6>
-        <h2>Moma</h2>
-        <h5>New York</h5>
-        <br>
-        <h5>1 - 5 September</h5>
-        <div class="d-flex justify-content-between">
-        <a href="#"> View gallery </a>
-        <button class="pink-button-secondary"> Apply </button>
-        </div>
-      </div>
-  </div>
-</div>
-
-
-<!-- Need to implement this in form above, when we now what to show -->
-  <% @contests.each do |contest| %>
-    <h2> @contest.name </h2>
-    @business_name
-    @contests.location
-    @contests.start_date
-    @contests.end_date
+<div class="main-container" style="margin-bottom:50px">
+ <h3> Live contests</h3>
+  <!-- CREATE BUTTON FOR BUSINESSES -->
+  <% if current_user.business? %>
+    <div id="publish-contest-btn" class="pink-button-lg my-2 mx-auto" style="text-align:center"><%= link_to "Publish a new contest", new_contest_path %></div>
   <% end %>
+  <!-- SEARCH FORM -->
+  <form class="comment-form" action="/contests" method="get" >
+    <input id="comment-input" name="query" type="text" placeholder="Search by city">
+    <input id="comment-submit" type="submit" value="Go">
+  </form>
+  <!-- MAP -->
+
+  <div id="map" class="map-style"
+    style="width: 100%; height: 200px"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+
+  <!-- CONTEST CARDS -->
+  <% if @contests == []  %>
+    <p class="main-container mb-0" style="text-align:center; padding-top:30px; height:calc(100vh - 160px);">
+    Sorry, there are no open contests at the moment</p>
+  <% else %>
+    <div class="contest-grid">
+      <% @contests.sort_by{|contest| contest.start_date}.each do |contest|%>
+        <div class="contest">
+            <div class="contest-line">
+            </div>
+            <div class="contest-info">
+              <div class = "user-avatar-nickname">
+                <img class="avatar-small" src="<%= cl_image_path contest.user.avatar.key %>" />
+                <h6 class="ml-2"><%= contest.user.business_name %></h6>
+              </div>
+              <h5> <%= contest.title %></h5>
+              <p class="mt-2"><i class="fal fa-map-marker-alt"></i> <%= contest.location %></p>
+              <p><%= contest.start_date.strftime"%b %d" %> to <%= contest.end_date.strftime"%b %d" %></p>
+              <% today =Date.today %>
+              <% day_left = contest.start_date - today %>
+              <p class="small-pink-italic"><%= pluralize day_left.to_i, "day" %> days left</p>
+              <div class="contest-links">
+                <p style="font-size:14px"><%= link_to "Learn more", contest_path(contest) %></p>
+                <button class="pink-button-sm-secondary"> <%= link_to "Apply", new_contest_contest_application_path(contest) %> </button>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
