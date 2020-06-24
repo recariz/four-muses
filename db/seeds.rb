@@ -1,6 +1,8 @@
 require 'faker'
 require 'open-uri'
 
+p "Deleting interests"
+Interest.delete_all
 p "Deleting categories"
 Category.delete_all
 p "Deleting Posts..."
@@ -66,15 +68,6 @@ pato = User.new(
     location:  cities.sample(1)[0],
     type: 'Business'
 )
-  sculpture_interest_pato = Interest.new
-  sculpture_interest_pato.user = pato
-  sculpture_interest_pato.category = sculpture
-  sculpture_interest_pato.save
-
-  architecture_interest_pato = Interest.new
-  architecture_interest_pato.user = pato
-  architecture_interest_pato.category = architecture
-  architecture_interest_pato.save
 
   pato.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/pato_b0dqeh.png'), filename: 'pato_b0dqeh.png', content_type: 'png')
   pato.save
@@ -104,6 +97,16 @@ ale = User.new(
     type: 'Artist',
     premium: false
 )
+  sculpture_interest_ale = Interest.new
+  sculpture_interest_ale.user = ale
+  sculpture_interest_ale.category = sculpture
+  sculpture_interest_ale.save
+
+  architecture_interest_ale = Interest.new
+  architecture_interest_ale.user = ale
+  architecture_interest_ale.category = architecture
+  architecture_interest_ale.save
+
 ale.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917210/ale_f9seor.jpg'), filename: 'ale_f9seor.jpg', content_type: 'jpg')
   ale.save
   p ale
