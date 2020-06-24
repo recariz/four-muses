@@ -1,0 +1,15 @@
+
+<div class="main-container">
+
+  <div class="first-part">
+      <img src="<%= cl_image_path @contest.user.avatar.key %>" class="avatar"/>
+      <div class="contest-h5"><h5><%= @contest.user.nickname %></h5></div>
+      <%# Here we could put city, and how much ago was posted %>
+  </div>
+  <img src="<%= cl_image_path @contest.photo.key %>" class="show-img"/>
+
+  <div class="show-content"><p><%= @contest.content %></p></div>
+
+  <%= link_to "Apply", contests_path, class: "pink-button-lg show-apply mt-4"%>
+
+</div>
