@@ -18,4 +18,11 @@ Rails.application.routes.draw do
 
   resources :contest_applications, only: [:index, :edit, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # the below is for setting up the following action in the controller
+  resources :users, only: [:show] do
+    member do
+      post :follow
+      post :unfollow
+    end
+ end
 end
