@@ -2,6 +2,26 @@ class PostsController < ApplicationController
   before_action :set_post, only:[:edit, :update, :destroy]
 
   def index
+    #first check if user is or not logged in
+    #then check if there is a query or not
+    #if logged in and query > filter discover
+    #if logged in and no query automatically to its follows
+    @posts = policy_scope(Post)
+    if !current_user
+      if params[:query].present?
+        @posts = Post.where("title ILIKE ?", "%#{params[:query]}%")
+      else
+        @posts = Post.all
+      end
+    elsif current_user
+      if params[:query].present?
+        @posts = Post.where("title ILIKE ?", "%#{params[:query]}%")
+      else
+        @posts = Post.all
+        @follows = current_user.followeds
+        @my_followed_posts = @posts.select {|post| @follows.include?(post.user)}
+      end
+    end
   end
 
   def show
