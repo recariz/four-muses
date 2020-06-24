@@ -22,14 +22,6 @@
 </div>
 
 
-
-  <div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
-
-
 <!-- Need to implement this in form above, when we now what to show -->
   <% @contests.each do |contest| %>
     <h2> @contest.name </h2>
