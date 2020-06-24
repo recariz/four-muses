@@ -1,5 +1,5 @@
 class ContestsController < ApplicationController
-    before_action :set_post, only:[:show]
+    before_action :set_params, only:[:show]
 
   def index
     @contests = policy_scope(Contest)
