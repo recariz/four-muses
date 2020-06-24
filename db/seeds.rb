@@ -97,15 +97,17 @@ ale = User.new(
     type: 'Artist',
     premium: false
 )
-  sculpture_interest_ale = Interest.new
-  sculpture_interest_ale.user = ale
-  sculpture_interest_ale.category = sculpture
-  sculpture_interest_ale.save
 
-  architecture_interest_ale = Interest.new
-  architecture_interest_ale.user = ale
-  architecture_interest_ale.category = architecture
-  architecture_interest_ale.save
+sculpture_interest_ale = Interest.new
+sculpture_interest_ale.user = ale
+sculpture_interest_ale.category = sculpture
+sculpture_interest_ale.save
+
+architecture_interest_ale = Interest.new
+architecture_interest_ale.user = ale
+architecture_interest_ale.category = architecture
+architecture_interest_ale.save
+
 
 ale.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917210/ale_f9seor.jpg'), filename: 'ale_f9seor.jpg', content_type: 'jpg')
   ale.save
@@ -125,5 +127,34 @@ users.each do |user|
         post.photos.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
     end
 end
+
+p "Creating Contests"
+
+contest_p = Contest.new(
+  start_date: ("10/10/20"),
+  end_date: ("10/10/20"),
+  location: "Carrer d'en Grassot, 101, 08025 Barcelona, España",
+  title: Faker::Artist.name,
+  content: Faker::ChuckNorris.fact
+)
+contest_p.user_id = pato.id
+contest_p.photo.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
+contest_p.save
+p contest_p
+
+contest_m = Contest.new(
+  start_date: ("10/10/20"),
+  end_date: ("10/10/20"),
+  location: "Carrer d'en Grassot, 101, 08025 Barcelona, España",
+  title: Faker::Artist.name,
+  content: Faker::ChuckNorris.fact
+)
+contest_m.user_id = marta.id
+contest_m.photo.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
+contest_m.save
+p contest_m
+
+
+p "Contests created"
 
 p "Seeds completed!"
