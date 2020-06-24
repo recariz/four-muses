@@ -18,7 +18,7 @@ class PostsController < ApplicationController
         @posts = Post.where("title ILIKE ?", "%#{params[:query]}%")
       else
         @posts = Post.all
-        @follows = current_user.followeds
+        @follows = current_user.followings
         @my_followed_posts = @posts.select {|post| @follows.include?(post.user)}
       end
     end
