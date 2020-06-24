@@ -1,7 +1,7 @@
 class PostPolicy < ApplicationPolicy
   class Scope < Scope #the class scope and then the method resolve is actually the method that authorize all the instances of my clss Restaurant to be authorized
     def resolve
-      scope.all #scope corresponds to the Restaurant class
+      scope.all
     end
   end
 

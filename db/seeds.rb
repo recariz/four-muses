@@ -15,16 +15,16 @@ p "Creating categories..."
 
 categories = []
 
-photography = Category.new(name: "Photography")
+photography = Category.create(name: "Photography")
 categories << photography
 
-painting = Category.new(name: "Painting")
+painting = Category.create(name: "Painting")
 categories << painting
 
-sculpture = Category.new(name: "Sculpture")
+sculpture = Category.create(name: "Sculpture")
 categories << sculpture
 
-architecture = Category.new(name: "Architecture")
+architecture = Category.create(name: "Architecture")
 categories << architecture
 
 p "Creating users..."
@@ -38,12 +38,22 @@ caro = User.new(
     nickname: "Caro",
     email: "carolina@mail.com",
     password: "123456",
-    interests: [],
     location:  cities.sample(1)[0],
     type: 'Artist',
     premium: true
 )
-caro.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/caro_pakuiz.png'), filename: 'caro_pakuiz.png', content_type: 'png')
+  photography_interest_caro = Interest.new
+  photography_interest_caro.user = caro
+  photography_interest_caro.category = photography
+  photography_interest_caro.save
+
+  painting_interest_caro = Interest.new
+  painting_interest_caro.user = caro
+  painting_interest_caro.category = painting
+  painting_interest_caro.save
+
+
+  caro.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/caro_pakuiz.png'), filename: 'caro_pakuiz.png', content_type: 'png')
   caro.save
   p caro
   users << caro
@@ -56,7 +66,17 @@ pato = User.new(
     location:  cities.sample(1)[0],
     type: 'Business'
 )
-pato.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/pato_b0dqeh.png'), filename: 'pato_b0dqeh.png', content_type: 'png')
+  sculpture_interest_pato = Interest.new
+  sculpture_interest_pato.user = pato
+  sculpture_interest_pato.category = sculpture
+  sculpture_interest_pato.save
+
+  architecture_interest_pato = Interest.new
+  architecture_interest_pato.user = pato
+  architecture_interest_pato.category = architecture
+  architecture_interest_pato.save
+
+  pato.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/pato_b0dqeh.png'), filename: 'pato_b0dqeh.png', content_type: 'png')
   pato.save
   p pato
   users << pato
@@ -80,7 +100,6 @@ ale = User.new(
     nickname: "Ale",
     email: "alejandro@mail.com",
     password: "123456",
-    interests: [],
     location:  cities.sample(1)[0],
     type: 'Artist',
     premium: false

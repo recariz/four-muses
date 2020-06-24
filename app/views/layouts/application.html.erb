@@ -18,6 +18,9 @@
     <div class="page-container">
       <%= yield %>
     </div>
-    <%= render 'shared/footer' %>
+    <% if current_user %>
+      <%= render 'shared/footer' %>
+    <% end %>
+
   </body>
 </html>
