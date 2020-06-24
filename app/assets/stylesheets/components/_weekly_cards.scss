@@ -1,0 +1,45 @@
+.weekly-artist-card {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: $light-brown;
+  border-radius: 5px;
+
+
+  .weekly-artist-card-image {
+    vertical-align: middle;
+    border-style: none;
+    border-radius: 50%;
+    width: 80px;
+    margin-right: 25px;
+    margin-left: 18px;
+  }
+
+  .weekly-artist-card-content{
+    padding: 16px;
+  }
+}
+
+
+.weekly-gallery-card {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: $light-brown;
+  border-radius: 5px;
+
+  .weekly-gallery-card-image {
+    vertical-align: middle;
+    border-style: none;
+    border-radius: 5px;
+    width: 40%;
+    margin-right: 12px;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .weekly-gallery-card-content {
+    padding: 16px;
+
+  }
+}
