@@ -1,0 +1,75 @@
+.home-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+  &#create {
+    .home-image {
+      width: 80%;
+    }
+
+    .home-content{
+      width: 80%;
+      align-self: flex-end;
+      margin-top: -65px;
+    }
+  }
+
+  &#share {
+    .home-image {
+      width: 80%;
+    }
+
+    .home-content{
+      width: 80%;
+      margin-top: -65px;
+      align-self: flex-end;
+
+    }
+  }
+  &#connect {
+    .home-image {
+      width: 80%;
+    }
+
+    .home-content{
+      width: 80%;
+      margin-top: -65px;
+      align-self: flex-end;
+    }
+  }
+
+  &#showcase {
+    .home-image {
+      width: 80%;
+
+    }
+
+    .home-content{
+      width: 80%;
+      margin-top: -65px;
+      align-self: flex-end;
+
+    }
+  }
+}
+
+.home-content {
+  // position: absolute;
+  // bottom: 40px;
+  // right: 0;
+  // z-index: 1;
+  background-color: $black;
+  padding: 20px;
+
+  * {
+    color: $white;
+  }
+
+
+}
+
+
+
+
+
