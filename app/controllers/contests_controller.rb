@@ -31,6 +31,13 @@ end
 
   def show
     authorize @contest
+    @markers = [
+      {
+        lat: @contest.latitude,
+        lng: @contest.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { contest: @contest }),
+      }
+    ]
   end
 
 private
