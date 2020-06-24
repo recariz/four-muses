@@ -99,12 +99,12 @@ ale = User.new(
 )
 
 sculpture_interest_ale = Interest.new
-sculpture_interest_ale.user = pato
+sculpture_interest_ale.user = ale
 sculpture_interest_ale.category = sculpture
 sculpture_interest_ale.save
 
 architecture_interest_ale = Interest.new
-architecture_interest_ale.user = pato
+architecture_interest_ale.user = ale
 architecture_interest_ale.category = architecture
 architecture_interest_ale.save
 
