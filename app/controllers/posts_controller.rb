@@ -9,17 +9,17 @@ class PostsController < ApplicationController
     @posts = policy_scope(Post)
     if !current_user
       if params[:query].present?
-        @posts = Post.where("title ILIKE ?", "%#{params[:query]}%")
+        @posts = Post.where("location ILIKE ?", "%#{params[:query]}%")
       else
         @posts = Post.all
       end
     elsif current_user
       if params[:query].present?
-        @posts = Post.where("title ILIKE ?", "%#{params[:query]}%")
+        @posts = Post.where("location ILIKE ?", "%#{params[:query]}%")
       else
         @posts = Post.all
-        @follows = current_user.followeds
-        @my_followed_posts = @posts.select {|post| @follows.include?(post.user)}
+        @followings = current_user.followings
+        @my_followed_posts = @posts.select {|post| @followings.include?(post.user)}
       end
     end
   end

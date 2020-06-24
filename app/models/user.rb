@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships, source: :follower
 
   has_many :followed_relationships, foreign_key: :follower_id, class_name: 'Following'
-  has_many :followers, through: :followed_relationships, source: :followed
+  has_many :followings, through: :followed_relationships, source: :followed
 
 
 
