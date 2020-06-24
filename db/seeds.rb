@@ -143,10 +143,10 @@ p "Posts created"
 p "Creating Contests"
 
 contest_p = Contest.new(
-  start_date: ("20/10/11"),
-  end_date: ("20/10/11"),
+  start_date: ("2020/10/11"),
+  end_date: ("2020/10/11"),
   location: "Carrer d'en Grassot, 101, 08025 Barcelona, España",
-  title: Faker::Artist.name,
+  title: "Black and white photography in modern times",
   content: Faker::ChuckNorris.fact
 )
 contest_p.user_id = pato.id
@@ -155,10 +155,10 @@ contest_p.save
 p contest_p
 
 contest_m = Contest.new(
-  start_date: ("20/10/11"),
-  end_date: ("20/10/11"),
+  start_date: ("2020/10/11"),
+  end_date: ("2020/10/11"),
   location: "Carrer d'en Grassot, 101, 08025 Barcelona, España",
-  title: Faker::Artist.name,
+  title: "Sculpting the Human Body",
   content: Faker::ChuckNorris.fact
 )
 contest_m.user_id = marta.id

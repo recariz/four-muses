@@ -4,7 +4,7 @@
       <div class="user-avatar-nickname">
         <img class="avatar-small" src="<%= cl_image_path post.user.avatar.key %>" />
         <a href="/users/<%=post.user.id %>"><p>@<%=post.user.nickname.downcase%></p></a>
-        <% if !@followings.include?(post.user) %><a id="post-follow-link"href="#"><p>Follow</p></a>
+        <% if (!current_user || !@followings.include?(post.user)) %><a id="post-follow-link"href="#"><p>Follow</p></a>
         <%end  %>
       </div>
       <div class="post-reactions">

@@ -3,6 +3,8 @@
   background: $light-brown;
   height: 60px;
   padding: 0px 16px;
+  position: sticky;
+  bottom: 0px;
 }
 .footer-links {
   display: flex;

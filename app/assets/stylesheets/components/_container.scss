@@ -1,20 +1,18 @@
 .page-container {
   flex-grow: 1;
-  max-height: calc(100vh - 120px);
+  height: calc(100vh - 120px);
   overflow-y: scroll;
-  padding: 20px;
 }
 
 .main-container {
-  padding: 0 16px;
+  padding: 10px 16px;
 }
 
 .center-button{
-
-display: inline-block;
-margin: 0 auto;
-
+  display: inline-block;
+  margin: 0 auto;
 }
+
 .container-flex{
   display: flex;
 }
