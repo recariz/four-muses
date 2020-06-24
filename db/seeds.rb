@@ -153,6 +153,7 @@ contest_m.photo.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/
 contest_m.save
 p contest_m
 
+
 p "Contests created"
 
 p "Seeds completed!"
