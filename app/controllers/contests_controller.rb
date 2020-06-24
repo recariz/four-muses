@@ -14,6 +14,7 @@ end
 
   def new
     @contest = Contest.new(strong_params)
+    authorize @contest
   end
 
   def create
@@ -29,6 +30,7 @@ end
   end
 
   def show
+    authorize @contest
   end
 
 private
