@@ -1,9 +1,22 @@
-<h1>New post</h1>
 
-
-<% simple_form_for(@post) do |f| %>
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.submit class: "pink-button" %>
+<div class = "page-container">
+<h3>Add a post</h3>
+<br>
+<%= simple_form_for(@post) do |f| %>
+  <%= f.error_notification %>
+  <div class="tm-2">
+    <%= f.input :title,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "title"} %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }%>
+    <%= f.input :description,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "description"} %>
+  </div>
+  <br>
+    <%= f.submit class: 'pink-button-lg center-button'%>
 <% end %>
+</div>
 
