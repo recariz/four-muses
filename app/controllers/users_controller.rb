@@ -4,6 +4,12 @@ class UsersController < ApplicationController
 
  def show
   authorize @user
+  @photos = []
+  @user.posts.each do |post|
+    post.photos.each do |photo|
+      @photos << photo
+    end
+  end
 
  end
 
