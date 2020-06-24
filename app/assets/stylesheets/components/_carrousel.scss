@@ -1,0 +1,36 @@
+.carousel-style {
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.13);
+    height: calc(max);
+}
+
+.carousel-border {
+    border-radius: 5px;
+}
+
+.features {
+    border: solid black
+}
+
+.first-section {
+    justify-content: space-between;
+}
+
+.right-part {
+    width: 40vw;
+}
+
+ .right-part {
+     padding-left: 20px;
+ }
+
+.align-price {
+    font-weight: 600;
+    font-size: 18px;
+    text-align: end;
+    margin-top: 95px;
+}
+
+.align-features {
+    margin-left: 50px
+}

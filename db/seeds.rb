@@ -100,13 +100,14 @@ ale = User.new(
 
 sculpture_interest_ale = Interest.new
 sculpture_interest_ale.user = ale
-sculpture_interest_ale.category = sculpture
+sculpture_interest_ale.category_id = sculpture.id
 sculpture_interest_ale.save
 
 architecture_interest_ale = Interest.new
 architecture_interest_ale.user = ale
-architecture_interest_ale.category = architecture
+architecture_interest_ale.category_id = architecture.id
 architecture_interest_ale.save
+
 
 ale.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917210/ale_f9seor.jpg'), filename: 'ale_f9seor.jpg', content_type: 'jpg')
   ale.save
@@ -124,6 +125,7 @@ users.each do |user|
         )
         post.user_id = user.id
         post.photos.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
+        post.save
     end
 end
 
