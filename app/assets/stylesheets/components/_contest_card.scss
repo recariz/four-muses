@@ -1,12 +1,7 @@
 .contest-grid {
   margin-top: 5px;
-<<<<<<< HEAD
   display: flex;
   flex-direction: column;
-=======
-  display: grid;
-  grid-template-columns: 1fr 1fr;
->>>>>>> d912ec5ce5c56d2b79cf678a70b0a4dd0da2839c
 }
 
 
@@ -17,20 +12,14 @@
   // box-shadow: 0 1px rgba(0, 0, 0, 0.2);
   display: flex;
   // max-width: 100%;
-<<<<<<< HEAD
   margin: 5px 0;
   overflow: hidden;
   width: 100%;
-=======
-  margin: 5px;
-  overflow: hidden;
-  width: 95%;
 }
 
 .contest h2 {
   letter-spacing: 1px;
   margin: 10px 0;
->>>>>>> d912ec5ce5c56d2b79cf678a70b0a4dd0da2839c
 }
 
 .contest h6 {
@@ -47,23 +36,6 @@
 
 .contest p {
   margin: 0;
-<<<<<<< HEAD
-=======
-}
-
-.contest-preview {
-  background-color: rgba($light-brown,0.7);
-  color: $black;
-  padding: 10px;
-  height: 100px;
-  // max-width: 250px;
-
-}
-
-.contest-preview a {
-  color: $white;
-  display: inline-block;
->>>>>>> d912ec5ce5c56d2b79cf678a70b0a4dd0da2839c
   font-size: 12px;
 }
 
@@ -72,7 +44,6 @@
   background-color: $light-brown;
 }
 .contest-info {
-<<<<<<< HEAD
   width:100%;
   margin: 10px;
   position: relative;
@@ -87,12 +58,6 @@
   justify-content: space-around;
   width: 190px;
   margin: 10px auto 0;
-=======
-  padding: 10px;
-  position: relative;
-  text-align: left;
->>>>>>> d912ec5ce5c56d2b79cf678a70b0a4dd0da2839c
-
 }
 
 .small-pink-italic {

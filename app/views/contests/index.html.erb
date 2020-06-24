@@ -2,8 +2,10 @@
 <div class="main-container" style="margin-bottom:50px">
  <h3> Live contests</h3>
   <!-- CREATE BUTTON FOR BUSINESSES -->
-  <% if current_user.business? %>
-    <div id="publish-contest-btn" class="pink-button-lg my-2 mx-auto" style="text-align:center"><%= link_to "Publish a new contest", new_contest_path %></div>
+  <% if current_user %>
+    <% if current_user.business? %>
+      <div id="publish-contest-btn" class="pink-button-lg my-2 mx-auto" style="text-align:center"><%= link_to "Publish a new contest", new_contest_path %></div>
+    <% end %>
   <% end %>
   <!-- SEARCH FORM -->
   <form class="comment-form" action="/contests" method="get" >
