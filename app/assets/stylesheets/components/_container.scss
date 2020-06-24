@@ -2,6 +2,10 @@
   flex-grow: 1;
   height: calc(100vh - 120px);
   overflow-y: scroll;
+<<<<<<< HEAD
+=======
+  padding: 20px;
+>>>>>>> d912ec5ce5c56d2b79cf678a70b0a4dd0da2839c
 }
 
 .main-container {
@@ -13,6 +17,9 @@
   margin: 0 auto;
 }
 
+.container-flex{
+  display: flex;
+}
 .container-flex{
   display: flex;
 }

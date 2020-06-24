@@ -1,5 +1,4 @@
 
-
 <div class="main-container" style="margin-bottom:50px">
  <h3> Live contests</h3>
   <!-- CREATE BUTTON FOR BUSINESSES -->
@@ -12,14 +11,12 @@
     <input id="comment-submit" type="submit" value="Go">
   </form>
   <!-- MAP -->
-
   <div id="map" class="map-style"
     style="width: 100%; height: 200px"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+
   </div>
-
-
   <!-- CONTEST CARDS -->
   <% if @contests == []  %>
     <p class="main-container mb-0" style="text-align:center; padding-top:30px; height:calc(100vh - 160px);">
@@ -51,3 +48,4 @@
     </div>
   <% end %>
 </div>
+
