@@ -10,6 +10,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 9px;
+  a {
+    color: $black;
+  }
+}
+
+#post-follow-link {
+  color: $pink;
+  text-decoration: underline;
 }
 
 .user-avatar-nickname {

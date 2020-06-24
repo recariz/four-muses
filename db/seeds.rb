@@ -1,6 +1,11 @@
 require 'faker'
 require 'open-uri'
 
+
+p "Deleting Contest tags"
+ContestTag.delete_all
+p "Deleting Post tags"
+PostTag.delete_all
 p "Deleting interests"
 Interest.delete_all
 p "Deleting categories"
@@ -15,6 +20,10 @@ User.delete_all
 
 p "Creating categories..."
 
+
+# Be aware that once we execute rails db:seed on production, categories will have an ID that we
+# will use any time is needed. If we execute rails db:seed again, this IDs will change,
+# (there is a more efficient way to make this dinamic?)
 categories = []
 
 photography = Category.create(name: "Photography")
@@ -99,14 +108,15 @@ ale = User.new(
 )
 
 sculpture_interest_ale = Interest.new
-sculpture_interest_ale.user = pato
-sculpture_interest_ale.category = sculpture
+sculpture_interest_ale.user = ale
+sculpture_interest_ale.category_id = sculpture.id
 sculpture_interest_ale.save
 
 architecture_interest_ale = Interest.new
-architecture_interest_ale.user = pato
-architecture_interest_ale.category = architecture
+architecture_interest_ale.user = ale
+architecture_interest_ale.category_id = architecture.id
 architecture_interest_ale.save
+
 
 ale.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917210/ale_f9seor.jpg'), filename: 'ale_f9seor.jpg', content_type: 'jpg')
   ale.save
@@ -124,14 +134,17 @@ users.each do |user|
         )
         post.user_id = user.id
         post.photos.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
+        post.save
     end
 end
+
+p "Posts created"
 
 p "Creating Contests"
 
 contest_p = Contest.new(
-  start_date: ("10/10/20"),
-  end_date: ("10/10/20"),
+  start_date: ("20/10/11"),
+  end_date: ("20/10/11"),
   location: "Carrer d'en Grassot, 101, 08025 Barcelona, España",
   title: Faker::Artist.name,
   content: Faker::ChuckNorris.fact
@@ -142,8 +155,8 @@ contest_p.save
 p contest_p
 
 contest_m = Contest.new(
-  start_date: ("10/10/20"),
-  end_date: ("10/10/20"),
+  start_date: ("20/10/11"),
+  end_date: ("20/10/11"),
   location: "Carrer d'en Grassot, 101, 08025 Barcelona, España",
   title: Faker::Artist.name,
   content: Faker::ChuckNorris.fact
@@ -153,7 +166,70 @@ contest_m.photo.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/
 contest_m.save
 p contest_m
 
-
 p "Contests created"
+
+
+# /!\ Be aware that once we execute rails db:seed on production, tags will have an ID that we
+# will use any time is needed. If we execute rails db:seed again, this IDs will change,
+
+p "Creating Contest tags"
+
+# /!\ Contest tag is needing to be on a contest in order to exist
+
+architecture_tag = ContestTag.new
+architecture_tag.category_id = architecture.id
+architecture_tag.contest_id = contest_m.id
+architecture_tag.save
+p architecture_tag
+
+painting_tag = ContestTag.new
+painting_tag.category_id = painting.id
+painting_tag.contest_id = contest_m.id
+painting_tag.save
+p painting_tag
+
+photography_tag = ContestTag.new
+photography_tag.category_id = photography.id
+photography_tag.contest_id = contest_p.id
+photography_tag.save
+p photography_tag
+
+sculpture_tag = ContestTag.new
+sculpture_tag.category_id = sculpture.id
+sculpture_tag.contest_id = contest_p.id
+sculpture_tag.save
+p sculpture_tag
+
+p "Contest tag created"
+
+p "Creating post tags"
+
+post = Post.first
+
+architecture_post_tag = PostTag.new
+architecture_post_tag.category_id = architecture.id
+architecture_post_tag.post_id = post.id
+architecture_post_tag.save
+p architecture_post_tag
+
+painting_post_tag = PostTag.new
+painting_post_tag.category_id = painting.id
+painting_post_tag.post_id = post.id
+painting_post_tag.save
+p painting_post_tag
+
+painting_post_tag = PostTag.new
+painting_post_tag.category_id = photography.id
+painting_post_tag.post_id = post.id
+painting_post_tag.save
+p painting_post_tag
+
+sculpture_post_tag = PostTag.new
+sculpture_post_tag.category_id = sculpture.id
+sculpture_post_tag.post_id = post.id
+sculpture_post_tag.save
+p sculpture_post_tag
+
+p "Post tags created"
 
 p "Seeds completed!"

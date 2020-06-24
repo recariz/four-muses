@@ -1,0 +1,36 @@
+<div class="card-post">
+  <div class="container">
+    <img class="avatar-large-bordered" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+      <h5><%= @user.nickname %></h5>
+    <div class= "d-flex justify-content-center">
+      <p><%= @user.type %></p>
+      <p class="ml-2"> <%= @user.location.capitalize %></p>
+    </div>
+    <div class="line-divider mt-0">
+    </div>
+  </div>
+    <div>
+      <div class= "d-flex justify-content-center">
+        <% @user.interests.each do |interest| %>
+        <div class="mt-2 ml-2"><p class="mt-2"> <%= interest.category.name %></p>
+        </div>
+      </div>
+        <% end %>
+    </div>
+  <div class="container-flex">
+
+     <% if @photos.length == 1 %>
+      <div class="post-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag @photos.first.key%>
+      </div>
+
+      <% else %>
+      <div class= "cards_pictures" >
+        <% @photos.each do |photo| %>
+          <%= cl_image_tag photo.key%>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="line-divider">
+  </div>
+</div>
