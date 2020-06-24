@@ -6,9 +6,25 @@
       <div class="contest-h5"><h5><%= @contest.user.nickname %></h5></div>
       <%# Here we could put city, and how much ago was posted %>
   </div>
-  <img src="<%= cl_image_path @contest.photo.key %>" class="show-img"/>
+  <img src="<%= cl_image_path @contest.photo.key %>" class="show-img mb-2"/>
+  <p><%= @contest.start_date%> to <%=@contest.end_date%></p>
 
   <div class="show-content"><p><%= @contest.content %></p></div>
+
+  <div class="tags">
+    <% @contest.contest_tags.each do |contest_tag| %>
+        <div class="tag"><p><%= contest_tag.category.name %></p></div>
+    <% end %>
+  </div>
+
+  <div class="separate"></div>
+
+  <div id="map" class="map-style"
+    style="width: 100%; height: 200px"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
 
   <%= link_to "Apply", contests_path, class: "pink-button-lg show-apply mt-4"%>
 
