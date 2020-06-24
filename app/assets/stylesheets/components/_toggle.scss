@@ -1,4 +1,24 @@
-.toggle-container {
+// General and follow feed activation
+
+#feed-general {
+  display: none;
+}
+
+#feed-general.active {
+  display: block;
+}
+
+#feed-follows {
+  display: none;
+}
+
+#feed-follows.active {
+  display: block;
+}
+
+// Toggle edit
+
+#toggle-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,26 +30,26 @@
   margin: auto;
 }
 
-.toggle-section {
+#toggle-section {
   width:100%;
   display:flex;
   align-items:center
 }
 
-.toggle-category-left {
+#toggle-category-left {
   width: 100px;
   margin: 0 10px;
   text-align: right;
 }
 
-.toggle-category-right {
+#toggle-category-right {
   width: 100px;
   margin: 0 10px;
   text-align: left;
 }
 
 
-.toggle-button {
+#toggle-button {
   margin: 0 auto;
   position: relative;
   max-width: 80px;
@@ -37,7 +57,7 @@
   height: 14px;
   background-color:$black;
   border-radius: 20px;
-  .ball {
+  #ball {
     $radius: 30px;
     height: $radius;
     width: $radius;
