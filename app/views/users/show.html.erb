@@ -1,26 +1,36 @@
 <div class="card-post">
-    <div class="user-avatar-nickname">
-      <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
-      <h3><%= @user.nickname %></h3>
+  <div class="container">
+    <img class="avatar-large-bordered" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+      <h5><%= @user.nickname %></h5>
+    <div class= "d-flex justify-content-center">
       <p><%= @user.type %></p>
-      <div class="line-divider"></div>
-      <p> <% @user.interests.each do |interest| %></p>
-        <div class= 'card-post'>
+      <p class="ml-2"> <%= @user.location.capitalize %></p>
+    </div>
+    <div class="line-divider mt-0">
+    </div>
+  </div>
+    <div>
+      <div class= "d-flex justify-content-center">
+        <% @user.interests.each do |interest| %>
+        <div class="mt-2 ml-2"><p class="mt-2"> <%= interest.category.name %></p>
         </div>
-
-  <div class="card-post">
-    <div class="post-reactions">
-      <div class="reaction-type"><p class="mb-0">2 </p><i class="fal fa-comment"></i></div>
-      <div class="reaction-type"><p>100 </p><i class="fal fa-heart"></i></div>
+      </div>
+        <% end %>
     </div>
-  </div>
-  <div class="post-content">
-    <img class="post-image" src="https://images.squarespace-cdn.com/content/v1/54ef4d4ee4b002862ddb9057/1491229335309-UWAH4YMHQ4B7EAD4H6C6/ke17ZwdGBToddI8pDm48kE-iQx--1bZ3rNNmb-PgpwF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmG94TGNuzCcCPVStE9JyN8HZDuWyOUy1zY2XJJ2gPjFoKZzRsIC28YWt-Zp6CxD1v/IMG_2389.JPG" alt="">
-    <div class="post-description">
-      <div id="like-button"><i class="fal fa-heart"></i></div>
+  <div class="container-flex">
 
-    </div>
+     <% if @photos.length == 1 %>
+      <div class="post-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag @photos.first.key%>
+      </div>
+
+      <% else %>
+      <div class= "cards_pictures" >
+        <% @photos.each do |photo| %>
+          <%= cl_image_tag photo.key%>
+      <% end %>
+      </div>
+    <% end %>
   </div>
+  <div class="line-divider">
   </div>
-  <div class="line-divider"></div>
 </div>
