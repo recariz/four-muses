@@ -1,29 +1,40 @@
 
 
 <div class = "container">
-<h2> Live contests</h2>
+ <h2> Live contests</h2>
+  <div class="contest">
+      <div class="contest-preview">
+        <h6> Contest </h6>
+        <h2> Analog Photograpy</h2>
+      </div>
+      <div class="contest-info">
+        <h6>Information</h6>
+        <h2>Moma</h2>
+        <h5>New York</h5>
+        <br>
+        <h5>1 - 5 September</h5>
+        <div class="d-flex justify-content-between">
+        <a href="#"> View gallery </a>
+        <button class="pink-button-secondary"> Apply </button>
+        </div>
+      </div>
+  </div>
+</div>
 
-<!-- to be defined what we show for contest -->
-<div class='row'>
+
+
+  <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
+
+<!-- Need to implement this in form above, when we now what to show -->
   <% @contests.each do |contest| %>
+    <h2> @contest.name </h2>
     @business_name
     @contests.location
     @contests.start_date
     @contests.end_date
   <% end %>
-
-
-
-</div>
-
-
-
-
-
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
-  </div>
-
