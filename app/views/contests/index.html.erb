@@ -1,11 +1,25 @@
 
-<div class="main-container">
+<div class="main-container" style="margin-bottom:50px">
  <h3> Live contests</h3>
-  <form class="comment-form" action="">
-    <input id="comment-input" type="text" placeholder="Search by city">
+  <!-- CREATE BUTTON FOR BUSINESSES -->
+  <% if current_user.business? %>
+    <div id="publish-contest-btn" class="pink-button-lg my-2 mx-auto" style="text-align:center"><%= link_to "Publish a new contest", new_contest_path %></div>
+  <% end %>
+  <!-- SEARCH FORM -->
+  <form class="comment-form" action="/contests" method="get" >
+    <input id="comment-input" name="query" type="text" placeholder="Search by city">
     <input id="comment-submit" type="submit" value="Go">
   </form>
-<!-- -->
+  <!-- MAP -->
+
+  <div id="map" class="map-style"
+    style="width: 100%; height: 200px"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+
+  <!-- CONTEST CARDS -->
   <% if @contests == []  %>
     <p class="main-container mb-0" style="text-align:center; padding-top:30px; height:calc(100vh - 160px);">
     Sorry, there are no open contests at the moment</p>
@@ -25,9 +39,9 @@
               <p><%= contest.start_date.strftime"%b %d" %> to <%= contest.end_date.strftime"%b %d" %></p>
               <% today =Date.today %>
               <% day_left = contest.start_date - today %>
-              <p class="small-pink-italic"><%= pluralize day_left.to_i, "day" %> days left!</p>
+              <p class="small-pink-italic"><%= pluralize day_left.to_i, "day" %> days left</p>
               <div class="contest-links">
-                <%= link_to "Learn more", contest_path(contest) %>
+                <p style="font-size:14px"><%= link_to "Learn more", contest_path(contest) %></p>
                 <button class="pink-button-sm-secondary"> <%= link_to "Apply", new_contest_contest_application_path(contest) %> </button>
               </div>
             </div>

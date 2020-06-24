@@ -14,9 +14,11 @@
         </div>
       </div>
       <div class="post-content">
+
         <% if post.photos.count() == 1 %>
           <img class="post-image" src="<%= cl_image_path post.photos.first.key %>" alt="">
         <% else %>
+
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
                 <% post.photos.each_with_index do |photo, index| %>
@@ -25,9 +27,7 @@
               </ol>
               <div class="carousel-inner" style="">
                 <% post.photos.each_with_index do |photo, index| %>
-                  <div class="carousel-item <%= "active" if index == 0 %>">
-                    <img class="d-block post-image" src="<%=photo.service_url %>">
-                  </div>
+                  <div class="carousel-item <%= "active" if index == 0 %>"><img class="d-block post-image" src="<%=photo.service_url %>"></div>
                 <% end %>
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -40,24 +40,30 @@
               </a>
             </div>
         <% end %>
+
+      </div>
+
+
         <div class="post-description">
           <h5><%= post.title  %></h5>
           <p><%= post.description %></p>
         </div>
-      </div>
-      <div class="line-divider"></div>
-      <div class="post-comments-container">
-          <% post.comments.each do |comment| %>
-          <p><span style="font-weight: bolder">@<%= comment.user.nickname %>  </span><%= comment.content %></p>
-          <% end %>
-          <% if post.comments.count > 1 %>
-            <p id="display-comments">See all <%= post.comments.count %> comments...</p>
-          <% end %>
-          <form class="comment-form" action="">
-            <input id="comment-input" type="text" placeholder="Add your comment">
-            <input id="comment-submit" type="submit" value="Post">
-          </form>
-      </div>
+
+
+
+        <div class="line-divider"></div>
+        <div class="post-comments-container">
+            <% post.comments.each do |comment| %>
+            <p><span style="font-weight: bolder">@<%= comment.user.nickname %>  </span><%= comment.content %></p>
+            <% end %>
+            <% if post.comments.count > 1 %>
+              <p id="display-comments">See all <%= post.comments.count %> comments...</p>
+            <% end %>
+            <form class="comment-form" action="">
+              <input id="comment-input" type="text" placeholder="Add your comment">
+              <input id="comment-submit" type="submit" value="Post">
+            </form>
+        </div>
     </div>
   <% end %>
 <% end %>
