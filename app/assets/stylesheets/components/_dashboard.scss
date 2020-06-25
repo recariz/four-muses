@@ -1,0 +1,26 @@
+.dashboard-container {
+  display: grid;
+
+  h1 {
+    text-align: center;
+    color: $black;
+  }
+}
+
+.card-dashboard {
+  overflow: hidden;
+  background: white;
+  padding: 15px;
+  box-shadow: 0 0 15px #f7e3e8;
+  // display: flex;
+  align-items: center;
+  border-radius: 5px;
+
+   h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    border-bottom: 1px solid $gray;
+  }d
+}
+
