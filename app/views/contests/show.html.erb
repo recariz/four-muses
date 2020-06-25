@@ -4,7 +4,7 @@
     <div class="first-part">
         <img src="<%= cl_image_path @contest.user.avatar.key %>" class="avatar"/>
         <div class="contest-h5"><h5><%= @contest.user.nickname %></h5>
-          <%count_down = @contest.end_date - Date.today%>
+          <%count_down = @contest.start_date - Date.today%>
           <div class="countdown"><p><%= count_down.to_i %> days to apply</p></div>
         </div>
     </div>
