@@ -27,6 +27,8 @@ import "bootstrap";
 
 import { toggleSwitch } from '../components/toggle';
 
+import { showComments } from '../components/hidden_comments';
+
 import { initMapbox } from '../plugins/init_mapbox';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -38,5 +40,6 @@ import { addPost } from '../components/add_post';
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   toggleSwitch();
+  showComments();
   initPhotoInput();
 })
