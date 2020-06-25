@@ -1,4 +1,4 @@
-  <% @posts.each do |post| %>
+<% @posts.each do |post| %>
   <div class="card-post">
     <div class="card-post-top-infos">
       <div class="user-avatar-nickname">
@@ -44,17 +44,27 @@
       </div>
     </div>
     <div class="line-divider"></div>
+
     <div class="post-comments-container">
-        <% post.comments.each do |comment| %>
-        <p><span style="font-weight: bolder">@<%= comment.user.nickname %>  </span><%= comment.content %></p>
+        <% if post.comments.count ==1 %>
+          <p id="comment-<%= post.comments.first.id %>"><span style="font-weight: bolder">@<%= post.comments.first.user.nickname %>  </span><%= post.comments.first.content %></p>
+        <% elsif post.comments.count > 1 %>
+          <p id="comment-<%= post.comments.first.id %>"><span style="font-weight: bolder">@<%= post.comments.first.user.nickname %>  </span><%= post.comments.first.content %></p>
+          <p class="display-comments active">See all <%= post.comments.count %> comments...</p>
+          <div class="hidden-comments">
+            <% comments_rest = post.comments[1, post.comments.length - 1] %>
+            <% comments_rest.each do |comment| %>
+                <p id="comment-<%= comment.id %>"><span style="font-weight: bolder">@<%= comment.user.nickname %>  </span><%= comment.content %></p>
+            <% end %>
+          <p class="hide-comments-link">Hide comments</p>
+          </div>
         <% end %>
-        <% if post.comments.count > 1 %>
-          <p id="display-comments">See all <%= post.comments.count %> comments...</p>
+
+        <%= form_for [post, Comment.new], html: {class: "comment-form"}, remote: true do |f| %>
+          <%= f.text_field :content, label: false, placeholder: "Add your comment", class: "comment-input"   %>
+          <%= f.submit "Post", class: "comment-submit"   %>
         <% end %>
-        <form class="comment-form" action="/posts/<%= post.id %>/comments" method="post">
-          <input id="comment-input" type="text" placeholder="Add your comment">
-          <input id="comment-submit" type="submit" value="Post">
-        </form>
     </div>
   </div>
 <% end %>
+

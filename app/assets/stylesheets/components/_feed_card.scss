@@ -94,9 +94,27 @@
   }
 }
 
-#display-comments {
+.display-comments {
   color: $pink;
   font-style: italic;
+}
+
+.hidden-comments {
+  display: none;
+}
+
+.hidden-comments.active {
+  display: block;
+}
+
+.hide-comments-link.active {
+  color: $pink;
+  font-style: italic;
+  display: block;
+}
+
+.hide-comments-link {
+  display: none;
 }
 
 .comment-form {
@@ -111,13 +129,13 @@
   display: flex;
 }
 
-#comment-input {
+.comment-input {
   border: none;
   background-color: transparent;
   flex-grow: 1;
 }
 
-#comment-submit {
+.comment-submit {
   color: $pink;
   font-weight: bolder;
   border: none;
