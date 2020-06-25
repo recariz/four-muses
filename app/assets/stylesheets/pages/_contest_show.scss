@@ -1,11 +1,16 @@
 .contest-h5 {
-    letter-spacing: 1px;
+
     margin: 0;
-    margin-left: 20px;
+    margin-left: 15px;
+    h5{
+        margin-bottom: 1px;
+    }
 }
 
 .first-part {
     display:flex;
+    flex-grow: 0;
+    max-height: 40px;
 }
 
 .show-img {
@@ -30,4 +35,18 @@
     border-bottom: solid 1px rgba(0, 0, 0, 0.08);
     margin-top: 30px;
     margin-bottom: 30px
+}
+
+.countdown {
+    p {
+        font-size: 11px !important;
+        font-weight: bold;
+        color: rgb(140, 140, 140);
+    }
+}
+
+.date {
+    p{
+        font-size: 14px;
+    }
 }
