@@ -94,9 +94,24 @@
   }
 }
 
-.display-comments {
+.display-comments-link.active {
+  display: block;
   color: $pink;
   font-style: italic;
+}
+
+.display-comments-link {
+  display: none;
+}
+
+.hide-comments-link.active {
+  display: block;
+  color: $pink;
+  font-style: italic;
+}
+
+.hide-comments-link {
+  display: none;
 }
 
 .hidden-comments {
@@ -107,15 +122,6 @@
   display: block;
 }
 
-.hide-comments-link.active {
-  color: $pink;
-  font-style: italic;
-  display: block;
-}
-
-.hide-comments-link {
-  display: none;
-}
 
 .comment-form {
   height: 25px;
