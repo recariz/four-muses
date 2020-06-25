@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
  skip_before_action :authenticate_user!, only: :index
- before_action :set_user, only: [:follow, :unfollow, :show]
+ before_action :set_user, only: [:follow, :unfollow, :create, :edit, :show]
 
  def show
   @photos = []
@@ -9,8 +9,22 @@ class UsersController < ApplicationController
       @photos << photo
     end
   end
-
  end
+
+def create
+  if !current_user
+    redirect_to user_path(@user)
+  else
+
+  end
+end
+def edit
+
+end
+
+def update
+
+end
 
  def follow
    if current_user.follow(@user.id)
@@ -36,6 +50,9 @@ class UsersController < ApplicationController
  def set_user
   @user = User.find(params[:id])
   authorize @user
+ end
+ def strong_params
+
  end
 end
 
