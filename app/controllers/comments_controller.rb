@@ -11,9 +11,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     authorize(@comment)
     if @comment.save
-      redirect_to posts_path(anchor: "comment-#{@comment.id}")
-    else
-      redirect_to posts_path
+      redirect_to posts_path(anchor: "comment-anchor-#{@post.id}")
     end
   end
 

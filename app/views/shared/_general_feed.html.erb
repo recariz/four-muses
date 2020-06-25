@@ -4,7 +4,8 @@
       <div class="user-avatar-nickname">
         <img class="avatar-small" src="<%= cl_image_path post.user.avatar.key %>" />
         <a href="/users/<%=post.user.id %>"><p>@<%=post.user.nickname.downcase%></p></a>
-        <% if (!current_user || !@followings.include?(post.user)) %><a id="post-follow-link"href="#"><p>Follow</p></a>
+        <% if (current_user != post.user) && (!@followings.include?(post.user)) %>
+          <%= link_to "Follow", follow_user_path(post.user.id), method: :post, id:"post-follow-link"%>
         <%end  %>
       </div>
       <div class="post-reactions">
@@ -62,11 +63,12 @@
           </div>
         <% end %>
 
-        <%= form_for [post, Comment.new], html: {class: "comment-form"}, remote: true do |f| %>
+        <%= form_for [post, Comment.new], html: {class: "comment-form", id:"comment-anchor-#{post.id}"}, remote: true do |f| %>
           <%= f.text_field :content, label: false, placeholder: "Add your comment", class: "comment-input"   %>
           <%= f.submit "Post", class: "comment-submit"   %>
         <% end %>
     </div>
+
   </div>
 <% end %>
 
