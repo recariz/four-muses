@@ -55,7 +55,7 @@
       <%#= image_tag("gallery.jpg", class: "weekly-gallery-card-image") %>
    </div> -->
 
-    <div class="carousel-container">
+    <div class="carousel-home-container">
   <div id="carouselExampleIndicators" class="carousel slide w-50" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -64,16 +64,16 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <div style="background-image: url( <%= image_path 'gallery1.jpg' %>)" class="carousel-image"> </div>
+        <div style="background-image: url( <%= image_path 'gallery1.jpg' %>)" class="carousel-home-image"> </div>
         <!-- <img class="d-block " src="https://images.unsplash.com/photo-1578985824626-945a6f546304?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80" alt="First slide"> -->
         <%#= image_tag("gallery1.jpg", alt="First slide" class: "d-block w-50") %>
       </div>
       <div class="carousel-item">
-        <div style="background-image: url( <%= image_path 'gallery2.jpg' %>)" class="carousel-image"> </div>
+        <div style="background-image: url( <%= image_path 'gallery2.jpg' %>)" class="carousel-home-image"> </div>
         <!-- <img class="d-block " src="https://images.unsplash.com/photo-1515169974372-0a322886d279?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1376&q=80" alt="Second slide"> -->
       </div>
       <div class="carousel-item">
-        <div style="background-image: url( <%= image_path 'gallery3.jpg' %>)" class="carousel-image"> </div>
+        <div style="background-image: url( <%= image_path 'gallery3.jpg' %>)" class="carousel-home-image"> </div>
         <!-- <img class="d-block " src="https://images.unsplash.com/photo-1578985824626-945a6f546304?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80" alt="Third slide"> -->
       </div>
     </div>
@@ -95,7 +95,12 @@
    <div class ='home-links'> <%= link_to 'Visit gallery', root_path %> </div>
   </div>
 </div>
+
+ <div class = "pink-button mt-3 mb-3"> <%= link_to 'Explore', posts_path %> </div>
+
 </div>
+
+
 
 
 

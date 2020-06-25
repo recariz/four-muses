@@ -68,13 +68,13 @@
 
 }
 
-.carousel-container {
+.carousel-home-container {
   display: flex;
   // height: 50vh;
 
 }
 
-.carousel-image {
+.carousel-home-image {
   height: 50vw;
   width: 50vw;
   background-size: cover;
@@ -87,7 +87,9 @@
   text-decoration: none;
 
   &:hover {
-    color: red;
+    color: $white;
+    font-weight: bold;
+    transition: 0.7s;
   }
 }
 

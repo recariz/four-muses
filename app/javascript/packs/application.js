@@ -35,6 +35,8 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 import { initPhotoInput } from '../components/photo_input';
 
+import { addPost } from '../components/add_post';
+
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   toggleSwitch();
