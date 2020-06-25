@@ -23,6 +23,7 @@ class UsersController < ApplicationController
  end
 
  def unfollow
+
    if current_user.unfollow(@user.id)
      respond_to do |format|
        format.html { redirect_to root_path }
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
 
  def set_user
    @user = User.find(params[:id])
+   authorize @user
  end
 end
 
