@@ -1,0 +1,16 @@
+
+var id = '<%= @user_id %>'
+var posts = document.querySelectorAll(`.user-post-${id}`);
+posts.forEach((post) => {
+  post.innerText=""
+});
+
+// const html_string = ""
+// console.log('<%= @html_string %>');
+// j render "shared/follow_feed_card", post: @post
+const feedFollows = document.getElementById('feed-follows');
+'<%= @html_string = "" %>';
+'<%= @my_followed_posts.each { |post| @html_string += j render "shared/follow_feed_card", post: post }%>';
+
+feedFollows.innerHTML = '<%= @html_string %>';
+console.log(typeof '<%= @html_string %>')

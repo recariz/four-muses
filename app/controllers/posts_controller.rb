@@ -50,6 +50,10 @@ class PostsController < ApplicationController
   def delete
   end
 
+  def like_count
+    Like.all.select
+  end
+
   private
 
   def set_post
