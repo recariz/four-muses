@@ -1,0 +1,37 @@
+<div class="main-container">
+  <h3>Contest form</h3>
+  <%= simple_form_for(@contest) do |f| %>
+    <%= f.error_notification %>
+    <div class="contest-form">
+      <%= f.input :title,
+                required: true,
+                autofocus: true  %>
+
+      <%= f.input :city,
+                required: true,
+                autofocus: true  %>
+
+      <%= f.input :location,
+                required: true,
+                autofocus: true  %>
+          <div class="d-flex">
+              <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker form-design form-left"} %>
+              <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker form-design form-right"} %>
+          </div> 
+      <%= f.input :content,
+                  required: true,
+                  autofocus: true,
+                  input_html: { class: "content-input", placeholder: "Write your motivation" }%> 
+      <div class="send-to-orbit">
+         <%= f.input :photo, as: :file, input_html: { multiple: true, class: "photo-input"} %>  
+      </div>
+      <p>Gallery's Photo</p>
+      <div class="pink-button-sm-secondary photo-button">Upload</div>  
+      <div class="file-names">
+      </div>
+    </div>
+    <div class="pink-button-lg center-button w-100"><%= f.button :submit, "Publish contest" %></div>
+    <% end %>
+</div>
+
+

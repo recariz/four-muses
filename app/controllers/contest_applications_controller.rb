@@ -6,22 +6,23 @@ class ContestApplicationsController < ApplicationController
     end
 
     def new
+        @contest = Contest.find(params[:contest_id])
         @contest_application = ContestApplication.new
         authorize @contest_application
     end
 
     def create
+        @contest = Contest.find(params[:contest_id])
         @contest_application = ContestApplication.new(strong_params)
-        authorize @contest_application
+        @contest_application.contest = @contest
         @contest_application.user = current_user
-        if @contest_application.save
+        authorize @contest_application
+        if @contest_application.save!
             #Need to change path
             redirect_to root_path, notice: "Applying"
         else
             render :new
         end
-
-
     end
 
     def edit
@@ -40,7 +41,7 @@ class ContestApplicationsController < ApplicationController
     end
 
     def strong_params
-        params.require(:contest_application).permit(:photos, :motivation)
+        params.require(:contest_application).permit(:motivation, photos: [])
     end
 
 

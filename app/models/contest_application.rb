@@ -2,7 +2,7 @@ class ContestApplication < ApplicationRecord
   belongs_to :user
   belongs_to :contest
   validates :motivation, presence: true
-  has_many_attached :photos
+  has_many_attached :photos, dependent: :destroy
   validates :photos, length: {minimum:3}
   validates_uniqueness_of :user_id, scope: :contest_id
 
