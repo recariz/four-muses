@@ -5,7 +5,7 @@
         <img class="avatar-small" src="<%= cl_image_path post.user.avatar.key %>" />
         <a href="/users/<%=post.user.id %>"><p>@<%=post.user.nickname.downcase%></p></a>
         <% if (current_user != post.user) && (!@followings.include?(post.user)) %>
-          <%= link_to "Follow", follow_user_path(post.user.id), method: :post, id:"post-follow-link"%>
+          <%= link_to "Follow", "/users/#{post.user.id}/follow?user_id=#{post.user.id}&post_id=#{post.id}", method: :post, class:"post-follow-link user-post-#{post.user.id}", id: "post-#{post.id}", remote: true%>
         <%end  %>
       </div>
       <div class="post-reactions">
