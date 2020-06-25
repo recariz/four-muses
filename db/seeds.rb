@@ -70,7 +70,7 @@ caro = User.new(
   users << caro
 
 pato = User.new(
-    nickname: "Pato",
+    nickname: "Pato gallery",
     business_name: "Pato holdings SL",
     email: "patricia@mail.com",
     password: "123456",
@@ -84,7 +84,7 @@ pato = User.new(
   users << pato
 
 marta = User.new(
-    nickname: "Marta",
+    nickname: "Marta gallery",
     business_name: "Marta & company SL",
     email: "marta@mail.com",
     password: "123456",
@@ -143,9 +143,10 @@ p "Posts created"
 p "Creating Contests"
 
 contest_p = Contest.new(
-  start_date: ("20/10/11"),
-  end_date: ("20/10/11"),
-  location: "Carrer d'en Grassot, 101, 08025 Barcelona, España",
+  start_date: ("2020/10/11"),
+  end_date: ("2020/10/16"),
+  city: "Barcelona",
+  location: "Carrer d'en Grassot, 101",
   title: Faker::Artist.name,
   content: Faker::ChuckNorris.fact
 )
@@ -155,9 +156,10 @@ contest_p.save
 p contest_p
 
 contest_m = Contest.new(
-  start_date: ("20/10/11"),
-  end_date: ("20/10/11"),
-  location: "Carrer d'en Grassot, 101, 08025 Barcelona, España",
+  start_date: ("2020/10/11"),
+  end_date: ("2020/10/16"),
+  city: "Barcelona",
+  location: "Carrer d'en Grassot, 101",
   title: Faker::Artist.name,
   content: Faker::ChuckNorris.fact
 )

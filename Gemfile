@@ -6,6 +6,9 @@ ruby '2.6.6'
 # Pundit
 gem 'pundit'
 
+gem 'cloudinary', '~> 1.12.0'
+gem 'geocoder'
+gem 'faker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
@@ -66,6 +69,3 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'cloudinary', '~> 1.12.0'
-gem 'geocoder'
-gem 'faker'
