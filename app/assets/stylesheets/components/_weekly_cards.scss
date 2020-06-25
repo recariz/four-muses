@@ -4,6 +4,7 @@
   align-items: center;
   background-color: $light-brown;
   border-radius: 5px;
+  color: $black;
 
 
   .weekly-artist-card-image {
@@ -21,25 +22,25 @@
 }
 
 
-.weekly-gallery-card {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  background-color: $light-brown;
-  border-radius: 5px;
+// .weekly-gallery-card {
+//   overflow: hidden;
+//   display: flex;
+//   align-items: center;
+//   background-color: $light-brown;
+//   border-radius: 5px;
 
-  .weekly-gallery-card-image {
-    vertical-align: middle;
-    border-style: none;
-    border-radius: 5px;
-    width: 40%;
-    margin-right: 12px;
-    height: 100%;
-    object-fit: cover;
-  }
+//   .weekly-gallery-card-image {
+//     vertical-align: middle;
+//     border-style: none;
+//     border-radius: 5px;
+//     width: 40%;
+//     margin-right: 12px;
+//     height: 100%;
+//     object-fit: cover;
+//   }
 
-  .weekly-gallery-card-content {
-    padding: 16px;
+//   .weekly-gallery-card-content {
+//     padding: 16px;
 
-  }
-}
+//   }
+// }
