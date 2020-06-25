@@ -51,7 +51,7 @@
         <% if post.comments.count > 1 %>
           <p id="display-comments">See all <%= post.comments.count %> comments...</p>
         <% end %>
-        <form class="comment-form" action="">
+        <form class="comment-form" action="/posts/<%= post.id %>/comments" method="post">
           <input id="comment-input" type="text" placeholder="Add your comment">
           <input id="comment-submit" type="submit" value="Post">
         </form>

@@ -1,7 +1,7 @@
-
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
     <a class="navbar-brand" href="/">
       <%= image_tag "logomuses.png" %>
+  </a>
     <% if current_user %>
       <div data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key %>" />
@@ -12,7 +12,7 @@
             </div>
       </div>
     <% else %>
-      <div style="line-height: 0rem;margin-bottom: 17px">
+      <div>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-links" href="/users/sign_up">Sign up</a>
@@ -23,4 +23,3 @@
       </div>
     <% end %>
   </div>
-

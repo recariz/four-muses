@@ -54,15 +54,20 @@
         <div class="line-divider"></div>
         <div class="post-comments-container">
             <% post.comments.each do |comment| %>
-            <p><span style="font-weight: bolder">@<%= comment.user.nickname %>  </span><%= comment.content %></p>
+            <p id="review-<%= review.id %>"><span style="font-weight: bolder">@<%= comment.user.nickname %>  </span><%= comment.content %></p>
             <% end %>
             <% if post.comments.count > 1 %>
               <p id="display-comments">See all <%= post.comments.count %> comments...</p>
             <% end %>
-            <form class="comment-form" action="">
+             <!-- input_html: { class: 'form-horizontal'} -->
+            <%= simple_form_for([ @post, @comment ]) do |f| %>
+              <%= f.input :content, as: :text, input_html: { id: 'comment-input', placeholder: 'Add your comment'}  %>
+              <%= f.button :submit, input_html: { id: 'comment-submit', value: "Post"} %>
+            <% end %>
+<!--             <form class="comment-form" action="/posts/<%=post.id%>/comments" method="post">
               <input id="comment-input" type="text" placeholder="Add your comment">
               <input id="comment-submit" type="submit" value="Post">
-            </form>
+            </form> -->
         </div>
     </div>
   <% end %>
