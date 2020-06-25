@@ -1,0 +1,33 @@
+<div class = "main-container">
+  <h3>Edit profile</h3>
+  <br>
+  <%= simple_form_for(@user, method: :patch) do |f| %>
+  <%= f.error_notification %>
+  <div class="tm-2">
+    <div class="send-to-orbit">
+      <%= f.input :avatar, as: :file, input_html: class: "photo-input" %>
+      <%= f.input :nickname,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "nickname"} %>
+      <%= f.input :location,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "location"} %>
+      <%= f.input :biography,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "biography"} %>
+
+      </div>
+     <!--  <div class="pink-button-sm-secondary photo-button">Upload</div>
+      <div class="file-names"> -->
+      </div>
+    </div>
+
+  </div>
+  <br>
+    <div class="pink-button-lg center-button w-100"><%= f.button :submit, "Save" %></div>
+<% end %>
+</div>
+
