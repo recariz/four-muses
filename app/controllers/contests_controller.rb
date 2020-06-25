@@ -26,8 +26,7 @@ class ContestsController < ApplicationController
     autorize @contest
     @contest.user = current_user
     if @contest.save
-        redirect_to root_path, notice: "Posting"
-        # GUYS WE NEED TO CHANGE THE REDIRECT ONCE WE HAVE THE FEED
+        redirect_to posts_path
       else
         render :new
     end

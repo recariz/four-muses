@@ -70,7 +70,7 @@ caro = User.new(
   users << caro
 
 pato = User.new(
-    nickname: "Pato gallery",
+    nickname: "Pato_gallery",
     business_name: "Pato holdings SL",
     email: "patricia@mail.com",
     password: "123456",
@@ -84,7 +84,7 @@ pato = User.new(
   users << pato
 
 marta = User.new(
-    nickname: "Marta gallery",
+    nickname: "Marta_gallery",
     business_name: "Marta & company SL",
     email: "marta@mail.com",
     password: "123456",
