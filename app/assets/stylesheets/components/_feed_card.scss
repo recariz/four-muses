@@ -18,6 +18,8 @@
 #post-follow-link {
   color: $pink;
   text-decoration: underline;
+  font-size: 12px;
+  padding-left: 0.5rem;
 }
 
 .user-avatar-nickname {
@@ -94,10 +96,34 @@
   }
 }
 
-#display-comments {
+.display-comments-link.active {
+  display: block;
   color: $pink;
   font-style: italic;
 }
+
+.display-comments-link {
+  display: none;
+}
+
+.hide-comments-link.active {
+  display: block;
+  color: $pink;
+  font-style: italic;
+}
+
+.hide-comments-link {
+  display: none;
+}
+
+.hidden-comments {
+  display: none;
+}
+
+.hidden-comments.active {
+  display: block;
+}
+
 
 .comment-form {
   height: 25px;
@@ -111,13 +137,13 @@
   display: flex;
 }
 
-#comment-input {
+.comment-input {
   border: none;
   background-color: transparent;
   flex-grow: 1;
 }
 
-#comment-submit {
+.comment-submit {
   color: $pink;
   font-weight: bolder;
   border: none;

@@ -27,11 +27,17 @@ import "bootstrap";
 
 import { toggleSwitch } from '../components/toggle';
 
+import { showComments } from '../components/hidden_comments';
+
 import { initMapbox } from '../plugins/init_mapbox';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
+import { initPhotoInput } from '../components/photo_input';
+
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   toggleSwitch();
+  showComments();
+  initPhotoInput();
 })

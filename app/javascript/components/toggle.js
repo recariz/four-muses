@@ -9,9 +9,10 @@ const toggleSwitch = () => {
       feedFollows.classList.toggle('active');
       feedGeneral.classList.toggle('active');
       toggleBall.classList.toggle('active');
-      $(window).load(function(){
-       $(window).scrollTop(0);
-      });
+      window.scrollTo(0,0);
+      // $(window).load(function(){
+      //  $(window).scrollTop(0);
+      // });
     });
   };
 };
