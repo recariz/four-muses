@@ -1,8 +1,11 @@
+
 // Airpool to be adapted as needed
 .footer {
   background: $light-brown;
   height: 60px;
   padding: 0px 16px;
+  position: sticky;
+  bottom: 0px;
 }
 .footer-links {
   display: flex;
@@ -21,4 +24,3 @@
   opacity: 1;
   color: $blue;
 }
-
