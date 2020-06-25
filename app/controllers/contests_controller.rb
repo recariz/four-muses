@@ -19,11 +19,12 @@ class ContestsController < ApplicationController
   def new
     @contest = Contest.new
     authorize @contest
+    
   end
 
   def create
     @contest = Contest.new(strong_params)
-    autorize @contest
+    authorize @contest
     @contest.user = current_user
     if @contest.save
         redirect_to posts_path

@@ -1,7 +1,8 @@
 require 'faker'
 require 'open-uri'
 
-
+p "Deleting Contest Applications"
+ContestApplication.delete_all
 p "Deleting Contest tags"
 ContestTag.delete_all
 p "Deleting Post tags"
