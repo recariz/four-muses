@@ -8,12 +8,14 @@
 
 
   .weekly-artist-card-image {
-    vertical-align: middle;
+    // vertical-align: middle;
     border-style: none;
-    border-radius: 50%;
-    width: 80px;
-    margin-right: 25px;
-    margin-left: 18px;
+    border-radius: 1px;
+    width: 125px;
+    height: 100%;
+    margin-left: 8px;
+    object-fit: cover;
+    border-radius: 5px;
   }
 
   .weekly-artist-card-content{

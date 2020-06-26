@@ -1,6 +1,6 @@
-dashboard
 
-<!-- <div class="main-container">
+
+<div class="main-container">
   <div class="dashboard-container">
   <h1> My dashboard</h1>
 
@@ -17,25 +17,25 @@ dashboard
           <h5>Current status</h5>
         </div>
       </div>
-      <#% @contests.each do |contest| %>
+      <% @my_contests.each do |contest| %>
       <div class="col">
-        <#%= contest.name %>
+        <%= contest.name %>
       </div>
       <div class="col">
-        <#%= contest.date.strftime"%A, %b %d" %>
+        <%= contest.date.strftime"%A, %b %d" %>
       </div>
       <div class="col">
         <%= contest_application.status.capitalize %>
       </div>
       <div class="col">
         <div class="d-flex">
-          <#div> <#%= link_to 'show', contest_path(contest), method: :show, class: "button-pink" %></div>
+          <#div> <%= link_to 'show', contest_path(contest), method: :show, class: "button-pink" %></div>
         </div>
       </div>
-      <#% end %>
+      <% end %>
 
     </div>
 
   </div>
-</div>
- -->
+
+
