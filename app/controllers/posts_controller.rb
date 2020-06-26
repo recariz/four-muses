@@ -36,6 +36,7 @@ class PostsController < ApplicationController
   end
 
   def create
+
     @post = Post.new(post_params)
     authorize @post
     @post.user = current_user
@@ -61,6 +62,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:description, :title, photos: [])
+    params.require(:post).permit(:description, :title, photos: [], post_tag_ids: [])
   end
 end

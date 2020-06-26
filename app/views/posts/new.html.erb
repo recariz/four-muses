@@ -12,9 +12,7 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "description"} %>
- <!--    <#%= f.input :interests %>
-    <#%= f.association :interest, as: :check_boxes %>
- -->
+    <%= f.association :post_tags, as: :check_boxes, collection: current_user.interests, label: false, item_wrapper_class: "tag js-checkbox", input_html: {class: "d-none"} %>
 
     <div class="send-to-orbit">
       <%= f.input :photos, as: :file, input_html: { multiple: true, class: "photo-input"} %>
@@ -24,10 +22,8 @@
       <div class="file-names">
       </div>
     </div>
-
-  </div>
   <br>
-    <div class="pink-button-lg center-button w-100"><%= f.button :submit, "Post" %></div>
-<% end %>
-</div>
+    <div class="pink-button center-button w-100"><%= f.button :submit, "Post" %></div>
+  <% end %>
+  </div>
 

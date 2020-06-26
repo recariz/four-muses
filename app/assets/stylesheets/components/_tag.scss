@@ -12,7 +12,12 @@
         font-size: 12px;
         line-height: 1.2 !important;
     }
-    
+    &.active {
+      background: $pink;
+      color: $black;
+      opacity: 1;
+  }
+
 }
 
 .tags {

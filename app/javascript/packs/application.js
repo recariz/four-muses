@@ -39,7 +39,7 @@ import { fillHeart } from '../components/likes';
 import { initPhotoInput } from '../components/photo_input';
 import "../plugins/flatpickr";
 
-import { addPost } from '../components/add_post';
+import { addTag } from '../components/add_tag';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
@@ -47,4 +47,5 @@ document.addEventListener('turbolinks:load', () => {
   showComments();
   initPhotoInput();
   fillHeart();
+  addTag();
 })
