@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
- skip_before_action :authenticate_user!, only: :index
- before_action :set_user, only: [:follow, :unfollow, :create, :edit, :show]
+
+ before_action :set_user, only: [:follow, :unfollow, :edit, :update, :show]
 
  def show
   @photos = []
@@ -11,19 +11,15 @@ class UsersController < ApplicationController
   end
  end
 
-def create
-  if !current_user
-    redirect_to user_path(@user)
-  else
 
-  end
-end
 def edit
+ authorize @user
 
 end
 
 def update
-
+  @user.update!(strong_params)
+  redirect_to user_path(@user)
 end
 
  def follow
@@ -51,6 +47,8 @@ end
   authorize @user
  end
  def strong_params
+  params.require(:user).permit(:avatar, :location, :biography, :nickname, :email, :password)
+
 
  end
 end

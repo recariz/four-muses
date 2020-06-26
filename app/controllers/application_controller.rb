@@ -47,6 +47,7 @@ class ApplicationController < ActionController::Base
     # Devise implementation of Strong Params
     # keys is an array of symbols
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[nickname first_name last_name location type])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[nickname biography avatar first_name last_name location type])
   end
 
   private
