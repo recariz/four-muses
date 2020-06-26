@@ -36,7 +36,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 // import { initSelect2 } from '../components/init_select2';
 
 import { initPhotoInput } from '../components/photo_input';
-import "../plugins/flatpickr";
+import { flatPick} from "../plugins/flatpickr";
 
 import { addPost } from '../components/add_post';
 
@@ -45,4 +45,6 @@ document.addEventListener('turbolinks:load', () => {
   toggleSwitch();
   showComments();
   initPhotoInput();
+  flatPick();
+
 })

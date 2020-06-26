@@ -3,7 +3,7 @@ class ContestApplication < ApplicationRecord
   belongs_to :contest
   validates :motivation, presence: true
   has_many_attached :photos, dependent: :destroy
-  validates :photos, length: {minimum:3}
+  validates :photos, presence: true
   validates_uniqueness_of :user_id, scope: :contest_id
 
 enum status: [:pending, :accepted, :rejected]

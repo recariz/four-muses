@@ -6,11 +6,10 @@
       <%= f.input :motivation,
                   required: true,
                   autofocus: true,
-                  input_html: { class: "motivation-input", placeholder: "Write a description" }%> 
-      <div class="send-to-orbit">
-         <%= f.input :photos, as: :file, input_html: { multiple: true, class: "photo-input"} %>  
+                  input_html: { class: "motivation-input", placeholder: "Write a motivation" }%> 
+      <div class="change-button">
+         <%= f.input :photos, required: true, as: :file, input_html: { multiple: true, class: "photo-input"} %>  
       </div>
-      <p>Photos</p>
       <div class="pink-button-sm-secondary photo-button">Upload</div>  
       <div class="file-names">
       </div>
