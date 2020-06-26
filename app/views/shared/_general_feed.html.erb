@@ -1,4 +1,4 @@
-<% @posts.sort_by{|post| post.created_at}.each do |post| %>
+<% @posts.sort_by{|post| post.created_at}.reverse.each do |post| %>
   <div class="card-post">
     <div class="card-post-top-infos">
       <div class="user-avatar-nickname">
