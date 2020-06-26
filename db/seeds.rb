@@ -64,7 +64,7 @@ ella = User.new(
   painting_interest_ella.save
 
 
-  ella.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/caro_pakuiz.png'), filename: 'caro_pakuiz.png', content_type: 'png')
+  ella.avatar.attach(io: File.open('app/assets/images/artist.jpg'), filename: 'ella.jpg', content_type: 'jpg')
   ella.save
   p ella
   users << ella
@@ -230,20 +230,36 @@ orsay = User.new(
 orsay.avatar.attach(io: File.open('app/assets/images/orsay-museum.jpg'), filename: 'orsay.jpg', content_type: 'jpg')
 orsay.save
 p orsay
-# users.each do |user|
-#    p "Creating posts for #{user.nickname}..."
-#    2.times do
-#         post = Post.new(
-#             title: Faker::Artist.name,
-#             description: Faker::ChuckNorris.fact
-#         )
-#         post.user_id = user.id
-#         post.photos.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
-#         post.save
-#     end
-# end
 
-#p "Posts created"
+p "Galleries created!"
+
+p "Creating posts"
+
+post_ella = Post.new(
+    title: "Magic Forest",
+    description: "Oil on canvas inspired on my childhood times"
+)
+post_ella.user_id = ella.id
+post_ella.photos.attach(io: File.open('app/assets/images/ella_painting.jpg'), filename: 'ella_paint.jpg', content_type: 'jpg')
+post_ella.save
+
+post_orsay = Post.new(
+    title: "Back to normality",
+    description: "Orsay museum is happy to announce the reopening of its doors from next Monday"
+)
+post_orsay.user_id = orsay.id
+post_orsay.photos.attach(io: File.open('app/assets/images/orsay_open.jpg'), filename: 'orsay_open.jpg', content_type: 'jpg')
+post_orsay.save
+
+post_caro = Post.new(
+    title: "Maze",
+    description: "Use of colors to represent the different emotions "
+)
+post_caro.user_id = caro.id
+post_caro.photos.attach(io: File.open('app/assets/images/painting_caro.jpg'), filename: 'caropaint.jpg', content_type: 'jpg')
+post_caro.save
+
+p "Posts created"
 
 p "Creating Contests"
 
