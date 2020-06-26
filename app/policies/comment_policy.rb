@@ -10,6 +10,7 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def create?
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless user.present?
     true
   end
 

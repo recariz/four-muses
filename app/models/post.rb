@@ -6,4 +6,5 @@ class Post < ApplicationRecord
   has_many :categories, through: :post_tags
   validates_presence_of :description, :title
   has_many_attached :photos
+
 end

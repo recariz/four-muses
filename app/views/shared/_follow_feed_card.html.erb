@@ -1,12 +1,16 @@
 <div class="card-post">
   <div class="card-post-top-infos">
-    <div class="user-avatar-nickname">
+    <div id="comment-anchor-<%=post.id%>" class="user-avatar-nickname">
       <img class="avatar-small" src="<%= cl_image_path post.user.avatar.key %>" />
       <a href="/users/<%=post.user.id %>"><p>@<%=post.user.nickname.downcase%></p></a>
-      <%= link_to "Unfollow", unfollow_user_path(post.user.id), method: :post, remote: true, class:"post-follow-link"%>
+      <%= link_to "Unfollow", "/users/#{post.user.id}/unfollow?user_id=#{post.user.id}&post_id=#{post.id}", method: :post, class:"post-follow-link user-post-#{post.user.id}", id: "post-#{post.id}", remote: true%>
     </div>
     <div class="post-reactions">
-      <div class="reaction-type"><p><%= post.likes.count %> </p><a href="#"><i class="fal fa-heart"></i></a></div>
+        <% if current_user %>
+          <div class="reaction-type"><p><%= post.likes.count %></p><%= link_to "", "/posts/#{post.id}/likes?user_id=#{current_user.id}", method: :post, id:"like-heart", class:"fal fa-heart", remote: true%></div>
+        <% else %>
+          <div class="reaction-type"><p><%= post.likes.count %></p><%= link_to "", "/users/sign_in", class:"fal fa-heart"%></div>
+        <% end %>
     </div>
   </div>
   <div class="post-content">
@@ -64,7 +68,7 @@
           </div>
         <% end %>
 
-        <%= form_for [post, Comment.new], html: {class: "comment-form", id:"comment-anchor-#{post.id}"}, remote: true do |f| %>
+        <%= form_for [post, Comment.new], html: {class: "comment-form"}, remote: true do |f| %>
           <%= f.text_field :content, label: false, placeholder: "Add your comment", class: "comment-input"   %>
           <%= f.submit "Post", class: "comment-submit"   %>
         <% end %>
