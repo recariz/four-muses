@@ -1,15 +1,14 @@
-
 .pink-button-lg{
   background-color: $pink;
-  font-weight: bold;
+  font-weight: 400;
   font-family: $body-font;
-  color: rgb(20, 20, 20);
+  color: $black;
   text-decoration: none;
   text-align: center;
   padding: 10px;
   border: 1px solid $pink;
   display: block;
-  box-shadow: 5px 10px 5px 0 rgba(245, 146, 133, 0.1);
+  box-shadow: 0px 2px 1px 0 rgba(245, 146, 133, 0.1);
   width: 80%;
   border-radius: 25px;
 
@@ -24,15 +23,15 @@
   background-color: $pink;
   font-family: $body-font;
   font-weight: 400;
-  color: rgb(20, 20, 20);
+  color: $black;
   font-size: 14px;
   text-decoration: none;
   text-align: center;
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 30px;
   border: 1px solid $pink;
   display: block;
-  box-shadow: 5px 10px 5px 0 rgba(245, 146, 133, 0.1);
+  box-shadow: 0px 2px 1px 0 rgba(245, 146, 133, 0.1);
   min-width: 140px;
   min-height: 40px;
   a {
@@ -56,7 +55,7 @@
   border-width: 0.7px;
   border-color: $pink;
   display: inline-block;
-  box-shadow: 5px 10px 5px 0 rgba(245, 146, 133, 0.1);
+  box-shadow: 0px 2px 1px 0 rgba(245, 146, 133, 0.1);
   width: 80%;
     a {
       color: $pink;
@@ -69,7 +68,7 @@
   font-family: $body-font;
   font-weight: 400;
   font-size: 14px;
-  color: rgb(20, 20, 20);
+  color: $black;
   line-height: 25px;
   text-decoration: none;
   text-align: center;
@@ -79,7 +78,7 @@
   border-width: 0.7px;
   border-color: $white;
   display: inline-block;
-  box-shadow: 5px 10px 5px 0 rgba(245, 146, 133, 0.1);
+  box-shadow: 0px 2px 1px 0 rgba(245, 146, 133, 0.1);
   width: 75px;
   height: 30px;
   a {
@@ -103,7 +102,7 @@
   border-width: 0.7px;
   border-color: $pink;
   display: inline-block;
-  box-shadow: 5px 10px 5px 0 rgba(245, 146, 133, 0.1);
+  box-shadow: 0px 2px 1px 0 rgba(245, 146, 133, 0.1);
   width: 75px;
   height: 30px;
   a {

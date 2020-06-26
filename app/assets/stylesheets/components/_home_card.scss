@@ -59,17 +59,38 @@
   // bottom: 40px;
   // right: 0;
   // z-index: 1;
-  background-color: $black;
+  background-color: #585656;
   padding: 20px;
 
   * {
     color: $white;
   }
 
+}
+
+.carousel-home-container {
+  display: flex;
+  // height: 50vh;
 
 }
 
+.carousel-home-image {
+  height: 50vw;
+  width: 50vw;
+  background-size: cover;
+  background-position: center center;
+}
 
+.home-links a {
+  color: $pink;
+  transition: 0.7s;
+  text-decoration: none;
 
+  &:hover {
+    color: $white;
+    font-weight: bold;
+    transition: 0.7s;
+  }
+}
 
 

@@ -1,1 +1,41 @@
-My dashboard
+dashboard
+
+<!-- <div class="main-container">
+  <div class="dashboard-container">
+  <h1> My dashboard</h1>
+
+    <div class="card-dashboard">
+      <h2> Your contest applications</h2>
+      <div class = "row">
+          <div class ="col">
+            <h5> Contest name</h5>
+          </div>
+        <div class="col">
+          <h5>Date</h5>
+        </div>
+        <div class="col">
+          <h5>Current status</h5>
+        </div>
+      </div>
+      <#% @contests.each do |contest| %>
+      <div class="col">
+        <#%= contest.name %>
+      </div>
+      <div class="col">
+        <#%= contest.date.strftime"%A, %b %d" %>
+      </div>
+      <div class="col">
+        <%= contest_application.status.capitalize %>
+      </div>
+      <div class="col">
+        <div class="d-flex">
+          <#div> <#%= link_to 'show', contest_path(contest), method: :show, class: "button-pink" %></div>
+        </div>
+      </div>
+      <#% end %>
+
+    </div>
+
+  </div>
+</div>
+ -->

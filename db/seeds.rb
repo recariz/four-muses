@@ -1,7 +1,12 @@
 require 'faker'
 require 'open-uri'
 
-
+p "Deleting likes"
+Like.delete_all
+p "Deleting comments"
+Comment.delete_all
+p "Deleting Contest Applications"
+ContestApplication.delete_all
 p "Deleting Contest tags"
 ContestTag.delete_all
 p "Deleting Post tags"
@@ -91,9 +96,14 @@ caro = User.new(
   users << caro
 
 pato = User.new(
+<<<<<<< HEAD
     first_name: "Patricia",
     last_name: "Recarte",
     nickname: "recariz",
+=======
+    nickname: "Pato_gallery",
+    business_name: "Pato holdings SL",
+>>>>>>> 297d160788ea4e2108a846c396ac52c876c5177b
     email: "patricia@mail.com",
     password: "123456",
     location:  cities.sample(1)[0],
@@ -110,6 +120,22 @@ pato = User.new(
   p pato
   users << pato
 
+<<<<<<< HEAD
+=======
+marta = User.new(
+    nickname: "Marta_gallery",
+    business_name: "Marta & company SL",
+    email: "marta@mail.com",
+    password: "123456",
+    location:  cities.sample(1)[0],
+    type: 'Business'
+)
+marta.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
+  marta.save
+  p marta
+  users << marta
+
+>>>>>>> 297d160788ea4e2108a846c396ac52c876c5177b
 ale = User.new(
     first_name: "Alejandro",
     last_name: "Udaquiola",
@@ -195,9 +221,10 @@ p "Creating Contests"
 
 contest_p = Contest.new(
   start_date: ("2020/10/11"),
-  end_date: ("2020/10/11"),
-  location: "Carrer d'en Grassot, 101, 08025 Barcelona, España",
-  title: "Black and white photography in modern times",
+  end_date: ("2020/10/16"),
+  city: "Barcelona",
+  location: "Carrer d'en Grassot, 101",
+  title: Faker::Artist.name,
   content: Faker::ChuckNorris.fact
 )
 contest_p.user_id = pato.id
@@ -207,9 +234,10 @@ p contest_p
 
 contest_m = Contest.new(
   start_date: ("2020/10/11"),
-  end_date: ("2020/10/11"),
-  location: "Carrer d'en Grassot, 101, 08025 Barcelona, España",
-  title: "Sculpting the Human Body",
+  end_date: ("2020/10/16"),
+  city: "Barcelona",
+  location: "Carrer d'en Grassot, 101",
+  title: Faker::Artist.name,
   content: Faker::ChuckNorris.fact
 )
 contest_m.user_id = marta.id

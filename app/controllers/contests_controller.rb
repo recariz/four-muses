@@ -19,15 +19,15 @@ class ContestsController < ApplicationController
   def new
     @contest = Contest.new
     authorize @contest
+    
   end
 
   def create
     @contest = Contest.new(strong_params)
-    autorize @contest
+    authorize @contest
     @contest.user = current_user
     if @contest.save
-        redirect_to root_path, notice: "Posting"
-        # GUYS WE NEED TO CHANGE THE REDIRECT ONCE WE HAVE THE FEED
+        redirect_to posts_path
       else
         render :new
     end
@@ -54,3 +54,46 @@ private
     params.require(:contest).permit(:start_date, :end_date, :location, :title, :content)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

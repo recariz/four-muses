@@ -8,14 +8,26 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "title"} %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true }%>
     <%= f.input :description,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "description"} %>
+ <!--    <#%= f.input :interests %>
+    <#%= f.association :interest, as: :check_boxes %>
+ -->
+
+    <div class="send-to-orbit">
+      <%= f.input :photos, as: :file, input_html: { multiple: true, class: "photo-input"} %>
+      </div>
+      <p>Photos</p>
+      <div class="pink-button-sm-secondary photo-button">Upload</div>
+      <div class="file-names">
+      </div>
+    </div>
+
   </div>
   <br>
-    <%= f.submit class: 'pink-button-lg center-button'%>
+    <div class="pink-button-lg center-button w-100"><%= f.button :submit, "Post" %></div>
 <% end %>
 </div>
 
