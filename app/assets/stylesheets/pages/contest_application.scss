@@ -23,10 +23,15 @@
 
 .change-button {
     opacity: 0;
+    height: 0px;
     
 }
 
 
-.form-absolute {
-    position: absolute;
-}
+ .form-absolute {
+     label {
+         display: none
+     }
+
+
+ }
