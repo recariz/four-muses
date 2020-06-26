@@ -294,33 +294,33 @@ p sculpture_tag
 
 p "Contest tag created"
 
-p "Creating post tags"
+# p "Creating post tags"
 
-post = Post.first
+# post = Post.first
 
-architecture_post_tag = PostTag.new
-architecture_post_tag.category_id = architecture.id
-architecture_post_tag.post_id = post.id
-architecture_post_tag.save
-p architecture_post_tag
+# architecture_post_tag = PostTag.new
+# architecture_post_tag.category_id = architecture.id
+# architecture_post_tag.post_id = post.id
+# architecture_post_tag.save
+# p architecture_post_tag
 
-painting_post_tag = PostTag.new
-painting_post_tag.category_id = painting.id
-painting_post_tag.post_id = post.id
-painting_post_tag.save
-p painting_post_tag
+# painting_post_tag = PostTag.new
+# painting_post_tag.category_id = painting.id
+# painting_post_tag.post_id = post.id
+# painting_post_tag.save
+# p painting_post_tag
 
-painting_post_tag = PostTag.new
-painting_post_tag.category_id = photography.id
-painting_post_tag.post_id = post.id
-painting_post_tag.save
-p painting_post_tag
+# painting_post_tag = PostTag.new
+# painting_post_tag.category_id = photography.id
+# painting_post_tag.post_id = post.id
+# painting_post_tag.save
+# p painting_post_tag
 
-sculpture_post_tag = PostTag.new
-sculpture_post_tag.category_id = sculpture.id
-sculpture_post_tag.post_id = post.id
-sculpture_post_tag.save
-p sculpture_post_tag
+# sculpture_post_tag = PostTag.new
+# sculpture_post_tag.category_id = sculpture.id
+# sculpture_post_tag.post_id = post.id
+# sculpture_post_tag.save
+# p sculpture_post_tag
 
 p "Post tags created"
 
