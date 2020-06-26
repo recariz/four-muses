@@ -7,8 +7,8 @@
                   required: true,
                   autofocus: true,
                   input_html: { class: "motivation-input", placeholder: "Write a motivation" }%> 
-      <div class="change-button">
-         <%= f.input :photos, required: true, as: :file, input_html: { multiple: true, class: "photo-input"} %>  
+      <div class="form-absoulte">
+         <%= f.input :photos, required: true, as: :file, input_html: { multiple: true, class: "photo-input change-button"} %>  
       </div>
       <div class="pink-button-sm-secondary photo-button">Upload</div>  
       <div class="file-names">
