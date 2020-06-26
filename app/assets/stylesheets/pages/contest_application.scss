@@ -11,6 +11,8 @@
 .photo-button {
     margin-bottom: 10px;
     margin-bottom: 10px;
+    position: relative;
+    top: -40 !important;
 }
 
 .motivation-input {
@@ -20,5 +22,11 @@
 }
 
 .change-button {
+    opacity: 0;
     
+}
+
+
+.form-absolute {
+    position: absolute;
 }
