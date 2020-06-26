@@ -1,6 +1,10 @@
 require 'faker'
 require 'open-uri'
 
+p "Deleting likes"
+Like.delete_all
+p "Deleting comments"
+Comment.delete_all
 p "Deleting Contest Applications"
 ContestApplication.delete_all
 p "Deleting Contest tags"
