@@ -41,7 +41,6 @@ import { flatPick} from "../plugins/flatpickr";
 
 import { addTag } from '../components/add_tag';
 
-import { disappearFollow } from '../../views/users/follow' ;
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
@@ -51,5 +50,4 @@ document.addEventListener('turbolinks:load', () => {
   flatPick();
   fillHeart();
   addTag();
-  disappearFollow();
 })
