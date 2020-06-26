@@ -48,4 +48,5 @@ document.addEventListener('turbolinks:load', () => {
   initPhotoInput();
   flatPick();
   fillHeart();
+  addPost();
 })
