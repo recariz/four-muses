@@ -2,7 +2,7 @@ require 'faker'
 require 'open-uri'
 
 p "Deleting likes"
-Like.delete_all
+ Like.delete_all
 p "Deleting comments"
 Comment.delete_all
 p "Deleting Contest Applications"
@@ -16,11 +16,11 @@ Interest.delete_all
 p "Deleting categories"
 Category.delete_all
 p "Deleting Posts..."
-Post.delete_all
+ Post.delete_all
 p "Deleting Contests..."
 Contest.delete_all
 p "Deleting Users..."
-User.delete_all
+ User.delete_all
 
 
 p "Creating categories..."
@@ -243,7 +243,7 @@ p orsay
 #     end
 # end
 
-p "Posts created"
+#p "Posts created"
 
 p "Creating Contests"
 
