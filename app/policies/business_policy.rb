@@ -9,6 +9,14 @@ class BusinessPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    is_an_owner_or_an_admin?
+  end
+
+  def update?
+    is_an_owner_or_an_admin?
+  end
+
   def follow?
     user.present? && user != record
   end
@@ -16,5 +24,10 @@ class BusinessPolicy < ApplicationPolicy
   def unfollow?
     follow?
   end
-end
 
+  def is_an_owner_or_an_admin?
+
+  user.id == record.id || user.admin
+  end
+
+end

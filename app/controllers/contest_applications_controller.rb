@@ -17,7 +17,7 @@ class ContestApplicationsController < ApplicationController
         @contest_application.contest = @contest
         @contest_application.user = current_user
         authorize @contest_application
-        if @contest_application.save!
+        if @contest_application.save
             #Need to change path
             redirect_to root_path, notice: "Applying"
         else

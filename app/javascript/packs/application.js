@@ -37,7 +37,7 @@ import { fillHeart } from '../components/likes';
 // import { initSelect2 } from '../components/init_select2';
 
 import { initPhotoInput } from '../components/photo_input';
-import "../plugins/flatpickr";
+import { flatPick} from "../plugins/flatpickr";
 
 import { addTag } from '../components/add_tag';
 
@@ -46,6 +46,8 @@ document.addEventListener('turbolinks:load', () => {
   toggleSwitch();
   showComments();
   initPhotoInput();
+  flatPick();
   fillHeart();
   addTag();
+
 })

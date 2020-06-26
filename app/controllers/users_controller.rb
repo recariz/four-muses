@@ -28,19 +28,11 @@ class UsersController < ApplicationController
   end
 
   def follow
+    p params
     current_user.follow(params[:user_id])
     respond_to do |format|
       format.html { redirect_to user_path(@user) }
-      format.js {
-        @post_id = params[:post_id]
-        @user_id = params[:user_id]
-        @user = User.find(params[:user_id])
-        @posts = @user.posts
-        @post = @posts.first
-        @posts_all = Post.all
-        @followings = current_user.followings
-        @my_new_followed_posts = @posts_all.select {|post| @followings.include?(post.user)}
-      }
+      format.js
     end
   end
 
@@ -48,23 +40,10 @@ class UsersController < ApplicationController
     if current_user.unfollow(@user.id)
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
-        format.js {
-        @post_id = params[:post_id]
-        @user_id = params[:user_id]
-        @user = User.find(params[:user_id])
-        @posts = @user.posts
-        @post = @posts.first
-        @posts_all = Post.all
-        @followings = current_user.followings
-        @my_new_followed_posts = @posts_all.select {|post| @followings.include?(post.user)}
-        render action: :follow
-        }
+        format.js
+      # { render action: :follow }
       end
     end
-  end
-
-  def feed_card
-    @post = Post.find(params[:id])
   end
 
  private
