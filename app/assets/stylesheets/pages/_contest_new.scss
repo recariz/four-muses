@@ -1,0 +1,10 @@
+.form-design {
+    width: 100%;
+    background-color: white !important;
+    &.form-right {
+      border-radius: 0 5px 5px 0;
+    }
+    &.form-left {
+      border-radius: 5px 0 0 5px;
+    }
+  }

@@ -5,6 +5,8 @@ p "Deleting likes"
 Like.delete_all
 p "Deleting comments"
 Comment.delete_all
+p "Deleting Contest Applications"
+ContestApplication.delete_all
 p "Deleting Contest tags"
 ContestTag.delete_all
 p "Deleting Post tags"

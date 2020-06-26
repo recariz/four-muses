@@ -1,12 +1,12 @@
 <div class="main-container">
   <h3>Application form</h3>
-  <%= simple_form_for(@contest_application) do |f| %>
+  <%= simple_form_for([@contest, @contest_application]) do |f| %>
     <%= f.error_notification %>
     <div class="motivation-form">
       <%= f.input :motivation,
                   required: true,
                   autofocus: true,
-                  input_html: { class: "motivation-input", placeholder: "Write your motivation" }%> 
+                  input_html: { class: "motivation-input", placeholder: "Write a description" }%> 
       <div class="send-to-orbit">
          <%= f.input :photos, as: :file, input_html: { multiple: true, class: "photo-input"} %>  
       </div>
@@ -16,7 +16,5 @@
       </div>
     </div>
     <div class="pink-button-lg center-button w-100"><%= f.button :submit, "Apply" %></div>
-
-
     <% end %>
 </div>

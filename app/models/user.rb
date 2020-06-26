@@ -22,6 +22,7 @@ class User < ApplicationRecord
   has_many :contests
   has_many :contest_applications
 
+
   def follow(user_id)
     followed_relationships.create(followed_id: user_id)
   end

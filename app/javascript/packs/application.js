@@ -32,10 +32,14 @@ import { showComments } from '../components/hidden_comments';
 import { initMapbox } from '../plugins/init_mapbox';
 
 import { fillHeart } from '../components/likes';
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 import { initPhotoInput } from '../components/photo_input';
+import "../plugins/flatpickr";
+
+import { addPost } from '../components/add_post';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
