@@ -5,4 +5,5 @@ const addPost = () => {
   });
 });
 };
+
 export { addPost };

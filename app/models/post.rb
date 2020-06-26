@@ -9,4 +9,5 @@ class Post < ApplicationRecord
   validates_presence_of :description, :title
 
   has_many_attached :photos
+
 end
