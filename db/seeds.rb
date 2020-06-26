@@ -2,7 +2,7 @@ require 'faker'
 require 'open-uri'
 
 p "Deleting likes"
-Like.delete_all
+ Like.delete_all
 p "Deleting comments"
 Comment.delete_all
 p "Deleting Contest Applications"
@@ -16,11 +16,11 @@ Interest.delete_all
 p "Deleting categories"
 Category.delete_all
 p "Deleting Posts..."
-Post.delete_all
+ Post.delete_all
 p "Deleting Contests..."
 Contest.delete_all
 p "Deleting Users..."
-User.delete_all
+ User.delete_all
 
 
 p "Creating categories..."
@@ -60,7 +60,7 @@ ella = User.new(
 )
   painting_interest_ella = Interest.new
   painting_interest_ella.user = ella
-  painting_interest_ella.category = painting
+  painting_interest_ella.category_id = painting.id
   painting_interest_ella.save
 
 
@@ -81,12 +81,12 @@ caro = User.new(
 )
   photography_interest_caro = Interest.new
   photography_interest_caro.user = caro
-  photography_interest_caro.category = photography
+  photography_interest_caro.category_id = photography.id
   photography_interest_caro.save
 
   painting_interest_caro = Interest.new
   painting_interest_caro.user = caro
-  painting_interest_caro.category = painting
+  painting_interest_caro.category_id = painting.id
   painting_interest_caro.save
 
 
@@ -107,7 +107,7 @@ pato = User.new(
 )
   photography_interest_pato = Interest.new
   photography_interest_pato.user = pato
-  photography_interest_pato.category = photography
+  photography_interest_pato.category_id = photography.id
   photography_interest_pato.save
 
   pato.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/pato_b0dqeh.png'), filename: 'pato_b0dqeh.png', content_type: 'png')
@@ -172,7 +172,7 @@ p "Creating Galleries"
 
 miro = User.new(
     nickname: "fmirobcn",
-    email: "marta@mail.com",
+    email: "miro@mail.com",
     password: "123456",
     biography: "A place where to live the art of Joan Miro and other artists from XX and XXI centuries. A space for participation, dialogue and creativity.",
     business_name: "Fundacion Joan Miro",
@@ -181,7 +181,7 @@ miro = User.new(
     premium: true
 )
 
-miro.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
+miro.avatar.attach(io: File.open('app/assets/images/fundacion-joan-miro.jpg'), filename: 'miro_museum.jpg', content_type: 'jpg')
 miro.save
 p miro
 
@@ -192,12 +192,12 @@ picassobcn = User.new(
     password: "123456",
     biography: "The Picasso museum in Barcelona, ​​officially and in Catalan Museu Picasso, has a collection of 4,249 works by the Malaga painter Pablo Picasso in the multiple media that it addressed, which is the most complete in the world in works from his youth.",
     business_name: "Museu Picasso Barcelona",
-    location:  "barcelona",
+    location:  "Barcelona",
     type: 'Business',
     premium: true
 )
 
-picassobcn.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
+picassobcn.avatar.attach(io: File.open('app/assets/images/picasso-bcn.jpg'), filename: 'picasso_museum.jpg', content_type: 'jpg')
 picassobcn.save
 p picassobcn
 
@@ -205,16 +205,31 @@ momany = User.new(
     nickname: "moma_ny",
     email: "moma@mail.com",
     password: "123456",
-    biography: "The Picasso museum in Barcelona, ​​officially and in Catalan Museu Picasso, has a collection of 4,249 works by the Malaga painter Pablo Picasso in the multiple media that it addressed, which is the most complete in the world in works from his youth.",
+    biography: "At the MOMA, we’re committed to sharing the most thought-provoking modern and contemporary art, and hope you will join us in exploring the art, ideas, and issues of our time.",
     business_name: "Museum Of Modern Arts (MOMA)",
     location:  "New York",
     type: 'Business',
     premium: true
 )
 
-momany.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
+momany.avatar.attach(io: File.open('app/assets/images/moma_ny.jpg'), filename: 'moma_ny.jpg', content_type: 'jpg')
 momany.save
 p momany
+
+orsay = User.new(
+    nickname: "orsay",
+    email: "orsay@mail.com",
+    password: "123456",
+    biography: "Art gallery located in Paris, which is dedicated to the plastic arts of the 19th century and, more specifically, of the period 1848-1914",
+    business_name: "Orsay Museum",
+    location:  "Paris",
+    type: 'Business',
+    premium: true
+)
+
+orsay.avatar.attach(io: File.open('app/assets/images/orsay-museum.jpg'), filename: 'orsay.jpg', content_type: 'jpg')
+orsay.save
+p orsay
 # users.each do |user|
 #    p "Creating posts for #{user.nickname}..."
 #    2.times do
@@ -228,35 +243,35 @@ p momany
 #     end
 # end
 
-p "Posts created"
+#p "Posts created"
 
 p "Creating Contests"
 
-contest_p = Contest.new(
-  start_date: ("2020/10/11"),
-  end_date: ("2020/10/16"),
+contest_color = Contest.new(
+  start_date: ("2020/08/11"),
+  end_date: ("2020/08/16"),
   city: "Barcelona",
   location: "Carrer d'en Grassot, 101",
-  title: Faker::Artist.name,
-  content: Faker::ChuckNorris.fact
+  title: "Color Sense",
+  content: "Artists are asked to submit works that address the studied use of color, where color is a big part of the artist’s toolset and is what makes the work complete.  Accepting all original visual media excluding video and other time-based media such as animated Gifs. All styles and subject matter accepted."
 )
-contest_p.user_id = picassobcn.id
-contest_p.photo.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
-contest_p.save
-p contest_p
+contest_color.user_id = picassobcn.id
+contest_color.photo.attach(io: File.open('app/assets/images/color_sense.jpg'), filename: 'orsay.jpg', content_type: 'jpg')
+contest_color.save
+p contest_color
 
-contest_m = Contest.new(
-  start_date: ("2020/10/11"),
+contest_bust = Contest.new(
+  start_date: ("2020/10/10"),
   end_date: ("2020/10/16"),
   city: "Barcelona",
   location: "Carrer d'en Grassot, 101",
-  title: Faker::Artist.name,
-  content: Faker::ChuckNorris.fact
+  title: "Emotions on inert objects",
+  content: "Entries should address the representation of emotions on solid and inert objects. All materials permitted, from stone and cast to plastics and metals. We look forward to receiving your emotive art pieces."
 )
-contest_m.user_id = miro.id
-contest_m.photo.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
-contest_m.save
-p contest_m
+contest_bust.user_id = miro.id
+contest_bust.photo.attach(io: File.open('app/assets/images/sulpture_contest.jpg'), filename: 'orsay.jpg', content_type: 'jpg')
+contest_bust.save
+p contest_bust
 
 p "Contests created"
 
@@ -268,29 +283,35 @@ p "Creating Contest tags"
 
 # /!\ Contest tag is needing to be on a contest in order to exist
 
-architecture_tag = ContestTag.new
-architecture_tag.category_id = architecture.id
-architecture_tag.contest_id = contest_m.id
-architecture_tag.save
-p architecture_tag
+architecture_tag_color = ContestTag.new
+architecture_tag_color.category_id = architecture.id
+architecture_tag_color.contest_id = contest_color.id
+architecture_tag_color.save
+p architecture_tag_color
 
-painting_tag = ContestTag.new
-painting_tag.category_id = painting.id
-painting_tag.contest_id = contest_m.id
-painting_tag.save
-p painting_tag
+painting_tag_color = ContestTag.new
+painting_tag_color.category_id = painting.id
+painting_tag_color.contest_id = contest_color.id
+painting_tag_color.save
+p painting_tag_color
 
-photography_tag = ContestTag.new
-photography_tag.category_id = photography.id
-photography_tag.contest_id = contest_p.id
-photography_tag.save
-p photography_tag
+photography_tag_color = ContestTag.new
+photography_tag_color.category_id = photography.id
+photography_tag_color.contest_id = contest_color.id
+photography_tag_color.save
+p photography_tag_color
 
-sculpture_tag = ContestTag.new
-sculpture_tag.category_id = sculpture.id
-sculpture_tag.contest_id = contest_p.id
-sculpture_tag.save
-p sculpture_tag
+sculpture_tag_color = ContestTag.new
+sculpture_tag_color.category_id = sculpture.id
+sculpture_tag_color.contest_id = contest_color.id
+sculpture_tag_color.save
+p sculpture_tag_color
+
+sculpture_tag_bust = ContestTag.new
+sculpture_tag_bust.category_id = sculpture.id
+sculpture_tag_bust.contest_id = contest_bust.id
+sculpture_tag_bust.save
+p sculpture_tag_bust
 
 p "Contest tag created"
 
@@ -322,6 +343,6 @@ p "Contest tag created"
 # sculpture_post_tag.save
 # p sculpture_post_tag
 
-p "Post tags created"
+# p "Post tags created"
 
 p "Seeds completed!"
