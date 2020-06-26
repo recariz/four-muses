@@ -46,7 +46,7 @@ categories << architecture
 p "Creating Artists..."
 
 users = []
-cities = ["berlin" ,"amsterdam", "paris", "madrid"]
+cities = ["Berlin" ,"Amsterdam", "Paris", "Madrid"]
 
 ella = User.new(
     first_name: "Ella",
@@ -54,7 +54,7 @@ ella = User.new(
     nickname: "ella_fitz",
     email: "ella@mail.com",
     password: "123456",
-    location:  "paris",
+    location:  "Paris",
     type: 'Artist',
     premium: true
 )
@@ -96,14 +96,9 @@ caro = User.new(
   users << caro
 
 pato = User.new(
-<<<<<<< HEAD
     first_name: "Patricia",
     last_name: "Recarte",
     nickname: "recariz",
-=======
-    nickname: "Pato_gallery",
-    business_name: "Pato holdings SL",
->>>>>>> 297d160788ea4e2108a846c396ac52c876c5177b
     email: "patricia@mail.com",
     password: "123456",
     location:  cities.sample(1)[0],
@@ -120,22 +115,6 @@ pato = User.new(
   p pato
   users << pato
 
-<<<<<<< HEAD
-=======
-marta = User.new(
-    nickname: "Marta_gallery",
-    business_name: "Marta & company SL",
-    email: "marta@mail.com",
-    password: "123456",
-    location:  cities.sample(1)[0],
-    type: 'Business'
-)
-marta.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
-  marta.save
-  p marta
-  users << marta
-
->>>>>>> 297d160788ea4e2108a846c396ac52c876c5177b
 ale = User.new(
     first_name: "Alejandro",
     last_name: "Udaquiola",
@@ -195,13 +174,47 @@ miro = User.new(
     nickname: "fmirobcn",
     email: "marta@mail.com",
     password: "123456",
-
-    location:  cities.sample(1)[0],
-    type: 'Artist',
-    premium: false
+    biography: "A place where to live the art of Joan Miro and other artists from XX and XXI centuries. A space for participation, dialogue and creativity."
+    business_name: "Fundacion Joan Miro",
+    location:  "Barcelona",
+    type: 'Business',
+    premium: true
 )
 
+miro.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
+miro.save
+p miro
 
+
+picassobcn = User.new(
+    nickname: "picassobcn",
+    email: "picassobcn@mail.com",
+    password: "123456",
+    biography: "The Picasso museum in Barcelona, ​​officially and in Catalan Museu Picasso, has a collection of 4,249 works by the Malaga painter Pablo Picasso in the multiple media that it addressed, which is the most complete in the world in works from his youth."
+    business_name: "Museu Picasso Barcelona",
+    location:  "barcelona",
+    type: 'Business',
+    premium: true
+)
+
+picassobcn.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
+picassobcn.save
+p picassobcn
+
+momany = User.new(
+    nickname: "moma_ny",
+    email: "moma@mail.com",
+    password: "123456",
+    biography: "The Picasso museum in Barcelona, ​​officially and in Catalan Museu Picasso, has a collection of 4,249 works by the Malaga painter Pablo Picasso in the multiple media that it addressed, which is the most complete in the world in works from his youth."
+    business_name: "Museum Of Modern Arts (MOMA)",
+    location:  "New York",
+    type: 'Business',
+    premium: true
+)
+
+momany.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
+momany.save
+p momany
 # users.each do |user|
 #    p "Creating posts for #{user.nickname}..."
 #    2.times do
@@ -227,7 +240,7 @@ contest_p = Contest.new(
   title: Faker::Artist.name,
   content: Faker::ChuckNorris.fact
 )
-contest_p.user_id = pato.id
+contest_p.user_id = picassobcn.id
 contest_p.photo.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
 contest_p.save
 p contest_p
@@ -240,7 +253,7 @@ contest_m = Contest.new(
   title: Faker::Artist.name,
   content: Faker::ChuckNorris.fact
 )
-contest_m.user_id = marta.id
+contest_m.user_id = miro.id
 contest_m.photo.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
 contest_m.save
 p contest_m

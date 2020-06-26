@@ -1,7 +1,9 @@
-$(document).ready(function(){
-  $(".category-choice").click(function(){
-    $(this).toggleClass("active");
+const addPost = () => {
+  $(document).ready(function(){
+    $(".category-choice").click(function(){
+      $(this).toggleClass("active");
+    });
   });
-});
+};
 
 export { addPost };
