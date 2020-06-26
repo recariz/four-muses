@@ -38,16 +38,37 @@ categories << sculpture
 architecture = Category.create(name: "Architecture")
 categories << architecture
 
-p "Creating users..."
+p "Creating Artists..."
 
 users = []
 cities = ["berlin" ,"amsterdam", "paris", "madrid"]
 
+ella = User.new(
+    first_name: "Ella",
+    last_name: "Fitzgerald",
+    nickname: "ella_fitz",
+    email: "ella@mail.com",
+    password: "123456",
+    location:  "paris",
+    type: 'Artist',
+    premium: true
+)
+  painting_interest_ella = Interest.new
+  painting_interest_ella.user = ella
+  painting_interest_ella.category = painting
+  painting_interest_ella.save
+
+
+  ella.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/caro_pakuiz.png'), filename: 'caro_pakuiz.png', content_type: 'png')
+  ella.save
+  p ella
+  users << ella
+
 caro = User.new(
     first_name: "Caroline",
     last_name: "Bixner",
-    nickname: "Caro",
-    email: "carolina@mail.com",
+    nickname: "carob",
+    email: "caroline@mail.com",
     password: "123456",
     location:  cities.sample(1)[0],
     type: 'Artist',
@@ -70,36 +91,29 @@ caro = User.new(
   users << caro
 
 pato = User.new(
-    nickname: "Pato",
-    business_name: "Pato holdings SL",
+    first_name: "Patricia",
+    last_name: "Recarte",
+    nickname: "recariz",
     email: "patricia@mail.com",
     password: "123456",
     location:  cities.sample(1)[0],
-    type: 'Business'
+    type: 'Artist',
+    premium: true
 )
+  photography_interest_pato = Interest.new
+  photography_interest_pato.user = pato
+  photography_interest_pato.category = photography
+  photography_interest_pato.save
 
   pato.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/pato_b0dqeh.png'), filename: 'pato_b0dqeh.png', content_type: 'png')
   pato.save
   p pato
   users << pato
 
-marta = User.new(
-    nickname: "Marta",
-    business_name: "Marta & company SL",
-    email: "marta@mail.com",
-    password: "123456",
-    location:  cities.sample(1)[0],
-    type: 'Business'
-)
-marta.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
-  marta.save
-  p marta
-  users << marta
-
 ale = User.new(
     first_name: "Alejandro",
     last_name: "Udaquiola",
-    nickname: "Ale",
+    nickname: "aleart",
     email: "alejandro@mail.com",
     password: "123456",
     location:  cities.sample(1)[0],
@@ -123,20 +137,57 @@ ale.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/uploa
   p ale
   users << ale
 
-p "Users created"
 
-users.each do |user|
-   p "Creating posts for #{user.nickname}..."
-   2.times do
-        post = Post.new(
-            title: Faker::Artist.name,
-            description: Faker::ChuckNorris.fact
-        )
-        post.user_id = user.id
-        post.photos.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
-        post.save
-    end
-end
+marta = User.new(
+    first_name: "Marta",
+    last_name: "Fuste",
+    nickname: "martaf",
+    email: "marta@mail.com",
+    password: "123456",
+    location:  cities.sample(1)[0],
+    type: 'Artist',
+    premium: false
+)
+
+architecture_interest_marta = Interest.new
+architecture_interest_marta.user = marta
+architecture_interest_marta.category_id = architecture.id
+architecture_interest_marta.save
+
+marta.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
+  marta.save
+  p marta
+  users << marta
+
+
+
+p "Artists created"
+
+p "Creating Galleries"
+
+miro = User.new(
+    nickname: "fmirobcn",
+    email: "marta@mail.com",
+    password: "123456",
+
+    location:  cities.sample(1)[0],
+    type: 'Artist',
+    premium: false
+)
+
+
+# users.each do |user|
+#    p "Creating posts for #{user.nickname}..."
+#    2.times do
+#         post = Post.new(
+#             title: Faker::Artist.name,
+#             description: Faker::ChuckNorris.fact
+#         )
+#         post.user_id = user.id
+#         post.photos.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
+#         post.save
+#     end
+# end
 
 p "Posts created"
 
