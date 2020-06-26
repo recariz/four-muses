@@ -1,7 +1,5 @@
-const seeComments = document.querySelectorAll('.display-comments');
-
-
 const showComments = () => {
+  const seeComments = document.querySelectorAll('.display-comments');
   if (seeComments) {
     seeComments.forEach(function(element) {
       const hiddenComments = element.querySelector('.hidden-comments');

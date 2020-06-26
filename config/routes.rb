@@ -29,4 +29,5 @@ Rails.application.routes.draw do
       post :unfollow
     end
  end
+ get '/dashboard', to: 'pages#dashboard', as: :dashboard
 end
