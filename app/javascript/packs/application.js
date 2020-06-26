@@ -30,6 +30,8 @@ import { toggleSwitch } from '../components/toggle';
 import { showComments } from '../components/hidden_comments';
 
 import { initMapbox } from '../plugins/init_mapbox';
+
+import { fillHeart } from '../components/likes';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -40,4 +42,5 @@ document.addEventListener('turbolinks:load', () => {
   toggleSwitch();
   showComments();
   initPhotoInput();
+  fillHeart();
 })
