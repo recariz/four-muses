@@ -174,7 +174,7 @@ miro = User.new(
     nickname: "fmirobcn",
     email: "marta@mail.com",
     password: "123456",
-    biography: "A place where to live the art of Joan Miro and other artists from XX and XXI centuries. A space for participation, dialogue and creativity."
+    biography: "A place where to live the art of Joan Miro and other artists from XX and XXI centuries. A space for participation, dialogue and creativity.",
     business_name: "Fundacion Joan Miro",
     location:  "Barcelona",
     type: 'Business',
@@ -190,7 +190,7 @@ picassobcn = User.new(
     nickname: "picassobcn",
     email: "picassobcn@mail.com",
     password: "123456",
-    biography: "The Picasso museum in Barcelona, ​​officially and in Catalan Museu Picasso, has a collection of 4,249 works by the Malaga painter Pablo Picasso in the multiple media that it addressed, which is the most complete in the world in works from his youth."
+    biography: "The Picasso museum in Barcelona, ​​officially and in Catalan Museu Picasso, has a collection of 4,249 works by the Malaga painter Pablo Picasso in the multiple media that it addressed, which is the most complete in the world in works from his youth.",
     business_name: "Museu Picasso Barcelona",
     location:  "barcelona",
     type: 'Business',
@@ -205,7 +205,7 @@ momany = User.new(
     nickname: "moma_ny",
     email: "moma@mail.com",
     password: "123456",
-    biography: "The Picasso museum in Barcelona, ​​officially and in Catalan Museu Picasso, has a collection of 4,249 works by the Malaga painter Pablo Picasso in the multiple media that it addressed, which is the most complete in the world in works from his youth."
+    biography: "The Picasso museum in Barcelona, ​​officially and in Catalan Museu Picasso, has a collection of 4,249 works by the Malaga painter Pablo Picasso in the multiple media that it addressed, which is the most complete in the world in works from his youth.",
     business_name: "Museum Of Modern Arts (MOMA)",
     location:  "New York",
     type: 'Business',
