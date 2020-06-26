@@ -26,8 +26,9 @@ class ContestsController < ApplicationController
     @contest = Contest.new(strong_params)
     authorize @contest
     @contest.user = current_user
+    puts @contest.errors.full_messages
     if @contest.save
-        redirect_to posts_path
+        redirect_to contests_path
       else
         render :new
     end
@@ -51,7 +52,7 @@ private
   end
 
   def strong_params
-    params.require(:contest).permit(:start_date, :end_date, :location, :title, :content)
+    params.require(:contest).permit(:start_date, :end_date, :location, :title, :content, :city, :photo)
   end
 end
 
