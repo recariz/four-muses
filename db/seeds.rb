@@ -2,7 +2,7 @@ require 'faker'
 require 'open-uri'
 
 p "Deleting likes"
-Like.delete_all
+ Like.delete_all
 p "Deleting comments"
 Comment.delete_all
 p "Deleting Contest Applications"
@@ -16,11 +16,11 @@ Interest.delete_all
 p "Deleting categories"
 Category.delete_all
 p "Deleting Posts..."
-Post.delete_all
+ Post.delete_all
 p "Deleting Contests..."
 Contest.delete_all
 p "Deleting Users..."
-User.delete_all
+ User.delete_all
 
 
 p "Creating categories..."
@@ -48,26 +48,26 @@ p "Creating Artists..."
 users = []
 cities = ["Berlin" ,"Amsterdam", "Paris", "Madrid"]
 
-ella = User.new(
-    first_name: "Ella",
-    last_name: "Fitzgerald",
-    nickname: "ella_fitz",
-    email: "ella@mail.com",
-    password: "123456",
-    location:  "Paris",
-    type: 'Artist',
-    premium: true
-)
-  painting_interest_ella = Interest.new
-  painting_interest_ella.user = ella
-  painting_interest_ella.category = painting
-  painting_interest_ella.save
+  ella = User.new(
+  first_name: "Ella",
+  last_name: "Fitzgerald",
+  nickname: "ella_fitz",
+  email: "ella@mail.com",
+  password: "123456",
+  location:  "Paris",
+  type: 'Artist',
+  premium: true
+  )
+painting_interest_ella = Interest.new
+painting_interest_ella.user = ella
+painting_interest_ella.category = painting
+painting_interest_ella.save
 
 
-  ella.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/caro_pakuiz.png'), filename: 'caro_pakuiz.png', content_type: 'png')
-  ella.save
-  p ella
-  users << ella
+ella.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/caro_pakuiz.png'), filename: 'caro_pakuiz.png', content_type: 'png')
+ella.save
+p ella
+users << ella
 
 caro = User.new(
     first_name: "Caroline",
@@ -95,25 +95,25 @@ caro = User.new(
   p caro
   users << caro
 
-pato = User.new(
-    first_name: "Patricia",
-    last_name: "Recarte",
-    nickname: "recariz",
-    email: "patricia@mail.com",
-    password: "123456",
-    location:  cities.sample(1)[0],
-    type: 'Artist',
-    premium: true
-)
-  photography_interest_pato = Interest.new
-  photography_interest_pato.user = pato
-  photography_interest_pato.category = photography
-  photography_interest_pato.save
+ pato = User.new(
+     first_name: "Patricia",
+     last_name: "Recarte",
+     nickname: "recariz",
+     email: "patricia@mail.com",
+     password: "123456",
+     location:  cities.sample(1)[0],
+     type: 'Artist',
+     premium: true
+ )
+   photography_interest_pato = Interest.new
+   photography_interest_pato.user = pato
+   photography_interest_pato.category = photography
+   photography_interest_pato.save
 
-  pato.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/pato_b0dqeh.png'), filename: 'pato_b0dqeh.png', content_type: 'png')
-  pato.save
-  p pato
-  users << pato
+   pato.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/pato_b0dqeh.png'), filename: 'pato_b0dqeh.png', content_type: 'png')
+   pato.save
+   p pato
+   users << pato
 
 ale = User.new(
     first_name: "Alejandro",
@@ -215,18 +215,18 @@ momany = User.new(
 momany.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/marta_lvnhdm.png'), filename: 'marta_lvnhdm.png', content_type: 'png')
 momany.save
 p momany
-# users.each do |user|
-#    p "Creating posts for #{user.nickname}..."
-#    2.times do
-#         post = Post.new(
-#             title: Faker::Artist.name,
-#             description: Faker::ChuckNorris.fact
-#         )
-#         post.user_id = user.id
-#         post.photos.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
-#         post.save
-#     end
-# end
+ users.each do |user|
+    p "Creating posts for #{user.nickname}..."
+    2.times do
+         post = Post.new(
+             title: Faker::Artist.name,
+             description: Faker::ChuckNorris.fact
+         )
+         post.user_id = user.id
+         post.photos.attach(io: URI.open("https://res.cloudinary.com/dfyhqslry/image/upload/v1592917862/Post%20pics/caro/nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg"), filename: 'nenad-radojcic-RF5U8BkaQHU-unsplash_cvkkuk.jpg', content_type: 'jpg')
+         post.save
+     end
+ end
 
 p "Posts created"
 
