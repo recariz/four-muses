@@ -51,8 +51,24 @@ class PostsController < ApplicationController
   def delete
   end
 
-  def like_count
-    Like.all.select
+  def like
+    @post = Post.find(params[:id])
+    @post.liked_by current_user
+    if request.xhr?
+      render json: { count: @post.get_likes.size, id: params[:id] }
+    else
+      redirect_to posts_path(anchor: "comment-anchor-#{@post.id}")
+    end
+  end
+
+  def dislike
+    @post = Post.find(params[:id])
+    @post.disliked_by current_user
+    if request.xhr?
+      head :ok
+    else
+      redirect_to posts_path(anchor: "comment-anchor-#{@post.id}")
+    end
   end
 
   private

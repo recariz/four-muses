@@ -12,9 +12,9 @@
       </div>
       <div class="post-reactions">
         <% if current_user %>
-          <div class="reaction-type"><p><%= post.likes.count %></p><%= link_to "", "/posts/#{post.id}/likes?user_id=#{current_user.id}", method: :post, class:"fal fa-heart", remote: true%></div>
+          <div class="reaction-type"><p data-id="<%= post.id %>"><%= post.get_likes.size %></p><%= link_to "", like_post_path(post), method: :put, class:"fal fa-heart vote", remote: true%></div>
         <% else %>
-          <div class="reaction-type"><p><%= post.likes.count %></p><%= link_to "", "/users/sign_in", class:"fal fa-heart"%></div>
+          <div class="reaction-type"><p  data-id="<%= post.id %>"><%= post.get_likes.size %></p><i class="fal fa-heart"></i></div>
         <% end %>
       </div>
     </div>
