@@ -33,7 +33,6 @@ import { showComments } from '../components/hidden_comments';
 
 import { initMapbox } from '../plugins/init_mapbox';
 
-// import { fillHeart } from '../components/likes.js';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -50,7 +49,6 @@ document.addEventListener('turbolinks:load', () => {
   showComments();
   initPhotoInput();
   flatPick();
-  // fillHeart();
   addTag();
 })
 
