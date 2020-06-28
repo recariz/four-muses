@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: [:new, :create]
     member do
+      get :like
+      get :dislike
       put "like", to: "posts#like"
       put "dislike", to: "posts#dislike"
     end

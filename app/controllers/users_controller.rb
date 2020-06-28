@@ -32,7 +32,10 @@ class UsersController < ApplicationController
     current_user.follow(params[:user_id])
     respond_to do |format|
       format.html { redirect_to user_path(@user) }
-      format.js
+      format.js {
+          render :partial => 'follow.js.erb', :formats => [:json]
+          # render action: :unfollow
+      }
     end
   end
 
@@ -40,8 +43,10 @@ class UsersController < ApplicationController
     if current_user.unfollow(@user.id)
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
-        format.js
-      # { render action: :follow }
+        format.js {
+          render :partial => 'follow.js.erb', :formats => [:json]
+          # render action: :follow
+        }
       end
     end
   end

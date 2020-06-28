@@ -1,0 +1,18 @@
+
+  var counters = document.querySelectorAll('.post-reactions');
+  if (counters) {
+    console.log(counters);
+    counters.forEach(function(element) {
+      var heart = element.querySelector('.fa-heart');
+      var like = element.querySelector('.like-count');
+      heart.addEventListener('click', (event) => {
+        var count = '<%=@new_count%>';
+        heart.classList.toggle('fas');
+        heart.classList.toggle('fal');
+        like.innerHTML=`${count}`;
+
+        });
+      });
+    };
+
+
