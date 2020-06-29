@@ -22,6 +22,7 @@ class CommentPolicy < ApplicationPolicy
     is_an_owner_or_an_admin?
   end
 
+
   private
 
   def is_an_owner_or_an_admin?
