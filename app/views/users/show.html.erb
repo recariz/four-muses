@@ -2,72 +2,71 @@
 <div class= "main-container">
 
   <div class="profile-product">
-    <img class="avatar-large-bordered" src="<%= cl_image_path @user.avatar.key %>" />
+    <% if @user.avatar.present? %>
+      <img class="avatar-large-bordered" src="<%= cl_image_path @user.avatar.key %>" />
+    <% else %>
+      <img class="avatar-large-bordered" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+    <% end %>
     <div class= "profile-infos">
-      <div class="d-flex justify-content-end">
 
-        <% if current_user.id == params[:id].to_i %>
-
-          <div class="pink-button-sm mt-1 >
-
-            <%= link_to "Edit", edit_user_registration_path, method: :get %>
-          </div>
-
-        <%else %>
-          <div class= "pink-button-sm mt-1 ml-3">
-            <% if user_signed_in? && current_user.is_following?(@user.id) %>
-              <%= link_to "Unfollow", unfollow_user_path(@user.id), method: :post %>
-            <% else %>
-              <%= link_to "Follow", follow_user_path(@user.id), method: :post%>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-
-        <h3 class= "mt-2">@<%= @user.nickname %></h3>
+        <h3 class= "mt-0 mb-0">@<%= @user.nickname %></h3>
         <% if @user.business? %>
           <h5 class = "ml-1"><%= @user.business_name %></h5>
         <% else %>
          <h5 class = "ml-1"><%= @user.first_name%> <%= @user.last_name %></h5>
         <% end %>
-        <h5 class="ml-1 mt-1"> <%= @user.location.capitalize %></h5>
-      <div class="tags mt-3">
+        <h5 class="ml-1 mt-1"> - <%= @user.location.capitalize %> -</h5>
+      <div class="tags mt-1">
         <% @user.interests.each do |interest| %>
-          <div class="tag"><p>#<%= interest.category.name %></p>
+          <div><p style = "margin-top: 5px">#<%= interest.category.name %></p>
           </div>
         <% end %>
       </div>
+            <div class="d-flex">
+
+              <% if current_user && current_user.id == params[:id].to_i %>
+
+                <div class="pink-button-sm mt-1" >
+
+                  <%= link_to "Edit", edit_user_registration_path, method: :get %>
+                </div>
+
+              <%else %>
+                <div class= "pink-button-sm  mt-1">
+                  <% if user_signed_in? && current_user.is_following?(@user.id) %>
+                    <%= link_to "Unfollow", "/users/#{@user.id}/unfollow?user_id=#{@user.id}", method: :post %>
+                  <% else %>
+                    <%= link_to "Follow", "/users/#{@user.id}/follow?user_id=#{@user.id}", method: :post%>
+                  <% end %>
+                </div>
+              <% end %>
+            </div class= "pink-button-sm  mt-1">
+            <%= link_to "Message", chatrooms_path(sender_id: current_user.id, receiver_id: @user.id), method: :post%>
+            <div>
+
+            </div>
     </div>
   </div>
 
     <div class="line-divider align-center ml-4"></div>
       <div class= "bio">
         <h5 class= "ml-3">Biography</h5>
-        <p> <%= @user.biography %></p>
+        <p class="ml-3"> <%= @user.biography %></p>
       </div>
     <div class="line-divider profile-center mt-2 ml-4"></div>
 
-
-
-
- <div class= "mt-2">
-  <div class="px-3">
-    <%if @photos.length == 1 %>
-      <div class="post-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag @photos.first.key%>
-      </div>
-
-    <% else %>
-      <div class= "cards_pictures" >
-        <% @photos.each do |photo| %>
-          <%#= link_to post_path(photo.id) do %>
-            <div class= "card-category-pic" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag photo.key%>
+        <div class= "mt-2">
+        <div class="px-3">
+            <div class= "cards_pictures" >
+              <% @photos.each do |photo| %>
+                <%#= link_to post_path(photo.id) do %>
+                  <div class= "card-category-pic" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag photo.key%>
+                  </div>
+                <%# end %>
+              <% end %>
             </div>
-          <%# end %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-    <div class="line-divider ml-4">
+        </div>
+      <div class="line-divider ml-4">
     </div>
   </div>
 </div>

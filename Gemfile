@@ -11,6 +11,9 @@ gem 'geocoder'
 gem 'faker'
 gem 'stripe'
 
+gem 'acts_as_votable'
+gem 'jquery-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use postgresql as the database for Active Record

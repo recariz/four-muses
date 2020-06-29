@@ -8,21 +8,25 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, only: [:new, :create]
-    resources :likes, only: [:create]
+    member do
+      get :like
+      get :dislike
+      put "like", to: "posts#like"
+      put "dislike", to: "posts#dislike"
+    end
   end
 
   resources :comments, only: [:edit, :update, :destroy]
-  resources :likes, only: [:destroy]
 
   resources :contests do
     resources :contest_applications, only: [:new, :create]
   end
 
-  resources :contest_applications, only: [:index, :edit, :update, :destroy]
+  resources :contest_applications, only: [:index, :show]
 
-  resources :chatrooms, only: [:index, :edit, :update, :destroy]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  # the below is for setting up the following action in the controller
+  resources :chatrooms, only: [:index, :show, :create] do
+   resources :messages, only: [:index, :create]
+  end
   resources :users, only: [:show, :edit, :update] do
     member do
       post :follow

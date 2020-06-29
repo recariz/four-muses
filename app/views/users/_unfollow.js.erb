@@ -1,0 +1,8 @@
+
+  var id = '<%= @user_id %>'
+  var posts = document.querySelectorAll(`.user-post-${id}`);
+  console.log(posts);
+  posts.forEach((post) => {
+    post.innerText=""
+  });
+

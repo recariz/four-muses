@@ -10,8 +10,6 @@ class User < ApplicationRecord
   has_many :followed_relationships, foreign_key: :follower_id, class_name: 'Following'
   has_many :followings, through: :followed_relationships, source: :followed
 
-
-
   has_many :sender_relationships, foreign_key: :receiver_id, class_name: 'Chatroom'
   has_many :senders, through: :sender_relationships, source: :sender
 
@@ -21,6 +19,19 @@ class User < ApplicationRecord
   has_many :messages
   has_many :contests
   has_many :contest_applications
+
+  acts_as_voter
+
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :interests, dependent: :destroy
+  has_many :categories, through: :interests
+
+  validates :email, :password, :nickname, :location, :type, presence: true
+  validates :nickname, uniqueness: true
+
+
+  has_one_attached :avatar, dependent: :destroy
 
 
   def follow(user_id)
@@ -35,16 +46,6 @@ class User < ApplicationRecord
     relationship = Following.find_by(follower_id: id, followed_id: user_id)
     return true if relationship
   end
-
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :interests, dependent: :destroy
-  has_many :categories, through: :interests
-
-  validates :email, :password, :nickname, :location, presence: true
-
-
-  has_one_attached :avatar, dependent: :destroy
 
 
   def artist?

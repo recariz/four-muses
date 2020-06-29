@@ -28,20 +28,28 @@ class UsersController < ApplicationController
   end
 
   def follow
-    p params
-    current_user.follow(params[:user_id])
-    respond_to do |format|
-      format.html { redirect_to user_path(@user) }
-      format.js
+    if current_user.follow(params[:user_id])
+      respond_to do |format|
+        format.html { redirect_to user_path(@user) }
+        format.js {
+            @user_id = params[:user_id]
+            render :partial => 'follow.js.erb', :formats => [:json]
+            # render action: :unfollow
+        }
+      end
     end
   end
 
   def unfollow
-    if current_user.unfollow(@user.id)
+    authorize @user
+    if current_user.unfollow(params[:user_id])
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
-        format.js
-      # { render action: :follow }
+        format.js {
+          @user_id = params[:user_id]
+          render :partial => 'unfollow.js.erb', :formats => [:json]
+          # render action: :follow
+        }
       end
     end
   end

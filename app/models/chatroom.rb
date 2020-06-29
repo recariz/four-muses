@@ -6,11 +6,14 @@ class Chatroom < ApplicationRecord
   validates_uniqueness_of :sender_id, scope: :receiver_id
 
   scope :involving, -> (user) {
-    where("chats.sender_id = ? OR chats.receiver_id = ?", user.id, user.id)
+    where("chatrooms.sender_id = ? OR chatrooms.receiver_id = ?", user.id, user.id)
   }
 
   scope :between, -> (user_A, user_B) {
-    where("(chats.sender_id = ? AND chats.receiver_id = ?) OR (chats.sender_id = ? AND chats.receiver_id = ?)", user_A, user_B, user_B, user_A)
+    where("(chatrooms.sender_id = ? AND chatrooms.receiver_id = ?) OR (chatrooms.sender_id = ? AND chatrooms.receiver_id = ?)", user_A, user_B, user_B, user_A)
   }
+  def other_user(user)
+    user == sender ? receiver : sender
+  end
 
 end

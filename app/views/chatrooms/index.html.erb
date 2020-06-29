@@ -1,1 +1,28 @@
-These are my chatrooms
+<div class= "main-container">
+  <h3>Inbox</h3>
+ <!--  <div class="notification"> -->
+    <% @chatrooms.each do |chatroom| %>
+      <div class = "notification-one">
+        <% if chatroom.other_user(current_user).avatar.key.present? %>
+             <img class="avatar-small" src="<%= cl_image_path chatroom.other_user(current_user).avatar.key %>" />
+        <% else %>
+             <img class="avatar-small" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+        <% end %>
+        <div class= "notification-content ml-2">
+          <div style = "margin-top: 7px"><%= link_to chatroom.other_user(current_user).nickname.capitalize, chatroom_path(chatroom) %><p class="fas fa-pencil-alt ml-1"></p></div>
+          <% if chatroom.messages == []%>
+            <p><small>This chatroom has no messages yet</small></p>
+          <% else %>
+            <p><small><%=chatroom.updated_at.strftime"%b %d" %></small></p>
+            <p><small><%= truncate(chatroom.messages.last.content, length: 48, separator: "...")%></small></p>
+          <% end %>
+        </div>
+
+        <div class="notification-actions">
+
+        </div>
+      </div>
+    <% end %>
+ <!--  </div> -->
+</div>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_24_181302) do
+ActiveRecord::Schema.define(version: 2020_06_29_110612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,13 +63,12 @@ ActiveRecord::Schema.define(version: 2020_06_24_181302) do
   end
 
   create_table "contest_applications", force: :cascade do |t|
-    t.string "status", default: "0", null: false
-    t.string "integer", default: "0", null: false
     t.text "motivation"
     t.bigint "user_id", null: false
     t.bigint "contest_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0, null: false
     t.index ["contest_id"], name: "index_contest_applications_on_contest_id"
     t.index ["user_id"], name: "index_contest_applications_on_user_id"
   end
@@ -117,15 +116,6 @@ ActiveRecord::Schema.define(version: 2020_06_24_181302) do
     t.index ["user_id"], name: "index_interests_on_user_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.bigint "post_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_likes_on_post_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "user_id", null: false
@@ -149,10 +139,16 @@ ActiveRecord::Schema.define(version: 2020_06_24_181302) do
     t.string "title"
     t.text "description"
     t.string "location"
-    t.integer "like_count"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -164,7 +160,7 @@ ActiveRecord::Schema.define(version: 2020_06_24_181302) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "type", null: false
+    t.string "type", default: "Artist", null: false
     t.string "nickname"
     t.string "first_name"
     t.string "last_name"
@@ -177,6 +173,22 @@ ActiveRecord::Schema.define(version: 2020_06_24_181302) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type"
+    t.bigint "votable_id"
+    t.string "voter_type"
+    t.bigint "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
@@ -187,8 +199,6 @@ ActiveRecord::Schema.define(version: 2020_06_24_181302) do
   add_foreign_key "contests", "users"
   add_foreign_key "interests", "categories"
   add_foreign_key "interests", "users"
-  add_foreign_key "likes", "posts"
-  add_foreign_key "likes", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "post_tags", "categories"

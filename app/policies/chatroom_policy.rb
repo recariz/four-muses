@@ -1,41 +1,17 @@
 class ChatroomPolicy < ApplicationPolicy
   class Scope < Scope #the class scope and then the method resolve is actually the method that authorize all the instances of my clss Restaurant to be authorized
     def resolve
-      scope.all
+      scope.involving(user)
     end
   end
 
-  def index?
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless user.present?
-    true
-  end
 
   def show?
-    true
+    record.sender == user || record.receiver == user
   end
 
   def create?
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_logged_in unless user.present?
-    true
-  end
-
-  def update?
-    is_an_owner_or_an_admin?
-  end
-
-  def destroy?
-    is_an_owner_or_an_admin?
-  end
-
-  private
-
-  def is_an_owner_or_an_admin?
-    user.id == record.user.id || user.admin
-  end
-
-  def user_not_logged_in
-    flash[:alert] = "You need to be logged in to open a chat"
-    redirect_to(request.referrer || new_user_session_path)
+    user.present?
   end
 
 end

@@ -29,11 +29,19 @@ class ContestApplicationsController < ApplicationController
     end
 
     def update
+      @contest_application = ContestApplication.find(params[:id])
+      authorize @contest_application
+      if @contest_application.update(strong_params)
+        flash[:notice] = 'Contest application updated'
+      else
+        flash[:alert] = "Something went wrong, could not update status"
+      end
+      redirect_to dashboard_path
     end
 
     def destroy
     end
-    
+
     private
 
     def set_params
@@ -41,7 +49,7 @@ class ContestApplicationsController < ApplicationController
     end
 
     def strong_params
-        params.require(:contest_application).permit(:motivation, photos: [])
+        params.require(:contest_application).permit(:motivation, :status, photos: [])
     end
 
 

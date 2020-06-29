@@ -6,6 +6,6 @@ class ContestApplication < ApplicationRecord
   validates :photos, presence: true
   validates_uniqueness_of :user_id, scope: :contest_id
 
-enum status: [:pending, :accepted, :rejected]
+  enum status: [:pending, :accepted, :rejected]
 
 end
