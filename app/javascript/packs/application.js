@@ -42,6 +42,8 @@ import { flatPick} from "../plugins/flatpickr";
 
 import { addTag } from '../components/add_tag';
 
+import { showDescription } from '../components/hidden_description'
+
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
@@ -50,6 +52,7 @@ document.addEventListener('turbolinks:load', () => {
   initPhotoInput();
   flatPick();
   addTag();
+  showDescription();
 })
 
 import "controllers"

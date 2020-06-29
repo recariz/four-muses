@@ -59,15 +59,16 @@ class PostsController < ApplicationController
   end
 
   def like
-    @post = Post.find(params[:id])
-    authorize @post
-    @post.liked_by current_user
-    respond_to do |format|
-      format.js {
-        @new_count = @post.get_likes.size
-        render :partial => 'like.js.erb', :formats => [:json]
-      }
-    end
+    current_user
+      @post = Post.find(params[:id])
+      authorize @post
+      @post.liked_by current_user
+      respond_to do |format|
+        format.js {
+          @new_count = @post.get_likes.size
+          render :partial => 'like.js.erb', :formats => [:json]
+        }
+      end
   end
 
   def dislike
