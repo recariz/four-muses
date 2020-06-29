@@ -5,8 +5,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @my_contests = current_user.contest_applications
+    @my_applications = current_user.contest_applications
 
+    @my_application_requests = ContestApplication.all.select do |application|
+      application.contest.user == current_user
+    end
   end
 
 
