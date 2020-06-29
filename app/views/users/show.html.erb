@@ -2,7 +2,11 @@
 <div class= "main-container">
 
   <div class="profile-product">
-    <img class="avatar-large-bordered" src="<%= cl_image_path @user.avatar.key %>" />
+    <% if @user.avatar.present? %>
+      <img class="avatar-large-bordered" src="<%= cl_image_path @user.avatar.key %>" />
+    <% else %>
+      <img class="avatar-large-bordered" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+    <% end %>
     <div class= "profile-infos">
 
         <h3 class= "mt-0 mb-0">@<%= @user.nickname %></h3>
@@ -20,7 +24,7 @@
       </div>
             <div class="d-flex">
 
-              <% if current_user.id == params[:id].to_i %>
+              <% if current_user && current_user.id == params[:id].to_i %>
 
                 <div class="pink-button-sm mt-1" >
 
@@ -30,9 +34,9 @@
               <%else %>
                 <div class= "pink-button-sm  mt-1">
                   <% if user_signed_in? && current_user.is_following?(@user.id) %>
-                    <%= link_to "Unfollow", unfollow_user_path(@user.id), method: :post %>
+                    <%= link_to "Unfollow", "/users/#{@user.id}/unfollow?user_id=#{@user.id}", method: :post %>
                   <% else %>
-                    <%= link_to "Follow", follow_user_path(@user.id), method: :post%>
+                    <%= link_to "Follow", "/users/#{@user.id}/follow?user_id=#{@user.id}", method: :post%>
                   <% end %>
                 </div>
               <% end %>
