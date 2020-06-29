@@ -9,6 +9,7 @@ gem 'pundit'
 gem 'cloudinary', '~> 1.12.0'
 gem 'geocoder'
 gem 'faker'
+gem 'stripe'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
