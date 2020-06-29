@@ -23,8 +23,8 @@
 }
 
 .contest h6 {
-  opacity: 0.6;
-  margin: 0;
+
+  margin-bottom: 1px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -36,12 +36,12 @@
 
 .contest p {
   margin: 0;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .contest-line {
   width: 15px;
-  background-color: $light-brown;
+  background-color: $pink;
 }
 .contest-info {
   width:100%;
@@ -63,7 +63,7 @@
 .small-pink-italic {
   color: $pink;
   font-style: italic;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 #publish-contest-btn {
