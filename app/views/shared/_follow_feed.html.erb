@@ -4,7 +4,7 @@
   Uh, oh! Seems like you are not following anyone yet!</p>
 <% else %>
   <div id="follow-feed-container">
-    <% @my_followed_posts.sort_by{|post| post.created_at}.each do |post| %>
+    <% @my_followed_posts.sort_by{|post| post.created_at}.reverse.each do |post| %>
       <%= render 'shared/follow_feed_card', post: post %>
     <% end %>
   </div>

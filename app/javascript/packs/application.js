@@ -3,6 +3,8 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+//=require jquery
+//=require jquery_ujs
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
@@ -31,7 +33,6 @@ import { showComments } from '../components/hidden_comments';
 
 import { initMapbox } from '../plugins/init_mapbox';
 
-import { fillHeart } from '../components/likes';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -41,13 +42,14 @@ import { flatPick} from "../plugins/flatpickr";
 
 import { addTag } from '../components/add_tag';
 
+
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   toggleSwitch();
   showComments();
   initPhotoInput();
   flatPick();
-  fillHeart();
   addTag();
-
 })
+
+import "controllers"

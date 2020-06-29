@@ -10,4 +10,6 @@ class Post < ApplicationRecord
 
   has_many_attached :photos
 
+  acts_as_votable
+
 end

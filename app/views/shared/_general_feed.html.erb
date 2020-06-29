@@ -1,4 +1,4 @@
-<% @posts.sort_by{|post| post.created_at}.each do |post| %>
+<% @posts.sort_by{|post| post.created_at}.reverse.each do |post| %>
   <div class="card-post">
     <div class="card-post-top-infos">
       <div class="user-avatar-nickname">
@@ -6,15 +6,17 @@
         <a href="/users/<%=post.user.id %>"><p id="comment-anchor-<%=post.id%>" >@<%=post.user.nickname.downcase%></p></a>
           <% if current_user %>
             <% if (current_user != post.user) && !@followings.include?(post.user)%>
-              <%= link_to "Follow", "/users/#{post.user.id}/follow?user_id=#{post.user.id}&post_id=#{post.id}", method: :post, class:"post-follow-link user-post-#{post.user.id}", id: "post-#{post.id}", remote: true%>
+              <%= link_to "Follow", "/users/#{post.user.id}/follow?user_id=#{post.user.id}&post_id=#{post.id}", html_options = { method: :post, class:"post-follow-link user-post-#{post.user.id}", id: "post-#{post.id}", remote: true }%>
             <%end  %>
           <% end %>
       </div>
       <div class="post-reactions">
-        <% if current_user %>
-          <div class="reaction-type"><p><%= post.likes.count %></p><%= link_to "", "/posts/#{post.id}/likes?user_id=#{current_user.id}", method: :post, class:"fal fa-heart", remote: true%></div>
+        <% if current_user && !current_user.liked?(post)%>
+          <div class="reaction-type"><p class="like-count"><%= post.get_likes.size %></p><%= link_to '', like_post_path(post), html_options = { method: :put, class:'fal fa-heart like', remote: true}%></div>
+        <% elsif current_user && current_user.liked?(post)%>
+          <div class="reaction-type"><p class="like-count" ><%= post.get_likes.size %></p><%= link_to '', dislike_post_path(post), html_options = { method: :put, class:'fas fa-heart like', remote: true}%></div>
         <% else %>
-          <div class="reaction-type"><p><%= post.likes.count %></p><%= link_to "", "/users/sign_in", class:"fal fa-heart"%></div>
+          <div class="reaction-type"><p  class="like-count"><%= post.get_likes.size %></p><i class="fal fa-heart"></i></div>
         <% end %>
       </div>
     </div>
@@ -69,7 +71,7 @@
           </div>
         <% end %>
 
-        <%= form_for [post, Comment.new], html: {class: "comment-form"}, remote: true do |f| %>
+        <%= form_for [post, Comment.new], html: {class: "comment-form", remote: true} do |f| %>
           <%= f.text_field :content, label: false, placeholder: "Add your comment", class: "comment-input"   %>
           <%= f.submit "Post", class: "comment-submit"   %>
         <% end %>
