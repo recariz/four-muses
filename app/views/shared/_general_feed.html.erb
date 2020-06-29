@@ -2,11 +2,17 @@
   <div class="card-post">
     <div class="card-post-top-infos">
       <div class="user-avatar-nickname">
-        <img class="avatar-small" src="<%= cl_image_path post.user.avatar.key %>" />
+        <% if post.user.avatar.present? %>
+          <img class="avatar-small" src="<%= cl_image_path post.user.avatar.key %>" />
+        <% else %>
+          <img class="avatar-small" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+        <% end %>
         <a href="/users/<%=post.user.id %>"><p id="comment-anchor-<%=post.id%>" >@<%=post.user.nickname.downcase%></p></a>
           <% if current_user %>
             <% if (current_user != post.user) && !@followings.include?(post.user)%>
               <%= link_to "Follow", "/users/#{post.user.id}/follow?user_id=#{post.user.id}&post_id=#{post.id}", html_options = { method: :post, class:"post-follow-link user-post-#{post.user.id}", id: "post-#{post.id}", remote: true }%>
+            <% elsif (current_user != post.user) && @followings.include?(post.user)%>
+              <%= link_to "Unfollow", "/users/#{post.user.id}/unfollow?user_id=#{post.user.id}&post_id=#{post.id}", html_options = { method: :post, class:"post-follow-link user-post-#{post.user.id}", id: "post-#{post.id}", remote: true }%>
             <%end  %>
           <% end %>
       </div>
@@ -16,7 +22,7 @@
         <% elsif current_user && current_user.liked?(post)%>
           <div class="reaction-type"><p class="like-count" ><%= post.get_likes.size %></p><%= link_to '', dislike_post_path(post), html_options = { method: :put, class:'fas fa-heart like', remote: true}%></div>
         <% else %>
-          <div class="reaction-type"><p  class="like-count"><%= post.get_likes.size %></p><i class="fal fa-heart"></i></div>
+          <div class="reaction-type"><p  class="like-count"><%= post.get_likes.size %></p><%= link_to '', new_user_session_path, html_options = {class: 'fal fa-heart'}%></div>
         <% end %>
       </div>
     </div>
@@ -52,7 +58,6 @@
         <p><%= post.description %></p>
       </div>
     </div>
-    <div class="line-divider"></div>
 
     <div class="post-comments-container">
         <% if post.comments.count ==1 %>
@@ -71,9 +76,11 @@
           </div>
         <% end %>
 
+        <% if current_user %>
         <%= form_for [post, Comment.new], html: {class: "comment-form", remote: true} do |f| %>
           <%= f.text_field :content, label: false, placeholder: "Add your comment", class: "comment-input"   %>
           <%= f.submit "Post", class: "comment-submit"   %>
+        <% end %>
         <% end %>
     </div>
 

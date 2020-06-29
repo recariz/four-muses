@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # loading all the code of pundit generated so you can have access to all the method of the gem
@@ -46,8 +46,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     # Devise implementation of Strong Params
     # keys is an array of symbols
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[nickname first_name last_name location type])
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[nickname biography avatar first_name last_name location type])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[type nickname first_name last_name location])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[type nickname biography avatar first_name last_name location])
   end
 
   private

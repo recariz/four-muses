@@ -5,7 +5,7 @@
 <% else %>
   <div id="follow-feed-container">
     <% @my_followed_posts.sort_by{|post| post.created_at}.reverse.each do |post| %>
-      <%= render 'shared/follow_feed_card', post: post %>
+      <%= render 'shared/feed_card', post: post %>
     <% end %>
   </div>
 <% end %>

@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   end
 
   def unfollow
+    authorize @user
     if current_user.unfollow(params[:user_id])
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
