@@ -68,7 +68,14 @@
     <!-- DESCRIPTION -->
     <div class="post-description">
       <h5><%= post.title  %></h5>
-      <p><%= post.description %></p>
+      <% if post.description.length < 100 %>
+        <p><%= post.description%></p>
+      <% else %>
+        <div class = "post-description-toggle">
+          <p class = "short-description active" ><span> <%= truncate(post.description, length: 100, separator: " " )%> </span> <span class = "show-description-link active">Show</span></p>
+          <p class = "full-description" ><%= post.description%> <span class = "hide-description-link">Hide</span></p>
+        </div>
+      <% end %>
     </div>
     <!-- END OF DESCRIPTION -->
   </div>
