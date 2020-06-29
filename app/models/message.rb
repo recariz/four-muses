@@ -6,7 +6,7 @@ class Message < ApplicationRecord
   delegate :nickname, to: :user, prefix: true # so we can access user nickname directly
 
   def message_time
-    created_at.strftime("%a %b %e at %l:%M%p")
+    created_at.strftime("%l:%M%p")
   end
 
 end
