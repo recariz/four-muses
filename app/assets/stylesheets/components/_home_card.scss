@@ -1,7 +1,7 @@
 .home-card {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 
   &#create {
     .home-image {
@@ -61,11 +61,19 @@
   // bottom: 40px;
   // right: 0;
   // z-index: 1;
-  background-color: #585656;
+  background-color: #343358;
   padding: 20px;
 
   * {
     color: $white;
+  }
+
+  h2 {
+    font-weight: 600;
+  }
+
+  h3 {
+    font-weight: 300;
   }
 
 }
