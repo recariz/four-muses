@@ -1,0 +1,41 @@
+
+
+<div class="main-container">
+  <div class="dashboard-container">
+  <h1> My dashboard</h1>
+      <div class="card-dashboard">
+        <h4> Your contest applications</h4>
+        <div class = "row">
+          <div class ="col">
+            <h5> Contest</h5>
+          </div>
+          <div class="col">
+            <h5>Location</h5>
+          </div>
+          <div class="col">
+            <h5>Status</h5>
+          </div>
+        </div>
+        <% @my_applications.each do |application| %>
+        <div class="row">
+          <div class="col">
+            <%= application.contest.title %>
+          </div>
+          <div class="col">
+            <%= application.contest.location  %>
+          </div>
+          <div class="col">
+            <%= application.status.capitalize %>
+          </div>
+          <div class="col">
+            <div class="d-flex">
+              <div> <%#= link_to 'show', contest_path(contest), method: :show, class: "button-pink" %></div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+

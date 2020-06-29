@@ -28,7 +28,8 @@ class ContestApplicationPolicy < ApplicationPolicy
   end
 
   def is_an_owner_or_an_admin?
-    user.id == record.user.id || user.admin
+
+    user == record.contest.user #|| user.admin
   end
 
 end

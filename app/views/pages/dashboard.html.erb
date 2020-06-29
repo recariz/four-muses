@@ -1,41 +1,47 @@
-
-
 <div class="main-container">
   <div class="dashboard-container">
-  <h1> My dashboard</h1>
-
-    <div class="card-dashboard">
-      <h2> Your contest applications</h2>
-      <div class = "row">
+     <h1> My dashboard</h1>
+      <div class="card-dashboard">
+        <h4> Your applications</h4>
+        <div class = "row">
           <div class ="col">
-            <h5> Contest name</h5>
+            <h5> Contest</h5>
           </div>
-        <div class="col">
-          <h5>Date</h5>
+          <div class="col">
+            <h5>Artist</h5>
+          </div>
+          <div class="col">
+            <h5>Status</h5>
+          </div>
         </div>
-        <div class="col">
-          <h5>Current status</h5>
+        <% @my_applications_requests.each do |request| %>
+        <div class="row">
+          <div class="col">
+            <%= request.contest.title %>
+          </div>
+          <div class="col">
+            <%= request.user.first_name  %>
+          </div>
+          <div class="col">
+            <% if request.pending? %>
+            <div class = 'd-flex justify-content-start-between'>
+              <div > <%= link_to "Accept", contest_application_path(request, contest_application: {status: :accepted}), method: :patch%></div>
+              <br>
+              <div class = "ml-1"> <%= link_to "Reject", contest_application_path(request, contest_application: {status: :rejected}), method: :patch%></div>
+              </div>
+            <% elsif request.accepted? %>
+              <p style = "color: #184d47; font-weight: bold"><%= request.status.capitalize %> </p>
+            <% else %>
+              <p style = "color: #c70039; font-weight: bold"><%= request.status.capitalize %> </p>
+            <% end %>
         </div>
-      </div>
-      <% @my_contests.each do |contest| %>
-      <div class="col">
-        <%= contest.name %>
-      </div>
-      <div class="col">
-        <%= contest.date.strftime"%A, %b %d" %>
-      </div>
-      <div class="col">
-        <%= contest_application.status.capitalize %>
-      </div>
-      <div class="col">
-        <div class="d-flex">
-          <#div> <%= link_to 'show', contest_path(contest), method: :show, class: "button-pink" %></div>
+          <div class="col">
+            <div class="d-flex">
+              <div> <%#= link_to 'show', contest_path(contest), method: :show, class: "button-pink" %></div>
+            </div>
+          </div>
         </div>
-      </div>
       <% end %>
-
     </div>
-
   </div>
-
-
+</div>
