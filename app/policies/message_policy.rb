@@ -6,12 +6,12 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.chatroom.sender == user || record.chatroom.receiver == user
   end
 
-  def destroy?
-    is_an_owner_or_an_admin?
-  end
+  # def destroy?
+  #   is_an_owner_or_an_admin?
+  # end
 
   private
 

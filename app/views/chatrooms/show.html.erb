@@ -1,0 +1,17 @@
+<h1>Chat <%#= @chatroom.user. %></h1>
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <% @chatroom.messages.each do |message| %>
+    <div class="message-container" id="message-<%= message.id %>">
+      <i class="author">
+        <span><%= message.user_nickname %></span>
+        <small><%= message.message_time %></small>
+      </i>
+      <p><%= message.content %></p>
+    </div>
+  <% end %>
+</div>
+
+<%= simple_form_for [ @chatroom, @message ] do |f| %>
+  <%= f.input :content, label: false, placeholder: "Write your message here" %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

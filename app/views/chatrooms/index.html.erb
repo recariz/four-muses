@@ -1,1 +1,5 @@
-These are my chatrooms
+<p>These are my chatrooms</p>
+
+<% @chatrooms.each do |chatroom| %>
+  <%= link_to chatroom.other_user(current_user).nickname, chatroom_path(chatroom) %>
+<% end %>
