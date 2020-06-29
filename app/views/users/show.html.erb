@@ -36,6 +36,10 @@
                   <% end %>
                 </div>
               <% end %>
+            </div class= "pink-button-sm  mt-1">
+            <%= link_to "Message", chatrooms_path(sender_id: current_user.id, receiver_id: @user.id), method: :post%>
+            <div>
+
             </div>
     </div>
   </div>

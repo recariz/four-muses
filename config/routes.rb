@@ -22,11 +22,11 @@ Rails.application.routes.draw do
     resources :contest_applications, only: [:new, :create]
   end
 
-  resources :contest_applications, only: [:index, :edit, :update, :destroy]
+  resources :contest_applications, only: [:index, :show]
 
-  resources :chatrooms, only: [:index, :edit, :update, :destroy]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  # the below is for setting up the following action in the controller
+  resources :chatrooms, only: [:index, :show, :create] do
+   resources :messages, only: [:index, :create]
+  end
   resources :users, only: [:show, :edit, :update] do
     member do
       post :follow
