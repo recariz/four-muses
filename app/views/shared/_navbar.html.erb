@@ -4,9 +4,14 @@
   </a>
     <% if current_user %>
       <div data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key %>" />
+        <% if current_user.avatar.present? %>
+          <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key %>" />
+        <% else %>
+          <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+        <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/users/<%=current_user.id%>">My profile</a>
+              <a class="dropdown-item" href="/chatrooms">My messages</a>
               <a class="dropdown-item" href="/dashboard">Dashboard</a>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item"%>
             </div>
