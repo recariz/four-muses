@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :contest_applications, only: [:new, :create]
   end
 
-  resources :contest_applications, only: [:index, :show]
+  resources :contest_applications, only: [:index, :show, :accept, :reject]
 
   resources :chatrooms, only: [:index, :show, :create] do
    resources :messages, only: [:index, :create]
@@ -34,4 +34,7 @@ Rails.application.routes.draw do
     end
  end
  get '/dashboard', to: 'pages#dashboard', as: :dashboard
+
+ patch '/contest_applications/:id', to: 'contest_applications#change_status', as: :contest_application_status_change
+
 end

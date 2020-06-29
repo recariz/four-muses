@@ -3,7 +3,7 @@
  <!--  <div class="notification"> -->
     <% @chatrooms.each do |chatroom| %>
       <div class = "notification-one">
-        <% if chatroom.other_user(current_user).avatar.key.present? %>
+        <% if chatroom.other_user(current_user).avatar.present? %>
              <img class="avatar-small" src="<%= cl_image_path chatroom.other_user(current_user).avatar.key %>" />
         <% else %>
              <img class="avatar-small" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />

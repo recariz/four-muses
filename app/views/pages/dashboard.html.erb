@@ -25,9 +25,9 @@
           <div class="col">
             <% if request.pending? %>
             <div class = 'd-flex justify-content-start-between'>
-              <div > <%= link_to "Accept", contest_application_path(request, contest_application: {status: :accepted}), method: :patch%></div>
+              <div > <%= link_to "Accept", contest_application_status_change_path(request, contest_application: {status: :accepted}),  method: :patch%></div>
               <br>
-              <div class = "ml-1"> <%= link_to "Reject", contest_application_path(request, contest_application: {status: :rejected}), method: :patch%></div>
+              <div class = "ml-1"> <%= link_to "Reject", contest_application_status_change_path(request, contest_application: {status: :rejected}), method: :patch%></div>
               </div>
             <% elsif request.accepted? %>
               <p style = "color: #184d47; font-weight: bold"><%= request.status.capitalize %> </p>
