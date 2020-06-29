@@ -62,7 +62,6 @@ class ContestApplicationsController < ApplicationController
      elsif @application.rejected?
         @chatroom = Chatroom.between(@sender, @receiver).first_or_create!(sender_id: @sender.id, receiver_id: @receiver.id)
         authorize @chatroom
-        authorize @chatroom
         @message = @chatroom.messages.new(user_id: @sender.id, content: "We regret to inform you that your application to #{@application.contest.title} has been rejected. ")
         authorize @message
         @message.save
@@ -70,8 +69,6 @@ class ContestApplicationsController < ApplicationController
         authorize @message2
         @message2.save
      end
-
-
     end
 
 
