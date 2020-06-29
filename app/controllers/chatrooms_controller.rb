@@ -10,6 +10,7 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.find(params[:id])
     authorize @chatroom
+    @current_user_id = current_user.id
     @other_user = @chatroom.other_user(current_user)
     @messages = @chatroom.messages.order(created_at: :asc).last(20)
     @message = Message.new
