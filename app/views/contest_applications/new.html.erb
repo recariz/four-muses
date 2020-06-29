@@ -7,16 +7,19 @@
                   required: true,
                   autofocus: true,
 
-                  input_html: { class: "motivation-input", placeholder: "Write a motivation" }%> 
+                  input_html: { class: "motivation-input", placeholder: "Write a motivation" }%>
 
       <div class="">
             <p>Photos *</p>
-            <div class="pink-button-sm-secondary photo-button">Upload</div>  
-         <%= f.input :photos, required: true, label: false, as: :file, input_html: { multiple: true, class: "photo-input change-button"} %>  
+            <div class="pink-button-sm-secondary photo-button">Upload</div>
+         <%= f.input :photos, required: true, label: false, as: :file, input_html: { multiple: true, class: "photo-input change-button"} %>
+
       </div>
       <div class="file-names">
       </div>
     </div>
     <div class="pink-button-lg center-button"><%= f.button :submit, "Apply" %></div>
     <% end %>
+
 </div>
+<!--  swal("Good job!", "You clicked the button!", "success"); -->

@@ -9,6 +9,7 @@ class ContestApplicationsController < ApplicationController
         @contest = Contest.find(params[:contest_id])
         @contest_application = ContestApplication.new
         authorize @contest_application
+
     end
 
     def create

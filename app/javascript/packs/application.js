@@ -56,3 +56,6 @@ document.addEventListener('turbolinks:load', () => {
 })
 
 import "controllers"
+
+import swal from 'sweetalert';
+
