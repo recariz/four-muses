@@ -5,10 +5,10 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @my_applications = current_user.contest_applications
-
-    @my_application_requests = ContestApplication.all.select do |application|
-      application.contest.user == current_user
+    if current_user.artist?
+      @my_applications = current_user.contest_applications
+    elsif current_user.business?
+      @my_applications_requests = current_user.applications.order(created_at: :desc)
     end
   end
 
@@ -16,9 +16,3 @@ class PagesController < ApplicationController
 end
 
 
-    # @my_bookings = current_user.bookings
-    # @my_pools = current_user.pools
-
-    # @my_booking_requests = Booking.all.select do |booking|
-    # booking.pool.user == current_user
-    # end
