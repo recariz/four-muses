@@ -1,19 +1,12 @@
-
 .notification-one {
   height: 85px;
   display: flex;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: -1px;
   background: white;
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
 
-}
-
-
-.notification-one .notification-one-content {
-  flex-grow: 1;
-  padding: 0 6px;
 }
 
 .notification-one p {
@@ -31,7 +24,6 @@
   justify-content: space-between;
 }
 
-.time-box {
-  margin-right: -270px;
-  margin-top: -10px;
+.notification-content {
+  flex-grow: 1;
 }
