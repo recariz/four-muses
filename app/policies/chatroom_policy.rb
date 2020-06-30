@@ -14,4 +14,8 @@ class ChatroomPolicy < ApplicationPolicy
     user.present?
   end
 
+  def change_status?
+    true
+  end
+
 end

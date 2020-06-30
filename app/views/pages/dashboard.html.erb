@@ -1,47 +1,49 @@
 <div class="main-container">
   <div class="dashboard-container">
-     <h1> My dashboard</h1>
+     <h3> Contest applications</h3>
+     <% @my_contests.each do |contest| %>
+      <h5><%= contest.title %> Contest - <%= contest.start_date.strftime"%b %d"  %></h5>
       <div class="card-dashboard">
-        <h4> Your applications</h4>
         <div class = "row">
-          <div class ="col">
-            <h5> Contest</h5>
+          <div class ="col col-left">
+            <h5> Artist</h5>
           </div>
-          <div class="col">
-            <h5>Artist</h5>
+          <div class="col col-center">
+            <h5>Preview</h5>
           </div>
-          <div class="col">
+          <div class="col col-right">
             <h5>Status</h5>
           </div>
         </div>
-        <% @my_applications_requests.each do |request| %>
-        <div class="row">
-          <div class="col">
-            <%= request.contest.title %>
-          </div>
-          <div class="col">
-            <%= request.user.first_name  %>
-          </div>
-          <div class="col">
-            <% if request.pending? %>
-            <div class = 'd-flex justify-content-start-between'>
-              <div > <%= link_to "Accept", contest_application_path(request, contest_application: {status: :accepted}), method: :patch%></div>
-              <br>
-              <div class = "ml-1"> <%= link_to "Reject", contest_application_path(request, contest_application: {status: :rejected}), method: :patch%></div>
+        <% contest.contest_applications.each do |request| %>
+
+            <div class="row">
+              <div class="col col-left">
+                <a href="/users/<%=request.user.id%>"><p><%= request.user.first_name %> <%= request.user.last_name %></p></a>
               </div>
-            <% elsif request.accepted? %>
-              <p style = "color: #184d47; font-weight: bold"><%= request.status.capitalize %> </p>
-            <% else %>
-              <p style = "color: #c70039; font-weight: bold"><%= request.status.capitalize %> </p>
-            <% end %>
-        </div>
-          <div class="col">
-            <div class="d-flex">
-              <div> <%#= link_to 'show', contest_path(contest), method: :show, class: "button-pink" %></div>
+              <div class="col col-center">
+                <%= link_to contest_application_path(request) do %>
+                <div class= "card-category-pic-square" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag request.photos.first.key%></div>
+                <% end %>
+              </div>
+              <div class="col col-right">
+                <% if request.pending? %>
+                <div class = 'status-buttons'>
+                  <p class = "accept-button"> <%= link_to "Accept", contest_application_status_change_path(request, contest_application: {status: :accepted}),  method: :patch, remote: true%></p>
+                  <p class = "reject-button"> <%= link_to "Reject", contest_application_status_change_path(request, contest_application: {status: :rejected}), method: :patch, remote: true%></p>
+                  </div>
+                <% elsif request.accepted? %>
+                  <p style = "color: #184d47; font-weight: bold"><%= request.status.capitalize %> </p>
+                <% else %>
+                  <p style = "color: #c70039; font-weight: bold"><%= request.status.capitalize %> </p>
+                <% end %>
+              </div>
             </div>
-          </div>
-        </div>
+
+          <div class="line-divider" style = "width: 100%"></div>
       <% end %>
     </div>
+    <% end %>
+    <br>
   </div>
 </div>

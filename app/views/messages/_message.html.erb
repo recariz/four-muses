@@ -1,0 +1,10 @@
+<div class="message-container message-style <%='current' if user_is_author %>" id="message-<%= message.id %>">
+    <div class="message-and-time">
+        <p><%= message.content %></p>
+        <div class= "d-flex justify-content-end">
+          <i class="author ml-5">
+            <small><%= message.message_time %></small>
+          </i>
+        </div>
+    </div>
+</div>

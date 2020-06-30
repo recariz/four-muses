@@ -58,12 +58,108 @@
         <div class= "mt-2">
         <div class="px-3">
             <div class= "cards_pictures" >
-              <% @photos.each do |photo| %>
-                <%#= link_to post_path(photo.id) do %>
-                  <div class= "card-category-pic" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag photo.key%>
+              <% @posts.each do |post| %>
+                  <!-- PHOTO / MODAL BUTTON -->
+                  <div data-toggle="modal" data-target="#exampleModal" class= "card-category-pic" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag post.photos.first.key%>
                   </div>
-                <%# end %>
+                  <!-- MODAL!!! -->
+                          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel" style="padding-left: 7px"><%= post.title  %></h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="card-post">
+
+                                    <!-- TOP INFOS -->
+                                    <div class="card-post-top-infos">
+                                      <!-- AVATAR AND NICKNAME -->
+                                      <div class="user-avatar-nickname">
+                                        <% if post.user.avatar.present? %>
+                                          <img class="avatar-small" src="<%= cl_image_path post.user.avatar.key %>" />
+                                        <% else %>
+                                          <img class="avatar-small" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+                                        <% end %>
+                                        <p id="comment-anchor-<%=post.id%>" >@<%=post.user.nickname.downcase%></p>
+                                      </div>
+                                      <!-- END OF AVATAR AND NICKNAME -->
+
+                                      <!-- LIKES -->
+                                      <div class="post-reactions">
+                                        <% if current_user && !current_user.liked?(post)%>
+                                          <div class="reaction-type"><p class="like-count"><%= post.get_likes.size %></p><%= link_to '', like_post_path(post), html_options = { method: :put, class:'fal fa-heart like', remote: true}%></div>
+                                        <% elsif current_user && current_user.liked?(post)%>
+                                          <div class="reaction-type"><p class="like-count" ><%= post.get_likes.size %></p><%= link_to '', dislike_post_path(post), html_options = { method: :put, class:'fas fa-heart like', remote: true}%></div>
+                                        <% else %>
+                                          <div class="reaction-type"><p  class="like-count"><%= post.get_likes.size %></p><%= link_to '', new_user_session_path, html_options = {class: 'fal fa-heart'}%></div>
+                                        <% end %>
+                                      </div>
+                                      <!-- END OF LIKES -->
+                                    </div>
+                                    <!-- END TOP INFOS -->
+
+                                    <!-- POST CONTEST (IMG & DESCRIPTION) -->
+                                    <div class="post-content">
+                                      <!-- PHOTOS ONE OR CARROUSEL -->
+                                      <% if post.photos.count() == 1 %>
+                                        <img class="post-image" src="<%= cl_image_path post.photos.first.key %>" alt="">
+                                      <% else %>
+                                          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                              <% post.photos.each_with_index do |photo, index| %>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="<%=index.to_s%>" class ="<%= "active" if index == 0 %>"></li>
+                                              <% end %>
+                                            </ol>
+                                            <div class="carousel-inner" style="">
+                                              <% post.photos.each_with_index do |photo, index| %>
+                                                <div class="carousel-item <%= "active" if index == 0 %>">
+                                                  <img class="d-block post-image" src="<%=photo.service_url %>">
+                                                </div>
+                                              <% end %>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                              <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                              <span class="sr-only">Next</span>
+                                            </a>
+                                          </div>
+                                      <% end %>
+                                      <!-- END OF IMAGES -->
+
+                                      <!-- DESCRIPTION -->
+                                      <div class="post-description">
+                                        <p><%= post.description%></p>
+                                      </div>
+                                      <!-- END OF DESCRIPTION -->
+                                    </div>
+                                    <!-- END OF POST CONTENT -->
+
+                                    <!-- POST COMMENTS -->
+                                    <div class="post-comments-container">
+                                        <!-- COMMENTS -->
+                                        <% post.comments.each do |comment| %>
+                                        <p id="comment-<%= comment.id %>"><span style="font-weight: bolder">@<%= comment.user.nickname %>  </span><%= comment.content %></p>
+                                        <% end %>
+                                    </div>
+                                    <!-- END OF COMMENTS SECTION -->
+                                  </div>
+                                  <!-- END OF POST -->
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- END OF MODAL -->
               <% end %>
+              <!-- END OF FOR EACH POST ITERATION -->
             </div>
         </div>
       <div class="line-divider ml-4">

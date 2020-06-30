@@ -21,6 +21,10 @@ class ContestApplicationPolicy < ApplicationPolicy
     is_an_owner_or_an_admin?
   end
 
+  def change_status
+    true
+  end
+
   private
 
   def is_an_artist?

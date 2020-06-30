@@ -12,6 +12,7 @@
   padding: 15px;
   // display: flex;
   align-items: center;
+  justify-content: space-around;
   border-radius: 5px;
 }
 
@@ -19,6 +20,7 @@
   font-size: 24px;
   font-weight: bold;
   margin: 0;
+  text-align: center;
   // border-bottom: 1px solid $gray;
 
 }
@@ -27,3 +29,47 @@
 .card-dashboard .card-dashboard-infos {
   padding: 16px;
 }
+
+.col-left {
+  width: auto;
+}
+
+.col-center {
+  width: 70px;
+  text-align: center;
+  align-items: center;
+}
+
+.col-right {
+  text-align: right;
+}
+
+.card-category-pic-square {
+  height: 70px;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+  transition: 0.25s ease-in;
+  img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+
+  }
+  &:hover{
+  transform: scale(1.05);
+  background-position: top;
+  }
+}
+
+.status-buttons {
+  display: flex;
+  flex-direction: column;
+  p {
+    margin-bottom: 5px;
+  }
+}
+

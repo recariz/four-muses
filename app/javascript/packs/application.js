@@ -33,6 +33,10 @@ import { showComments } from '../components/hidden_comments';
 
 import { initMapbox } from '../plugins/init_mapbox';
 
+import { changeStatus } from '../components/application_status';
+
+
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -44,6 +48,8 @@ import { addTag } from '../components/add_tag';
 
 import { showDescription } from '../components/hidden_description'
 
+import { initChatRoom } from '../channels/chatroom_channel'
+
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
@@ -53,6 +59,8 @@ document.addEventListener('turbolinks:load', () => {
   flatPick();
   addTag();
   showDescription();
+  changeStatus();
+  initChatRoom();
 })
 
 import "controllers"
