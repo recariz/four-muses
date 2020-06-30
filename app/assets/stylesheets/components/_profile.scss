@@ -34,8 +34,8 @@
   display: flex;
   align-items: center;
     img{
-     height: 100%;
-      width: 120px;
+     height: 100px;
+      width: 100px;
       object-fit: cover;
       }
     p{
@@ -54,6 +54,10 @@
 
 .profile-infos{
   padding: 16px;
+
+    h3 {
+      font-size: 25px;
+    }
 }
 
 .bio{
