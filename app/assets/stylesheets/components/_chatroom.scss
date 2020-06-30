@@ -21,5 +21,17 @@
   line-height: 1;
 }
 
+.content-preview {
+  font-size: 14px;
+  color: rgb(120, 120, 120) !important;
+}
 
+.nickname-time {
+  display:flex;
+  justify-content: space-between;
+}
 
+.time-box {
+  margin-right: -270px;
+  margin-top: -10px;
+}
