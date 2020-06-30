@@ -24,7 +24,6 @@ class ContestsController < ApplicationController
 
   def create
     @contest = Contest.new(strong_params)
-    @contest_tag = ContestTag.new(contest_tag_params, contest_id: @contest.id)
     authorize @contest
     @contest.user = current_user
     puts @contest.errors.full_messages
@@ -54,12 +53,9 @@ private
   end
 
   def strong_params
-    params.require(:contest).permit(:start_date, :end_date, :location, :title, :content, :city, :photo)
+    params.require(:contest).permit(:start_date, :end_date, :location, :title, :content, :city, :photo, category_ids: [])
   end
 
-  def contest_tag_params
-    params.require(:contest_tag).permit(:category_id)
-  end
 
 end
 
