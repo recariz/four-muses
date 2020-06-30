@@ -16,26 +16,30 @@
           </div>
         </div>
         <% contest.contest_applications.each do |request| %>
-          <div class="row">
-            <div class="col col-left">
-              <a href="/users/<%=request.user.id%>"><p><%= request.user.first_name %> <%= request.user.last_name %></p></a>
+
+            <div class="row">
+              <div class="col col-left">
+                <a href="/users/<%=request.user.id%>"><p><%= request.user.first_name %> <%= request.user.last_name %></p></a>
+              </div>
+              <div class="col col-center">
+                <%= link_to contest_application_path(request) do %>
+                <div class= "card-category-pic-square" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag request.photos.first.key%></div>
+                <% end %>
+              </div>
+              <div class="col col-right">
+                <% if request.pending? %>
+                <div class = 'status-buttons'>
+                  <p class = "accept-button"> <%= link_to "Accept", contest_application_status_change_path(request, contest_application: {status: :accepted}),  method: :patch, remote: true%></p>
+                  <p class = "reject-button"> <%= link_to "Reject", contest_application_status_change_path(request, contest_application: {status: :rejected}), method: :patch, remote: true%></p>
+                  </div>
+                <% elsif request.accepted? %>
+                  <p style = "color: #184d47; font-weight: bold"><%= request.status.capitalize %> </p>
+                <% else %>
+                  <p style = "color: #c70039; font-weight: bold"><%= request.status.capitalize %> </p>
+                <% end %>
+              </div>
             </div>
-            <div class="col col-center">
-              <div class= "card-category-pic-square" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag request.photos.first.key%></div>
-            </div>
-            <div class="col col-right">
-              <% if request.pending? %>
-              <div class = 'status-buttons'>
-                <p class = "accept-button"> <%= link_to "Accept", contest_application_status_change_path(request, contest_application: {status: :accepted}),  method: :patch, remote: true%></p>
-                <p class = "reject-button"> <%= link_to "Reject", contest_application_status_change_path(request, contest_application: {status: :rejected}), method: :patch, remote: true%></p>
-                </div>
-              <% elsif request.accepted? %>
-                <p style = "color: #184d47; font-weight: bold"><%= request.status.capitalize %> </p>
-              <% else %>
-                <p style = "color: #c70039; font-weight: bold"><%= request.status.capitalize %> </p>
-              <% end %>
-          </div>
-          </div>
+
           <div class="line-divider" style = "width: 100%"></div>
       <% end %>
     </div>
