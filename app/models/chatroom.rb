@@ -16,7 +16,4 @@ class Chatroom < ApplicationRecord
     user == sender ? receiver : sender
   end
 
-  def last_updated
-    messages.sort_by(&:created_at).last.created_at
-  end
 end
