@@ -3,11 +3,9 @@ class UsersController < ApplicationController
  before_action :set_user, only: [:follow, :unfollow, :create, :edit, :show]
 
   def show
-    @photos = []
+    @posts = []
     @user.posts.each do |post|
-      post.photos.each do |photo|
-        @photos << photo
-      end
+      @posts << post
     end
   end
 
