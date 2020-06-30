@@ -19,7 +19,7 @@ class ContestsController < ApplicationController
   def new
     @contest = Contest.new
     authorize @contest
-    
+
   end
 
   def create
@@ -36,6 +36,7 @@ class ContestsController < ApplicationController
 
   def show
     authorize @contest
+
     @markers = [
       {
         lat: @contest.latitude,

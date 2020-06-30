@@ -2,7 +2,7 @@
   <h3>Inbox</h3>
   <br>
  <!--  <div class="notification"> -->
-    <% @chatrooms.sort_by(&:last_updated).reverse.each do |chatroom| %>
+  <% @chatrooms.each do |chatroom| %>
     <%= link_to chatroom_path(chatroom) do %>
         <div class = "notification-one panel" >
           <% if chatroom.other_user(current_user).avatar.present? %>
@@ -13,20 +13,21 @@
           <div class= "notification-content ml-3" %>
           <div class="nickname-time">
             <div style = "margin-top: 0px"><p><%= chatroom.other_user(current_user).nickname %></p></div>
-            <div class="time-box">
-            <% if chatroom.messages == []%>
-              <p><small>This chatroom has no messages yet</small></p>
-            <% else %>
-              <p class="content-preview"><small style = "font-style: italic;"><%=chatroom.updated_at.strftime"%b %d" %> - <%= chatroom.messages.last.message_time %></small></p>
-            </div>
-          </div>
-              <div class="content-preview">
-                <p class="mt-2"><%= truncate(chatroom.messages.last.content, length: 48, separator: "...")%></p>
-              </div>
-            <% end %>
+              <% if chatroom.messages == []%>
+                <div class="time-box">
+                  <p><small>This chatroom has no messages yet</small></p>
+                 </div>
+              <% else %>
+                <div class="time-box">
+                  <p class="content-preview"><small style = "font-style: italic;"><%=chatroom.updated_at.strftime"%b %d" %> - <%= chatroom.messages.last.message_time %></small></p>
+                </div>
+                <div class="content-preview">
+                  <p class="mt-2"><%= truncate(chatroom.messages.last.content, length: 48, separator: "...")%></p>
+                </div>
+              <% end %>
           </div>
         </div>
-        <% end %>
     <% end %>
+  <% end %>
  <!--  </div> -->
 </div>
