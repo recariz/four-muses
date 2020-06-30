@@ -9,8 +9,9 @@ class ContestApplicationsController < ApplicationController
 
 
     def show
-      authorize @contest_application
-      @user = @contest_application.user
+      id = @contest_application.user.id
+      raise
+      @user = User.find(id)
     end
     def new
         @contest = Contest.find(params[:contest_id])
