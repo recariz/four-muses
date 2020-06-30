@@ -48,6 +48,8 @@ import { addTag } from '../components/add_tag';
 
 import { showDescription } from '../components/hidden_description'
 
+import { initChatRoom } from '../channels/chatroom_channel'
+
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
@@ -58,6 +60,7 @@ document.addEventListener('turbolinks:load', () => {
   addTag();
   showDescription();
   changeStatus();
+  initChatRoom();
 })
 
 import "controllers"
