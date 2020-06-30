@@ -1,6 +1,6 @@
 
 <div class="main-container" style="margin-bottom:50px">
- <h3> Live contests</h3>
+ <h3 class='mb-3'> Live contests</h3>
   <!-- CREATE BUTTON FOR BUSINESSES -->
   <% if current_user %>
     <% if current_user.business? %>
@@ -8,9 +8,9 @@
     <% end %>
   <% end %>
   <!-- SEARCH FORM -->
-  <form class="comment-form" action="/contests" method="get" >
-    <input class="comment-input" name="query" type="text" placeholder="Search by city">
-    <input class="comment-submit" type="submit" value="Go">
+  <form class="search-form" action="/contests" method="get" >
+    <input class="search-input" name="query" type="text" placeholder="Search by city">
+    <input class="search-submit" type="submit" value="Go">
   </form>
   <!-- MAP -->
   <div id="map" class="map-style"
@@ -36,7 +36,7 @@
               </div>
               <h6> <%= contest.title %></h6>
               <p class="mt-3"><i class="fal fa-map-marker-alt"></i> <%= contest.location %></p>
-              <p><%= contest.start_date.strftime"%b %d" %> to <%= contest.end_date.strftime"%b %d" %></p>
+              <p style="font-weight:bold"><%= contest.start_date.strftime"%b %d" %> to <%= contest.end_date.strftime"%b %d" %></p>
               <% today =Date.today %>
               <% day_left = contest.start_date - today %>
               <p class="small-pink-italic"><%= pluralize day_left.to_i, "day" %> days left</p>
