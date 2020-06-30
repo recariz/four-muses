@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
         user_is_not_author: render_not_message(@message),
         message_author: @message.user.id
       }
+      # redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
     end
   end
 
