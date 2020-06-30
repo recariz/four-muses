@@ -59,15 +59,15 @@
         <div class="px-3">
             <div class= "cards_pictures" >
               <% @posts.each do |post| %>
-                  <!-- MODAL BUTTON -->
+                  <!-- PHOTO / MODAL BUTTON -->
                   <div data-toggle="modal" data-target="#exampleModal" class= "card-category-pic" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag post.photos.first.key%>
                   </div>
                   <!-- MODAL!!! -->
                           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel"><%= post.title  %></h5>
+                                  <h5 class="modal-title" id="exampleModalLabel" style="padding-left: 7px"><%= post.title  %></h5>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -157,8 +157,9 @@
                             </div>
                           </div>
                         </div>
-                          <!-- END OF MODAL -->
+                        <!-- END OF MODAL -->
               <% end %>
+              <!-- END OF FOR EACH POST ITERATION -->
             </div>
         </div>
       <div class="line-divider ml-4">
