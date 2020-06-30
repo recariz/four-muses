@@ -9,7 +9,7 @@ class ContestApplicationsController < ApplicationController
 
 
     def show
-      authorize @contest_application
+
       @user = @contest_application.user
     end
     def new
@@ -49,9 +49,7 @@ class ContestApplicationsController < ApplicationController
             render :new
         end
     end
-    def show
 
-    end
     def edit
     end
 
