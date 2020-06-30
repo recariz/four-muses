@@ -9,12 +9,16 @@
     <% end %>
     <div class= "profile-infos">
 
-        <h3 class= "mt-0 mb-0">@<%= @user.nickname %></h3>
+          <div class="nickname-message">
+          <h3 class= "mt-0 mb-0">@<%= @user.nickname %></h3>
+              <%= link_to chatrooms_path(sender_id: current_user.id, receiver_id: @user.id), method: :post do %>
+              <i class="fa fa-paper-plane-o envelope-size mt-2" aria-hidden="true"></i>
+        <% end %>
+          </div>
         <% if @user.business? %>
           <h5 class = "ml-1"><%= @user.business_name %></h5>
         <% else %>
          <h5 class = "ml-1"><%= @user.first_name%> <%= @user.last_name %></h5>
-        <% end %>
         <h5 class="ml-1 mt-1"> - <%= @user.location.capitalize %> -</h5>
       <div class="tags mt-1">
         <% @user.interests.each do |interest| %>
@@ -40,9 +44,11 @@
                   <% end %>
                 </div>
               <% end %>
-            </div class= "pink-button-sm  mt-1">
-            <%= link_to "Message", chatrooms_path(sender_id: current_user.id, receiver_id: @user.id), method: :post%>
-            <div>
+
+
+            
+            <% end %>
+            
 
             </div>
     </div>
