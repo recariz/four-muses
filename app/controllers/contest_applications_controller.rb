@@ -9,9 +9,7 @@ class ContestApplicationsController < ApplicationController
 
 
     def show
-      id = @contest_application.user.id
-      raise
-      @user = User.find(id)
+      @user = @contest_application.user
     end
     def new
         @contest = Contest.find(params[:contest_id])
@@ -50,9 +48,7 @@ class ContestApplicationsController < ApplicationController
             render :new
         end
     end
-    def show
 
-    end
     def edit
     end
 

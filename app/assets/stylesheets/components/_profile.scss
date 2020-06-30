@@ -66,3 +66,18 @@ align-items:center;
 .profile-center{
   align-items: center;
 }
+
+.profile-infos {
+  flex-grow: 1;
+}
+
+.nickname-message {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.envelope-size {
+  font-size: 30px;
+  // color: rgb(120, 120, 120);
+}
