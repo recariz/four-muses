@@ -22,7 +22,12 @@ Rails.application.routes.draw do
     resources :contest_applications, only: [:new, :create]
   end
 
-  resources :contest_applications, only: [:index, :show, :accept, :reject]
+
+  resources :contest_applications, only: [:show, :index] do
+    resources :payments, only: :new
+  end
+
+
 
   resources :chatrooms, only: [:index, :show, :create] do
    resources :messages, only: [:index, :create]

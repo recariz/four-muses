@@ -1,11 +1,14 @@
 <div class="chat-first-section">
   <div class="content-first-section">
-    <% if @chatroom.other_user(current_user).avatar.present? %>
-     <img src="<%= cl_image_path @chatroom.other_user(current_user).avatar.key %>" class = "avatar-large mr-2">
-    <% else %>
-     <img class="avatar-large mr-2" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
-    <% end %>
-    <div class="nickname"><h5>@<%= @chatroom.other_user(current_user).nickname %> </h6></div>
+    <a href="../chatrooms">
+      <i class="fa fa-arrow-left mr-2 align-items-center"  aria-hidden="true" style="color: white"></i>
+    </a>
+      <% if @chatroom.other_user(current_user).avatar.present? %>
+        <img src="<%= cl_image_path @chatroom.other_user(current_user).avatar.key %>" class = "avatar-large mr-2">
+      <% else %>
+      <img class="avatar-large mr-2" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+        <% end %>
+      <div class="nickname"><h5>@<%= @chatroom.other_user(current_user).nickname %> </h6></div>
   </div>
 </div>
 <div class="chat-second-section" id="messages" data-chatroom-id="<%= @chatroom.id %>" data-current-user="<%= @current_user_id %>">

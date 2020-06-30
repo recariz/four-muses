@@ -1,19 +1,12 @@
-
 .notification-one {
   height: 85px;
   display: flex;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: -1px;
   background: white;
   padding: 8px 16px;
   border: 1px solid rgb(235,235,235);
 
-}
-
-
-.notification-one .notification-one-content {
-  flex-grow: 1;
-  padding: 0 6px;
 }
 
 .notification-one p {
@@ -21,5 +14,16 @@
   line-height: 1;
 }
 
+.content-preview {
+  font-size: 14px;
+  color: rgb(120, 120, 120) !important;
+}
 
+.nickname-time {
+  display:flex;
+  justify-content: space-between;
+}
 
+.notification-content {
+  flex-grow: 1;
+}

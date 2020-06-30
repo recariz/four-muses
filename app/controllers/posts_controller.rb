@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only:[:edit, :update, :destroy]
+  before_action :set_post, only:[:edit, :show, :update, :destroy]
 
   def index
     #first check if user is or not logged in
@@ -32,6 +32,10 @@ class PostsController < ApplicationController
   end
 
   def show
+    authorize @post
+    @posts = Post.all
+    @followings = current_user.followings
+    @my_followed_posts = @posts.select {|post| @followings.include?(post.user)}
   end
 
   def edit
@@ -43,7 +47,6 @@ class PostsController < ApplicationController
   end
 
   def create
-
     @post = Post.new(post_params)
     authorize @post
     @post.user = current_user

@@ -273,6 +273,7 @@ contest_color = Contest.new(
   location: "Carrer d'en Grassot, 101",
   title: "Color Sense",
   content: "Artists are asked to submit works that address the studied use of color, where color is a big part of the artist’s toolset and is what makes the work complete.  Accepting all original visual media excluding video and other time-based media such as animated Gifs. All styles and subject matter accepted."
+
 )
 contest_color.user_id = picassobcn.id
 contest_color.photo.attach(io: File.open('app/assets/images/color_sense.jpg'), filename: 'orsay.jpg', content_type: 'jpg')
