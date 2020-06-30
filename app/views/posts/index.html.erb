@@ -1,6 +1,6 @@
 <% if current_user%>
   <div id="feed-general" class="active"> <%= render "shared/general_feed" %></div>
-  <div id="feed-follows" class=""> <%= render "shared/follow_feed" %></div>
+  <div id="feed-follows" class=""> <%= render "shared/follow_feed", posts: @my_followed_posts %></div>
   <%= render "shared/toggle"%>
 <%  else%>
   <%= render "shared/general_feed" %>

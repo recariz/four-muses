@@ -1,7 +1,7 @@
 <div class= "main-container" style="margin-bottom: 60px">
 
   <!-- ACCEPT/ REJECT BUTTONS : ONLY APPEAR IF PENDING -->
-  <% if @contest_application.status == ( :pending || :paid ) && current_user.business? %>
+  <% if @contest_application.pending? && current_user.business? %>
     <div id="accept-app-contest-btn" class="pink-button my-2 mx-auto"> <%= link_to "Accept", contest_application_status_change_path(request, contest_application: {status: :accepted})%></div>
     <div id="reject-app-contest-btn" class="pink-button-secondary my-2 mx-auto"> <%= link_to "Reject", contest_application_status_change_path(request, contest_application: {status: :rejected})%></div>
   <% end %>
@@ -22,7 +22,7 @@
       <a href="/users/<%=@user.id %>"><p class = "mb-0">@<%=@user.nickname.downcase%></p></a>
     </div>
 
-  <div class="line-divider align-center ml-4"></div>
+  <div class="line-divider align-center"></div>
 
   <!-- USER MOTIVATION -->
     <div class = "card-post post-content">

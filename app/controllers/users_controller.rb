@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
         format.js {
+            @my_new_followed_posts = current_user.followings.map(&:posts).flatten
             @user_id = params[:user_id]
             render :partial => 'follow.js.erb', :formats => [:json]
             # render action: :unfollow
@@ -44,6 +45,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
         format.js {
+          @my_new_followed_posts = current_user.followings.map(&:posts).flatten
           @user_id = params[:user_id]
           render :partial => 'unfollow.js.erb', :formats => [:json]
           # render action: :follow

@@ -11,6 +11,7 @@ class ContestApplicationsController < ApplicationController
     def show
       @user = @contest_application.user
     end
+
     def new
         @contest = Contest.find(params[:contest_id])
         @contest_application = ContestApplication.new
