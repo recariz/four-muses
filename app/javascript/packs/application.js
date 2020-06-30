@@ -35,6 +35,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 import { changeStatus } from '../components/application_status';
 
+import { formCategories } from '../components/form_categories';
 
 
 
@@ -61,6 +62,7 @@ document.addEventListener('turbolinks:load', () => {
   showDescription();
   changeStatus();
   initChatRoom();
+  formCategories();
 })
 
 import "controllers"

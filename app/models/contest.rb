@@ -2,6 +2,7 @@ class Contest < ApplicationRecord
   CONTEST_APPLICATION_PRICE_CENTS = 300
   belongs_to :user
   has_many :contest_tags, dependent: :destroy
+  has_many :categories, through: :contest_tags
   has_many :contest_applications, dependent: :destroy
   validates :start_date, :end_date, :location, :city, :title, :content, :photo, presence: true
   geocoded_by :location
