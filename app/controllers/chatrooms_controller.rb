@@ -3,7 +3,7 @@ class ChatroomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @chatrooms = policy_scope(Chatroom)
+    @chatrooms = policy_scope(Chatroom).order(updated_at: :desc)
     # will give us all the chatroom for the current user since in the policy I have changed to user which is current user in pundit
   end
 
