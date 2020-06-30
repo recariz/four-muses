@@ -1,5 +1,4 @@
 <div class="card-post">
-
   <!-- TOP INFOS -->
   <div class="card-post-top-infos">
     <!-- AVATAR AND NICKNAME -->
@@ -36,7 +35,6 @@
 
   <!-- POST CONTEST (IMG & DESCRIPTION) -->
   <div class="post-content">
-    <!-- PHOTOS ONE OR CARROUSEL -->
     <% if post.photos.count() == 1 %>
       <img class="post-image" src="<%= cl_image_path post.photos.first.key %>" alt="">
     <% else %>
@@ -61,8 +59,8 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
-        </div>
     <% end %>
+   </div>
     <!-- END OF IMAGES -->
 
     <!-- DESCRIPTION -->
@@ -91,13 +89,13 @@
         <p id="comment-<%= post.comments.first.id %>"><span style="font-weight: bolder">@<%= post.comments.first.user.nickname %>  </span><%= post.comments.first.content %></p>
         <div class="display-comments">
         <p class = "display-comments-link active">See all <%= post.comments.count %> comments...</p>
-        <p class = "hide-comments-link">Hide comments</p>
         <div class="hidden-comments">
           <% comments_rest = post.comments[1, post.comments.length - 1] %>
           <% comments_rest.each do |comment| %>
               <p id="comment-<%= comment.id %>"><span style="font-weight: bolder">@<%= comment.user.nickname %>  </span><%= comment.content %></p>
           <% end %>
         </div>
+        <p class = "hide-comments-link">Hide comments</p>
         </div>
       <% end %>
       <!-- COMMENT FORM -->
@@ -108,6 +106,8 @@
       <% end %>
       <% end %>
   </div>
+
+
   <!-- END OF COMMENTS SECTION -->
 </div>
 <!-- END OF POST -->

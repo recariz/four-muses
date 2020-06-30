@@ -3,17 +3,17 @@
 
   <div class="profile-product">
     <% if @user.avatar.present? %>
-      <img class="avatar-large-bordered" src="<%= cl_image_path @user.avatar.key %>" />
+      <img class="avatar-bordered" src="<%= cl_image_path @user.avatar.key %>" />
     <% else %>
-      <img class="avatar-large-bordered" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+      <img class="avatar-bordered" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
     <% end %>
     <div class= "profile-infos">
 
         <h3 class= "mt-0 mb-0">@<%= @user.nickname %></h3>
         <% if @user.business? %>
-          <h5 class = "ml-1"><%= @user.business_name %></h5>
+          <h5 class = "ml-1 "><%= @user.business_name %></h5>
         <% else %>
-         <h5 class = "ml-1"><%= @user.first_name%> <%= @user.last_name %></h5>
+         <h5 class = "ml-1 mt-2"><%= @user.first_name%> <%= @user.last_name %></h5>
         <% end %>
         <h5 class="ml-1 mt-1"> - <%= @user.location.capitalize %> -</h5>
       <div class="tags mt-1">
@@ -22,13 +22,15 @@
           </div>
         <% end %>
       </div>
-            <div class="d-flex">
+            <div class="d-flex justify-content-between">
 
               <% if current_user && current_user.id == params[:id].to_i %>
 
                 <div class="pink-button-sm mt-1" >
-
                   <%= link_to "Edit", edit_user_registration_path, method: :get %>
+                </div>
+                <div class="pt-10" >
+                  <%= link_to "Message", chatrooms_path(sender_id: current_user.id, receiver_id: @user.id), method: :post%>
                 </div>
 
               <%else %>
@@ -41,7 +43,7 @@
                 </div>
               <% end %>
             </div class= "pink-button-sm  mt-1">
-            <%= link_to "Message", chatrooms_path(sender_id: current_user.id, receiver_id: @user.id), method: :post%>
+
             <div>
 
             </div>
