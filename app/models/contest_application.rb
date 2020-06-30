@@ -6,6 +6,8 @@ class ContestApplication < ApplicationRecord
   validates :photos, presence: true
   validates_uniqueness_of :user_id, scope: :contest_id
 
+  monetize :amount_cents
   enum status: [:pending, :paid, :accepted, :rejected]
+
 
 end

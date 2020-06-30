@@ -2,6 +2,7 @@
   <h3>Application form</h3>
   <%= simple_form_for([@contest, @contest_application]) do |f| %>
     <%= f.error_notification %>
+    <p>This is a premium feature. Pay 3 Eur to unlock the contest <%= humanized_money_with_symbol(@contest.contest_price) %></p>
     <div class="motivation-form">
       <%= f.input :motivation,
                   required: true,
