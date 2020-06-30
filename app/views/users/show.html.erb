@@ -33,15 +33,11 @@
 
               <% if current_user && current_user.id == params[:id].to_i %>
 
-                <div class="pink-button-sm mt-1" >
+                <div class="mt-2" >
                   <%= link_to "Edit", edit_user_registration_path, method: :get %>
                 </div>
-                <div class="pt-10 mt-1" >
-                  <%= link_to "Message", chatrooms_path(sender_id: current_user.id, receiver_id: @user.id), method: :post%>
-                </div>
-
               <%else %>
-                <div class= "pink-button-sm  mt-1">
+                <div class= "mt-1">
                   <% if user_signed_in? && current_user.is_following?(@user.id) %>
                     <%= link_to "Unfollow", "/users/#{@user.id}/unfollow?user_id=#{@user.id}", method: :post %>
                   <% else %>
@@ -49,12 +45,6 @@
                   <% end %>
                 </div>
               <% end %>
-
-            </div class= "pink-button-sm  mt-1">
-
-            <div>
-
-
             </div>
     </div>
   </div>

@@ -23,6 +23,19 @@
                   required: true,
                   autofocus: true,
                   input_html: { class: "content-input", placeholder: "Write a description" }%> 
+
+      <div class="form-group">
+        <label class="control-label check_boxes optional">Categories</label>
+        <div class="category-choices">
+          <% Category.all.each do |category| %>
+            <input type="checkbox" class="hidden" value="<%= category.id %>" name="contest[category_ids][]" id="post_category_ids_<%= category.id %>">
+            <label class="category-choice" for="post_category_ids_<%= category.id %>">
+              <%= category.name %>
+              <i class="fa fa-check"></i>
+            </label>
+          <% end %>
+        </div>
+      </div>
       <div class="send-to-orbit">
          <%= f.input :photo, as: :file, input_html: { class: "photo-input"} %>  
       </div>
@@ -34,5 +47,6 @@
     <div class="pink-button-lg center-button w-100"><%= f.button :submit, "Publish contest" %></div>
     <% end %>
 </div>
+
 
 
