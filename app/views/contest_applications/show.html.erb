@@ -1,9 +1,9 @@
 <div class= "main-container" style="margin-bottom: 60px">
 
   <!-- ACCEPT/ REJECT BUTTONS : ONLY APPEAR IF PENDING -->
-  <% if @contest_application.pending? && current_user.business? %>
-    <div id="accept-app-contest-btn" class="pink-button my-2 mx-auto"> <%= link_to "Accept", contest_application_status_change_path(request, contest_application: {status: :accepted})%></div>
-    <div id="reject-app-contest-btn" class="pink-button-secondary my-2 mx-auto"> <%= link_to "Reject", contest_application_status_change_path(request, contest_application: {status: :rejected})%></div>
+  <% if (@contest_application.pending? || @contest_application.paid?) && current_user.business? %>
+    <div id="accept-app-contest-btn" class="pink-button my-2 mx-auto"> <%= link_to "Accept", contest_application_status_change_path(@contest_application, contest_application: {status: :accepted}), method: :patch %></div>
+    <div id="reject-app-contest-btn" class="pink-button-secondary my-2 mx-auto"> <%= link_to "Reject", contest_application_status_change_path(@contest_application, contest_application: {status: :rejected}), method: :patch %></div>
   <% end %>
 
   <div class="card-post" style = "box-shadow: 0px 3px 15px rgba(0,0,0,0.2);">
