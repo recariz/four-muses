@@ -43,6 +43,35 @@ class ContestApplicationsController < ApplicationController
     def destroy
     end
 
+
+    def change_status
+    @application = ContestApplication.find(params[:id])
+    @application.status = params[:contest_application][:status]
+    @application.save
+    @receiver = @application.user
+    @sender = @application.contest.user
+     if @application.accepted?
+        @chatroom = Chatroom.between(@sender, @receiver).first_or_create!(sender_id: @sender.id, receiver_id: @receiver.id)
+        authorize @chatroom
+        @message = @chatroom.messages.new(user_id: @sender.id, content: "Congratulations #{@application.user.first_name.capitalize}! Your application to #{@application.contest.title} has been accepted!")
+        authorize @message
+        @message.save
+        @message2 = @chatroom.messages.new(user_id: @sender.id, content: "We will contact you soon regarding next steps")
+        authorize @message2
+        @message2.save
+     elsif @application.rejected?
+        @chatroom = Chatroom.between(@sender, @receiver).first_or_create!(sender_id: @sender.id, receiver_id: @receiver.id)
+        authorize @chatroom
+        @message = @chatroom.messages.new(user_id: @sender.id, content: "We regret to inform you that your application to #{@application.contest.title} has been rejected. ")
+        authorize @message
+        @message.save
+        @message2 = @chatroom.messages.new(user_id: @sender.id, content: "Thanks for your participation #{@application.user.first_name.capitalize}.")
+        authorize @message2
+        @message2.save
+     end
+    end
+
+
     private
 
     def set_params

@@ -9,6 +9,7 @@ gem 'pundit'
 gem 'cloudinary', '~> 1.12.0'
 gem 'geocoder'
 gem 'faker'
+gem 'stripe'
 
 gem 'acts_as_votable'
 gem 'jquery-rails'

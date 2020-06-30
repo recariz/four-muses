@@ -33,6 +33,10 @@ import { showComments } from '../components/hidden_comments';
 
 import { initMapbox } from '../plugins/init_mapbox';
 
+import { changeStatus } from '../components/application_status';
+
+
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -53,6 +57,7 @@ document.addEventListener('turbolinks:load', () => {
   flatPick();
   addTag();
   showDescription();
+  changeStatus();
 })
 
 import "controllers"
