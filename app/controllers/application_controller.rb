@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:index, :show]
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :store_user_location!, if: :storable_location?
 
   # loading all the code of pundit generated so you can have access to all the method of the gem
   include Pundit
@@ -48,6 +49,18 @@ class ApplicationController < ActionController::Base
     # keys is an array of symbols
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[type nickname first_name last_name location])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[type nickname biography avatar first_name last_name location])
+  end
+
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
+
+  def store_user_location!
+    store_location_for(:user, request.fullpath)
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    posts_path
   end
 
   private

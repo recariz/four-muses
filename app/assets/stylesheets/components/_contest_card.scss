@@ -35,6 +35,7 @@
 }
 
 .contest p {
+  margin-bottom: 3px;
   margin: 0;
   font-size: 16px;
 }
@@ -64,6 +65,7 @@
   color: $pink;
   font-style: italic;
   font-size: 16px;
+  margin-top: 3px;
 }
 
 #publish-contest-btn {
@@ -81,3 +83,32 @@
 //   margin-top: 30px;
 //   text-decoration: none;
 // }
+
+.search-form {
+  height: 35px;
+  padding: 0 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  font-family: $body-font;
+  font-size: 12px;
+  border-radius: 50px;
+  flex-grow: 1;
+  display: flex;
+}
+
+.search-input {
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  flex-grow: 1;
+  padding: 10px 15px;
+}
+
+.search-submit {
+  font-size: 16px;
+  color: $pink;
+  font-weight: bolder;
+  border: none;
+  background-color: transparent;
+  flex-grow: 0;
+}
