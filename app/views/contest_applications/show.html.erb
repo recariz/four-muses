@@ -1,12 +1,16 @@
-<div class= "main-container">
-  <a href="../dashboard">
-    <i class="fa fa-arrow-left mr-2 align-items-center"  aria-hidden="true" style="color: grey"></i>
-  </a>
+<div class= "main-container" style="margin-bottom: 60px">
 
-  <div id="accept-contest-btn" class="pink-button-sm my-2 mx-auto" style="text-align:center"> <%= link_to "Accept", contest_application_status_change_path(request, contest_application: {status: :accepted}),  method: :patch%></div>
-  <div id="reject-contest-btn" class="pink-button-sm-secondary my-2 mx-auto" style="text-align:center"> <%= link_to "Reject", contest_application_status_change_path(request, contest_application: {status: :rejected}), method: :patch%></div>
+  <!-- ACCEPT/ REJECT BUTTONS : ONLY APPEAR IF PENDING -->
+  <% if @contest_application.status == ( :pending || :paid )%>
+    <div id="accept-app-contest-btn" class="pink-button my-2 mx-auto"> <%= link_to "Accept", contest_application_status_change_path(request, contest_application: {status: :accepted})%></div>
+    <div id="reject-app-contest-btn" class="pink-button-secondary my-2 mx-auto"> <%= link_to "Reject", contest_application_status_change_path(request, contest_application: {status: :rejected})%></div>
+  <% end %>
 
   <div class="card-post" style = "box-shadow: 0px 3px 15px rgba(0,0,0,0.2);">
+  <!-- BACK BUTTON -->
+    <a style = "width: 100%; text-align: left" href="../dashboard">
+      <i class="fa fa-arrow-left mr-2 application-back"  aria-hidden="true"></i>
+    </a>
   <!-- USER GENERAL INFOS -->
     <div class= ".flex-column mt-3" style = "text-align:center">
       <% if @user.avatar.present? %>
@@ -29,8 +33,8 @@
         <img class="post-image mb-3" src="<%= cl_image_path photo.key %>" alt="">
         <br>
       <% end %>
-
     </div>
+  <!-- END CARD -->
   </div>
 <!-- END -->
 </div>
