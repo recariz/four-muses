@@ -1,10 +1,14 @@
 class ContestApplicationsController < ApplicationController
-    before_action :set_params, only:[:edit, :update, :destroy]
+    before_action :set_params, only:[:edit, :show, :update, :destroy]
 
     def index
         @contests = policy_scope(ContestApplication)
     end
 
+    def show
+      authorize @contest_application
+      @user = @contest_application.user
+    end
     def new
         @contest = Contest.find(params[:contest_id])
         @contest_application = ContestApplication.new

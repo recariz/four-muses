@@ -1,0 +1,41 @@
+<div class= "main-container">
+  <a href="../dashboard">
+    <i class="fa fa-arrow-left mr-2 align-items-center"  aria-hidden="true" style="color: grey"></i>
+  </a>
+
+  <div id="publish-contest-btn" class="pink-button-sm my-2 mx-auto" style="text-align:center"> <%= link_to "Accept", contest_application_status_change_path(request, contest_application: {status: :accepted}),  method: :patch%></div>
+  <div id="publish-contest-btn" class="pink-button-sm my-2 mx-auto" style="text-align:center"> <%= link_to "Reject", contest_application_status_change_path(request, contest_application: {status: :rejected}), method: :patch%></div>
+
+  <div class="card-post" style = "box-shadow: 0px 3px 15px rgba(0,0,0,0.2);">
+  <!-- USER GENERAL INFOS -->
+    <div class= ".flex-column mt-3" style = "text-align:center">
+      <% if @user.avatar.present? %>
+        <img class="avatar-large-bordered" src="<%= cl_image_path @user.avatar.key %>" />
+      <% else %>
+        <img class="avatar-large-bordered" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+      <% end %>
+      <h5 class="mb-0"><%= @user.first_name%> <%= @user.last_name %></h5>
+      <a href="/users/<%=@user.id %>"><p class = "mb-0">@<%=@user.nickname.downcase%></p></a>
+    </div>
+
+  <div class="line-divider align-center ml-4"></div>
+
+  <!-- USER MOTIVATION -->
+    <div class = "card-post post-content">
+      <h5>Motivation</h5>
+      <p class="ml-3" style="overflow:hidden"> <%= @contest_application.motivation %></p>
+      <h5>Selected work</h5>
+      <% @contest_application.photos.each do |photo| %>
+        <img class="post-image mb-3" src="<%= cl_image_path photo.key %>" alt="">
+        <br>
+      <% end %>
+
+    </div>
+  </div>
+<!-- END -->
+</div>
+
+
+
+
+
