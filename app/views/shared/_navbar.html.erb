@@ -6,13 +6,18 @@
       <div data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <% if current_user.avatar.present? %>
           <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= cl_image_path current_user.avatar.key %>" />
+          <i class="fa fa-sort-desc" aria-hidden="true"></i>
         <% else %>
           <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+          <i class="fa fa-sort-desc" aria-hidden="true"></i>
         <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/users/<%=current_user.id%>">My profile</a>
               <a class="dropdown-item" href="/chatrooms">My messages</a>
-              <a class="dropdown-item" href="/dashboard">Dashboard</a>
+              <% if current_user.type == 'Business'  %>
+                <a class="dropdown-item" href="/dashboard">Dashboard</a>
+              <% end %>
+                  
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item"%>
             </div>
       </div>
