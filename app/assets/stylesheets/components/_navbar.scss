@@ -28,3 +28,10 @@
 .navbar-brand {
   padding: 0;
 }
+
+.dropdown-menu {
+  a:hover {
+    background-color:$pink;
+    color:white;
+  }
+  }
