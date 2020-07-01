@@ -13,13 +13,9 @@
   opacity: .4;
   flex: 0 0 30%;
   text-align: center;
-  &:hover {
+    &.active {
+    background: $pink;
+    color: white;
     opacity: 1;
-    cursor: pointer;
-  }
-  &.active {
-  background: $pink;
-  color: white;
-  opacity: 1;
-  }
+    }
 }

@@ -5,7 +5,10 @@ require 'open-uri'
 # p "Deleting likes"
 #  Vote.delete_all
 
-
+p "Deleting messages"
+Message.delete_all
+p "Deleting chatrooms"
+Chatroom.delete_all
 p "Deleting comments"
 Comment.delete_all
 p "Deleting Contest Applications"
@@ -27,6 +30,8 @@ p "Deleting Users..."
 
 
 p "Creating categories..."
+
+
 
 
 # Be aware that once we execute rails db:seed on production, categories will have an ID that we

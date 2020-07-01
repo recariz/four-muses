@@ -12,6 +12,7 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "description"} %>
+          <div class="ml-4">
           <% Category.all.each do |category| %>
             <input type="checkbox" class="hidden" value="<%= category.id %>" name="post[category_ids][]" id="post_category_ids_<%= category.id %>">
             <label class="category-choice" for="post_category_ids_<%= category.id %>">
@@ -19,6 +20,7 @@
               <i class="fa fa-check"></i>
             </label>
             <% end %>
+          </div>
 
     <div class="send-to-orbit">
       <%= f.input :photos, as: :file, input_html: { multiple: true, class: "photo-input"} %>
