@@ -108,32 +108,7 @@
                                     <!-- POST CONTENT (IMG & DESCRIPTION) -->
                                     <div class="post-content">
                                       <!-- PHOTOS ONE OR CARROUSEL -->
-                                      <% if post.photos.count() == 1 %>
                                         <img class="post-image" src="<%= cl_image_path post.photos.first.key %>" alt="">
-                                      <% else %>
-                                          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                            <ol class="carousel-indicators">
-                                              <% post.photos.each_with_index do |photo, index| %>
-                                                <li data-target="#carouselExampleIndicators" data-slide-to="<%=index.to_s%>" class ="<%= "active" if index == 0 %>"></li>
-                                              <% end %>
-                                            </ol>
-                                            <div class="carousel-inner" style="">
-                                              <% post.photos.each_with_index do |photo, index| %>
-                                                <div class="carousel-item <%= "active" if index == 0 %>">
-                                                  <img class="d-block post-image" src="<%=photo.service_url %>">
-                                                </div>
-                                              <% end %>
-                                            </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                              <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                              <span class="sr-only">Next</span>
-                                            </a>
-                                          </div>
-                                      <% end %>
                                       <!-- END OF IMAGES -->
 
                                       <!-- DESCRIPTION -->

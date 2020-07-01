@@ -1,3 +1,7 @@
+.fa-heart:before {
+  color: $pink;
+}
+
 .card-post {
   background-color: $white;
   padding: 7px;
@@ -194,6 +198,7 @@ width: 100%;
   flex-grow: 1;
   padding: 10px 10px;
 }
+
 
 .comment-submit {
   font-size: 14px;
