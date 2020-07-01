@@ -6,7 +6,6 @@
       <%= f.input :motivation,
                   required: true,
                   autofocus: true,
-
                   input_html: { class: "motivation-input", placeholder: "Describe your motivation for the contest" }%>
       <div class="">
             <p>Upload a sample of your work *</p>
@@ -19,8 +18,7 @@
 
     </div>
     <!-- <div class="pink-button-lg center-button"><%#= f.button :submit, "Apply" %></div> -->
-      <div class="pink-button-lg" data-toggle="modal" data-target="#exampleModalCenter">Apply</div>
-</div>
+    <div class="pink-button-lg" data-toggle="modal" data-target="#exampleModalCenter">Apply</div>
 
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -45,5 +43,6 @@
           </div>
        </div>
     </div>
-  </div>
   <% end %>
+  </div>
+</div>
