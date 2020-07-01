@@ -33,6 +33,12 @@ class User < ApplicationRecord
 
   has_one_attached :avatar, dependent: :destroy
 
+  # scope :followed_posts, -> {followings.followed_posts}
+
+
+  # def followed_posts
+  #   followings.followed_posts
+  # end
 
   def follow(user_id)
     followed_relationships.create(followed_id: user_id)

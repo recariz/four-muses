@@ -20,7 +20,7 @@
          <h5 class = "ml-1 mt-2"><%= @user.first_name%> <%= @user.last_name %></h5>
         <% end %>
 
-        <h5 class="ml-1 mt-1"> - <%= @user.location.capitalize %> -</h5>
+        <h6 class="ml-1 mt-1"> - <%= @user.location.capitalize %> -</h6>
       <div class="tags mt-1">
         <% @user.interests.each do |interest| %>
           <div><p class = "mt-1 mr-1">#<%= interest.category.name %></p>
@@ -115,6 +115,10 @@
                                       <!-- DESCRIPTION -->
                                       <div class="post-description">
                                         <p><%= post.description%></p>
+                                        <% post.post_tags.each do |tag| %>
+                                          <div><p>#<%= tag.name %></p>
+                                          </div>
+                                        <% end %>
                                       </div>
                                       <!-- END OF DESCRIPTION -->
                                     </div>

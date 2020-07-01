@@ -6,6 +6,7 @@
 
 #feed-general.active {
   display: block;
+  margin-bottom: 30px;
 }
 
 #feed-follows {
@@ -14,6 +15,7 @@
 
 #feed-follows.active {
   display: block;
+   margin-bottom: 30px;
 }
 
 // Toggle edit
@@ -25,7 +27,7 @@
   position: absolute;
   bottom: 59px;
   width: 100%;
-  background-color: $light-gray;
+  background-color: white;
   height: 40px;
   margin: auto;
 }
