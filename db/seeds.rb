@@ -59,7 +59,7 @@ ella = User.new(
     nickname: "ella_fitz",
     email: "ella@mail.com",
     password: "123456",
-    location:  "Paris",
+    location:  "Barcelona",
     type: 'Artist',
     premium: true
 )
@@ -106,14 +106,14 @@ pato = User.new(
     nickname: "recariz",
     email: "patricia@mail.com",
     password: "123456",
-    location:  cities.sample(1)[0],
+    location:  "Barcelona",
     type: 'Artist',
     premium: true
 )
-  photography_interest_pato = Interest.new
-  photography_interest_pato.user = pato
-  photography_interest_pato.category_id = photography.id
-  photography_interest_pato.save
+  painting_interest_pato = Interest.new
+  painting_interest_pato.user = pato
+  painting_interest_pato.category_id = painting.id
+  painting_interest_pato.save
 
   pato.avatar.attach(io: URI.open('https://res.cloudinary.com/dfyhqslry/image/upload/v1592917211/pato_b0dqeh.png'), filename: 'pato_b0dqeh.png', content_type: 'png')
   pato.save
