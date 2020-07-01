@@ -11,9 +11,7 @@
 
           <div class="nickname-message">
           <h3 class= "mt-0 mb-0">@<%= @user.nickname %></h3>
-              <%= link_to chatrooms_path(sender_id: current_user.id, receiver_id: @user.id), method: :post do %>
-              <i class="fa fa-paper-plane-o envelope-size mt-2" aria-hidden="true"></i>
-        <% end %>
+
           </div>
         <% if @user.business? %>
           <h5 class = "ml-1 "><%= @user.business_name %></h5>
@@ -29,13 +27,16 @@
           </div>
         <% end %>
       </div>
-            <div class="d-flex align-items-center justify-content-between">
-
+            <div class="d-flex align-items-start justify-content-between">
               <% if current_user && current_user.id == params[:id].to_i %>
-
-                <div class="mt-2" >
+                <div class="mt-1 pt-1">
                   <%= link_to "Edit", edit_user_registration_path, method: :get %>
                 </div>
+                <div class ="mt-1 mr-5 pt-1">
+                  <%= link_to "Message", chatrooms_path(sender_id: current_user.id, receiver_id: @user.id), method: :post%>
+                </div>
+              </div >
+            <div>
               <%else %>
                 <div class= "mt-1">
                   <% if user_signed_in? && current_user.is_following?(@user.id) %>
@@ -108,32 +109,7 @@
                                     <!-- POST CONTENT (IMG & DESCRIPTION) -->
                                     <div class="post-content">
                                       <!-- PHOTOS ONE OR CARROUSEL -->
-                                      <% if post.photos.count() == 1 %>
                                         <img class="post-image" src="<%= cl_image_path post.photos.first.key %>" alt="">
-                                      <% else %>
-                                          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                            <ol class="carousel-indicators">
-                                              <% post.photos.each_with_index do |photo, index| %>
-                                                <li data-target="#carouselExampleIndicators" data-slide-to="<%=index.to_s%>" class ="<%= "active" if index == 0 %>"></li>
-                                              <% end %>
-                                            </ol>
-                                            <div class="carousel-inner" style="">
-                                              <% post.photos.each_with_index do |photo, index| %>
-                                                <div class="carousel-item <%= "active" if index == 0 %>">
-                                                  <img class="d-block post-image" src="<%=photo.service_url %>">
-                                                </div>
-                                              <% end %>
-                                            </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                              <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                              <span class="sr-only">Next</span>
-                                            </a>
-                                          </div>
-                                      <% end %>
                                       <!-- END OF IMAGES -->
 
                                       <!-- DESCRIPTION -->

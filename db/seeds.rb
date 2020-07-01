@@ -2,7 +2,6 @@ require 'faker'
 require 'open-uri'
 
 
-
 p "Deleting messages"
 Message.delete_all
 p "Deleting chatrooms"
@@ -28,6 +27,8 @@ p "Deleting Users..."
 
 
 p "Creating categories..."
+
+
 
 
 # Be aware that once we execute rails db:seed on production, categories will have an ID that we
