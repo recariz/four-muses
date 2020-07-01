@@ -4,14 +4,18 @@
     <title>Four Muses - Share, Connect, Showcase - the Art Network connecting artists and galleries</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <!-- FLAT PICKR -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <!-- VIEWPORT -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <!-- JAVASCRIPT -->
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <script src="https://kit.fontawesome.com/b1cd6d757e.js" crossorigin="anonymous"></script>
+
     <!--  FAVICON -->
     <link rel="apple-touch-icon" sizes="57x57" href="<%= image_path 'apple-icon-57x57.png' %>">
     <link rel="apple-touch-icon" sizes="60x60" href="<%= image_path 'apple-icon-60x60.png' %>">
@@ -30,6 +34,23 @@
     <meta name="msapplication-TileColor" content="#EDE3D5">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#EDE3D5">
+    <!-- FACEBOOK -->
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:title" content="<%= meta_title %>">
+    <meta name="twitter:description" content="<%= meta_description %>">
+    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:image:src" content="<%= meta_image %>">
 
   </head>
 

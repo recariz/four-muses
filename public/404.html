@@ -4,18 +4,66 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+    body {
+      background-color: #EDE3D5 ;
+    }
+
+    .banner {
+      background-size: cover;
+      background-position: center;
+      margin: auto 10px;
+      background-image: url("background.jpg");
+      height: 400px;
+    }
+
+    .banner h1 {
+      color: #664224;
+      font-family: 'Playfair Display', 'serif';
+    }
+
+    .banner h3 {
+      color: #664224;
+      font-size: 20px;
+      font-family: 'Playfair Display', 'serif';
+    }
+
+    .container-error-page {
+      position: relative;
+      top: 30%;
+      width: 80%;
+      margin: auto auto;
+      text-align: center;
+    }
+
+    .container-bottom {
+      margin: 10px 20px;
+      color: #664224;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .container-bottom img {
+      position: absolute;
+      bottom: 35px;
+      right: 122px;
+    }
 
   </style>
 </head>
 
 <body>
-    <img src="<%= image_path 'art2create.jpg' %>" alt="">
   <!-- This file lives in public/404.html -->
-
-    <h1>The page you were looking for doesn't exist.</h1>
+  <div class="banner">
+    <div class="container-error-page">
+      <h1>Error 404</h1>
+      <h3>Uh oh! The page you were looking for doesn't exist.</h3>
+    </div>
+  </div>
+  <div  class="container-bottom">
     <p>You may have mistyped the address or the page may have moved.</p>
-
     <p>If you are the application owner check the logs for more information.</p>
+    <a href="/"><img src="logoFM.png" alt=""></a>
+  </div>
 
 </body>
 </html>

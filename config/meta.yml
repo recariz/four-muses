@@ -2,4 +2,4 @@
 meta_product_name: "Four Muses"
 meta_title: "Four Muses - Share, Connect, Showcase "
 meta_description: "The Art Network connecting artists and galleries: Four Muses enables artists to share their art work, connect with other artists and galleries, while giving them the opportunity to showcase in the best galleries and museums"
-meta_image: "art2create.jpg" # should exist in `app/assets/images/`
+meta_image: "COVER_IMAGE.jpg" # should exist in `app/assets/images/`
