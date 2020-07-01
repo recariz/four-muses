@@ -7,3 +7,9 @@
   });
 
 
+  var feedFollows = document.getElementById('feed-follows')
+  var html = "<%=j render 'shared/follow_feed', posts: @my_new_followed_posts %>";
+
+  feedFollows.innerHTML = `${html}`;
+
+

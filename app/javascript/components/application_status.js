@@ -1,7 +1,6 @@
 const changeStatus = () => {
   const statusButtons = document.querySelectorAll('.status-buttons');
   if (statusButtons) {
-    console.log(statusButtons);
     statusButtons.forEach(function(element) {
       const acceptButton = element.querySelector('.accept-button');
       const rejectButton = element.querySelector('.reject-button');

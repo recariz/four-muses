@@ -1,10 +1,10 @@
 
-<% if @my_followed_posts == [] %>
+<% if posts == [] %>
   <p class="main-container mb-0" style="text-align:center; padding-top:30px; height:calc(100vh - 160px);">
   Uh, oh! Seems like you are not following anyone yet!</p>
 <% else %>
   <div id="follow-feed-container">
-    <% @my_followed_posts.sort_by{|post| post.created_at}.reverse.each do |post| %>
+    <% posts.sort_by{|post| post.created_at}.reverse.each do |post| %>
       <%= render 'shared/feed_card', post: post %>
     <% end %>
   </div>
