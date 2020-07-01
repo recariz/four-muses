@@ -2,10 +2,11 @@ require 'faker'
 require 'open-uri'
 
 
-# p "Deleting likes"
-#  Vote.delete_all
 
-
+p "Deleting messages"
+Message.delete_all
+p "Deleting chatrooms"
+Chatroom.delete_all
 p "Deleting comments"
 Comment.delete_all
 p "Deleting Contest Applications"
