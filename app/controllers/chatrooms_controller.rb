@@ -19,7 +19,7 @@ class ChatroomsController < ApplicationController
   def create
     @chatroom = Chatroom.between(params[:sender_id], params[:receiver_id]).first_or_create!(chatroom_params)
     authorize @chatroom
-    redirect_to @chatroom
+    redirect_to chatroom_path(@chatroom)
   end
 
   private
