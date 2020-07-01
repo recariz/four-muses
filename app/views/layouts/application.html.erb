@@ -1,25 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FourMuses</title>
+    <title>Four Muses - Share, Connect, Showcase - the Art Network connecting artists and galleries</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- FLAT PICKR -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
+    <!-- VIEWPORT -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
+    <!-- JAVASCRIPT -->
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <script src="https://kit.fontawesome.com/b1cd6d757e.js" crossorigin="anonymous"></script>
+
+    <!--  FAVICON -->
+    <link rel="apple-touch-icon" sizes="57x57" href="<%= image_path 'apple-icon-57x57.png' %>">
+    <link rel="apple-touch-icon" sizes="60x60" href="<%= image_path 'apple-icon-60x60.png' %>">
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= image_path 'apple-icon-72x72.png' %>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= image_path 'apple-icon-76x76.png' %>">
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= image_path 'apple-icon-114x114.png' %>">
+    <link rel="apple-touch-icon" sizes="120x120" href="<%= image_path 'apple-icon-120x120.png' %>">
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= image_path 'apple-icon-144x144.png' %>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<%= image_path 'apple-icon-152x152.png' %>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= image_path 'apple-icon-180x180.png' %>g">
+    <link rel="icon" type="image/png" sizes="192x192"  href="<%= image_path 'android-icon-192x192.png' %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= image_path 'favicon-32x32.png' %>">
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= image_path 'favicon-96x96.png' %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= image_path 'favicon-16x16.png' %>">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#EDE3D5">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#EDE3D5">
+
+
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+
+
+
   </head>
 
-  <body>
+  <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <div id="anchor-top"></div>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <div class="page-container">
       <%= yield %>
     </div>
-      <%= render 'shared/footer' %>
+    <%= render 'shared/footer' %>
   </body>
 </html>

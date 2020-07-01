@@ -15,6 +15,11 @@ class ApplicationController < ActionController::Base
   # rescue_from the error message/page notauthorized from pundit, with the customised method  user_not_autorized
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+
+
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(root_path)

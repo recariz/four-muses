@@ -40,10 +40,18 @@
               <% today =Date.today %>
               <% day_left = contest.start_date - today %>
               <p class="small-pink-italic"><%= pluralize day_left.to_i, "day" %> days left</p>
-              <div class="contest-links">
-                <p style="font-size:14px"><%= link_to "Learn more", contest_path(contest) %></p>
-                <button class="pink-button-sm"> <%= link_to "Apply", new_contest_contest_application_path(contest) %> </button>
-              </div>
+
+              <% if contest.contest_applications.any? {|application| current_user.contest_applications.include?(application) } %>
+                <div style = "text-align:center; margin-top: 10px">
+                  <p style="font-size:14px">You have already applied!</p>
+                </div>
+              <% else %>
+                <div class="contest-links">
+                  <p style="font-size:14px"><%= link_to "Learn more", contest_path(contest) %></p>
+                  <button class="pink-button-sm"> <%= link_to "Apply", new_contest_contest_application_path(contest) %> </button>
+                </div>
+              <% end %>
+
             </div>
         </div>
       <% end %>

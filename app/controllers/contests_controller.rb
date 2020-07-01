@@ -4,7 +4,7 @@ class ContestsController < ApplicationController
   def index
     @contests = policy_scope(Contest)
     if params[:query].present?
-      @contests = Contest.where("location ILIKE ?", "%#{params[:query]}%").geocoded
+      @contests = Contest.where("city ILIKE ?", "%#{params[:query]}%").geocoded
     else
       @contests = Contest.all.geocoded
     end
@@ -28,9 +28,9 @@ class ContestsController < ApplicationController
     @contest.user = current_user
     puts @contest.errors.full_messages
     if @contest.save
-        redirect_to contests_path
-      else
-        render :new
+      redirect_to contests_path
+    else
+      render :new
     end
   end
 
