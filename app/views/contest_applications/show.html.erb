@@ -5,12 +5,19 @@
     <div id="accept-app-contest-btn" class="pink-button my-2 mx-auto"> <%= link_to "Accept", contest_application_status_change_path(@contest_application, contest_application: {status: :accepted}), method: :patch %></div>
     <div id="reject-app-contest-btn" class="pink-button-secondary my-2 mx-auto"> <%= link_to "Reject", contest_application_status_change_path(@contest_application, contest_application: {status: :rejected}), method: :patch %></div>
   <% end %>
+  <!-- END OF ACCEPT/ REJECT BUTTONS-->
 
   <div class="card-post" style = "box-shadow: 0px 3px 15px rgba(0,0,0,0.2);">
   <!-- BACK BUTTON -->
-    <a style = "width: 100%; text-align: left" href="../dashboard">
-      <i class="fa fa-arrow-left mr-2 application-back"  aria-hidden="true"></i>
-    </a>
+    <% if current_user.business? %>
+      <a style = "width: 100%; text-align: left" href="../dashboard">
+        <i class="fa fa-arrow-left mr-2 application-back"  aria-hidden="true"></i>
+      </a>
+    <% else %>
+      <a style = "width: 100%; text-align: left" href="/contests">
+        <i class="fa fa-arrow-left mr-2 application-back"  aria-hidden="true"></i>
+      </a>
+    <% end %>
   <!-- USER GENERAL INFOS -->
     <div class= ".flex-column mt-3" style = "text-align:center">
       <% if @user.avatar.present? %>
