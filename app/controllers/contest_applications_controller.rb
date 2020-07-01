@@ -39,9 +39,12 @@ class ContestApplicationsController < ApplicationController
             currency: 'eur',
             quantity: 1
           }],
-          success_url: contest_application_url(@contest_application),
-          cancel_url: contest_application_url(@contest_application)
+          success_url: "http://www.four-muses.com//contest_applications/#{@contest_application.id}",
+          cancel_url: "http://www.four-muses.com//contest_applications/#{@contest_application.id}"
         )
+
+        p contest_application_url(@contest_application)
+
 
         @contest_application.update(checkout_session_id: session.id)
         redirect_to new_contest_application_payment_path(@contest_application)
