@@ -116,7 +116,8 @@
                                       <div class="post-description">
                                         <p><%= post.description%></p>
                                         <% post.post_tags.each do |tag| %>
-                                          <div><p>#<%= tag.name %></p>
+
+                                          <div><p>#<%= tag.category.name %></p>
                                           </div>
                                         <% end %>
                                       </div>
