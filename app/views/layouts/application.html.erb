@@ -34,7 +34,10 @@
     <meta name="msapplication-TileColor" content="#EDE3D5">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#EDE3D5">
-    <!-- FACEBOOK -->
+
+
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
 
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
@@ -44,13 +47,7 @@
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
 
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
-    <meta name="twitter:title" content="<%= meta_title %>">
-    <meta name="twitter:description" content="<%= meta_description %>">
-    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
-    <meta name="twitter:image:src" content="<%= meta_image %>">
+
 
   </head>
 
