@@ -3,14 +3,17 @@
     <a href="../chatrooms">
       <i class="fa fa-arrow-left mr-2 align-items-center"  aria-hidden="true" style="color: white"></i>
     </a>
-      <% if @chatroom.other_user(current_user).avatar.present? %>
-        <img src="<%= cl_image_path @chatroom.other_user(current_user).avatar.key %>" class = "avatar-large mr-2">
-      <% else %>
+    <% if @chatroom.other_user(current_user).avatar.present? %>
+      <img src="<%= cl_image_path @chatroom.other_user(current_user).avatar.key %>" class = "avatar-large mr-2">
+    <% else %>
       <img class="avatar-large mr-2" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
-        <% end %>
-      <div class="nickname"><h5>@<%= @chatroom.other_user(current_user).nickname %> </h6></div>
+    <% end %>
+    <div class="nickname">
+      <h5>@<%= @chatroom.other_user(current_user).nickname %> </h5>
+    </div>
   </div>
 </div>
+
 <div class="chat-second-section" id="messages" data-chatroom-id="<%= @chatroom.id %>" data-current-user="<%= @current_user_id %>">
   <div class="main-container d-flex flex-column">
     <%@chatroom.messages.each do |message| %>
@@ -18,15 +21,13 @@
     <% end %>
   </div>
 </div>
-<div class="chat-position">
-  <div class="main-container">
-  <div class="">
-    <%= simple_form_for [ @chatroom, @message ], html: {class: "chat-third-section"}, remote: true do |f| %>
-      <%= f.input :content, label: false, placeholder: "Write your message", wrapper_html: {class: "text-chat"}, input_html: {class: "input-chat"} %>
-      <div class="form-group button-chat">
-        <%= f.button :submit, "Send", class: "chat-pink-button-sm" %>
-      </div>
-    <% end %>
-  </div>
-  </div>
+
+<div class="main-container">
+  <%= simple_form_for [ @chatroom, @message ], html: {class: "chat-third-section"}, remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "Write your message", wrapper_html: {class: "text-chat"}, input_html: {class: "input-chat"} %>
+    <div class="form-group button-chat">
+      <%= f.button :submit, "Send", class: "chat-pink-button-sm" %>
+    </div>
+  <% end %>
 </div>
+

@@ -13,13 +13,13 @@
     <script src="https://kit.fontawesome.com/b1cd6d757e.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <div id="anchor-top"></div>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <div class="page-container">
       <%= yield %>
     </div>
-      <%= render 'shared/footer' %>
+    <%= render 'shared/footer' %>
   </body>
 </html>
