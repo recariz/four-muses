@@ -12,7 +12,7 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "description"} %>
-          <div class="ml-4">
+          <div class="ml-5">
           <% Category.all.each do |category| %>
             <input type="checkbox" class="hidden" value="<%= category.id %>" name="post[category_ids][]" id="post_category_ids_<%= category.id %>">
             <label class="category-choice" for="post_category_ids_<%= category.id %>">

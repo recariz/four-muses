@@ -5,6 +5,8 @@ ruby '2.6.6'
 
 # Pundit
 gem 'pundit'
+#pagination
+gem 'kaminari'
 
 gem 'cloudinary', '~> 1.12.0'
 gem 'geocoder'
