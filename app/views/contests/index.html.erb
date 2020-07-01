@@ -9,7 +9,7 @@
   <% end %>
   <!-- SEARCH FORM -->
   <form class="search-form" action="/contests" method="get" >
-    <input class="search-input" name="query" type="text" placeholder="Search by city">
+    <input class="search-input" name="query" type="text" placeholder="Search by city" autocomplete="false">
     <input class="search-submit" type="submit" value="Go">
   </form>
   <!-- MAP -->
@@ -48,7 +48,9 @@
               <% else %>
                 <div class="contest-links">
                   <p style="font-size:14px"><%= link_to "Learn more", contest_path(contest) %></p>
-                  <button class="pink-button-sm"> <%= link_to "Apply", new_contest_contest_application_path(contest) %> </button>
+                  <% if current_user.artist? %>
+                    <button class="pink-button-sm"> <%= link_to "Apply", new_contest_contest_application_path(contest) %> </button>
+                  <% end %>
                 </div>
               <% end %>
 

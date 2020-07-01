@@ -7,10 +7,12 @@
     <%= f.input :title,
                 required: true,
                 autofocus: true,
+                autocomplete: false,
                 input_html: { autocomplete: "title"} %>
     <%= f.input :description,
                 required: true,
                 autofocus: true,
+                autocomplete: false,
                 input_html: { autocomplete: "description"} %>
           <div class="ml-5">
           <% Category.all.each do |category| %>

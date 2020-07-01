@@ -1,37 +1,43 @@
 <div class= "main-container">
   <h3>Inbox</h3>
   <br>
-  <% @chatrooms.each do |chatroom| %>
-    <%= link_to chatroom_path(chatroom) do %>
-      <div class = "notification-one panel" >
-        <% if chatroom.other_user(current_user).avatar.present? %>
-            <img class="avatar-large" src="<%= cl_image_path chatroom.other_user(current_user).avatar.key %>" />
-        <% else %>
-            <img class="avatar-large" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
-        <% end %>
-        <div class= "notification-content ml-3" %>
-          <% if chatroom.messages == []%>
-            <div class="time-box">
-              <div class="nickname-time">
-                <div style = "margin-top: 0px">
-                  <p><%= chatroom.other_user(current_user).nickname %></p>
-                </div>
-                <p class="content-preview"><small>Empity chatroom</small></p>
-              </div>   
-            </div>
+  <% if @chatrooms = [] %>
+    <p class="main-container mb-0" style="text-align:center; padding-top:30px; height:calc(100vh - 160px);">
+    Uh, oh! Seems like you have no active chats yet!</p>
+  <% else %>
+    <% @chatrooms.each do |chatroom| %>
+      <%= link_to chatroom_path(chatroom) do %>
+        <div class = "notification-one panel" >
+          <% if chatroom.other_user(current_user).avatar.present? %>
+              <img class="avatar-large" src="<%= cl_image_path chatroom.other_user(current_user).avatar.key %>" />
           <% else %>
-            <div class="time-box">
-              <div class="nickname-time">
-                <div style = "margin-top: 0px">
-                  <p><%= chatroom.other_user(current_user).nickname %></p>
+              <img class="avatar-large" src= "<%= asset_path( 'missing-image-avatar.jpg' ) %>" />
+          <% end %>
+          <div class= "notification-content ml-3" %>
+            <% if chatroom.messages == []%>
+              <div class="time-box">
+                <div class="nickname-time">
+                  <div style = "margin-top: 0px">
+                    <p><%= chatroom.other_user(current_user).nickname %></p>
+                  </div>
+                  <p class="content-preview"><small>Empity chatroom</small></p>
                 </div>
-                <p class="content-preview"><small style = "font-style: italic;"><%=chatroom.updated_at.strftime"%b %d" %> - <%= chatroom.messages.last.message_time %></small></p>
-              </div> 
-            </div>
-            <p class="mt-3 content-preview"><%= truncate(chatroom.messages.last.content, length: 48, separator: "...")%></p>
-          <% end %> 
+              </div>
+            <% else %>
+              <div class="time-box">
+                <div class="nickname-time">
+                  <div style = "margin-top: 0px">
+                    <p><%= chatroom.other_user(current_user).nickname %></p>
+                  </div>
+                  <p class="content-preview"><small style = "font-style: italic;"><%=chatroom.updated_at.strftime"%b %d" %> - <%= chatroom.messages.last.message_time %></small></p>
+                </div>
+              </div>
+              <p class="mt-3 content-preview"><%= truncate(chatroom.messages.last.content, length: 48, separator: "...")%></p>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   <% end %>
+
 </div>
