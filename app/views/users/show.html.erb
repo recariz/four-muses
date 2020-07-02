@@ -60,7 +60,7 @@
         <div class= "mt-2">
         <div class="px-3">
             <div class= "cards_pictures" >
-              <% @posts.each do |post| %>
+              <% @posts.sort_by { |obj| obj.created_at }.reverse.each do |post| %>
                   <!-- PHOTO / MODAL BUTTON -->
                   <div data-toggle="modal" data-target="#exampleModal" class= "card-category-pic" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= cl_image_tag post.photos.first.key%>
                   </div>
