@@ -33,14 +33,14 @@ class ContestApplicationsController < ApplicationController
         session = Stripe::Checkout::Session.create(
           payment_method_types: ['card'],
           line_items: [{
-            name: "Four Muses Application for #{@contest.title}",
-            images: [url_for(@contest.photo)],
-            amount: Contest::CONTEST_APPLICATION_PRICE_CENTS,
-            currency: 'eur',
-            quantity: 1
+          name: "Four Muses Application for #{@contest.title}",
+          images: [url_for(@contest.photo)],
+          amount: Contest::CONTEST_APPLICATION_PRICE_CENTS,
+          currency: 'eur',
+          quantity: 1
           }],
-          success_url: "http://www.four-muses.com/contest_applications/#{@contest_application.id}",
-          cancel_url: "http://www.four-muses.com/contest_applications/#{@contest_application.id}"
+          success_url: contest_application_url(@contest_application),
+          cancel_url: contest_application_url(@contest_application)
         )
 
         p contest_application_url(@contest_application)
