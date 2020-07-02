@@ -50,7 +50,7 @@
   <div class="post-content">
     <!-- POST IMAGES -->
     <% if post.photos.first.present? %>
-        <img class="avatar-large" src="<%= cl_image_path post.photos.first.key %>" />
+        <img class="post-image" src="<%= cl_image_path post.photos.first.key %>" />
 
     <% end %>
 
