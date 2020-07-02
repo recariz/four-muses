@@ -23,7 +23,7 @@ class ContestApplicationsController < ApplicationController
       @contest = Contest.find(params[:contest_id])
       @contest_application = ContestApplication.new(strong_params)
       @contest_application.contest = @contest
-      @contest_application.user = current_user
+      @contest_application.user_id = current_user.id
       @contest_application.amount = @contest.contest_price
       authorize @contest_application
 
