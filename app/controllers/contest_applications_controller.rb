@@ -1,5 +1,5 @@
 class ContestApplicationsController < ApplicationController
-
+    before_action :authenticate_user!, except: [:index]
     before_action :set_params, only: [:edit, :update, :destroy, :show]
 
     def index
