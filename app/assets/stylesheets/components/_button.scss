@@ -1,14 +1,15 @@
 .pink-button-lg{
-  background-color: $pink;
-  font-weight: 400;
-  font-family: $body-font;
-  color: black;
+  background-color: #F59285;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: "Open Sans", "sans-serif";
+  color: #000000b0;
   text-decoration: none;
   text-align: center;
   padding: 10px 50px;
-  border: 1px solid $pink;
+  border: 1px solid #F59285;
   display: block;
-  box-shadow: 0px 2px 1px 0 rgba(245, 146, 133, 0.1);
+  box-shadow: 1px 0px 10px #00000047;
   border-radius: 25px;
 
   a {
@@ -21,16 +22,16 @@
 .pink-button{
   background-color: $pink;
   font-family: $body-font;
-  font-weight: 400;
-  color: black;
+  font-weight: 500;
   font-size: 16px;
+  color: rgb(50, 50, 50);
   text-decoration: none;
   text-align: center;
   padding: 10px 25px;
   border-radius: 30px;
   border: 1px solid $pink;
   display: block;
-  box-shadow: 0px 2px 1px 0 rgba(245, 146, 133, 0.1);
+  box-shadow: 1px 0px 10px #00000047;
 
   a {
     color: rgb(20, 20, 20);
@@ -47,11 +48,11 @@
   font-size: 16px;
   text-decoration: none;
   text-align: center;
-  padding: 10px 25px;
+  padding: 7px 15px;
   border-radius: 50px;
   border-style: solid;
-  border-width: 0.7px;
-  border-color: $pink;
+  border-width: 1.7px;
+  border-color: #f5928573;
   display: inline-block;
   box-shadow: 0px 2px 1px 0 rgba(245, 146, 133, 0.1);
 
@@ -65,9 +66,11 @@
   background-color: $pink;
   font-family: $body-font;
   font-weight: 400;
+  font-size: 14px;
+  color: $black;
   font-size: 16px;
   color: black;
-  padding: 2px 15px;
+  padding: 5px 15px;
   text-decoration: none;
   text-align: center;
   vertical-align: middle;

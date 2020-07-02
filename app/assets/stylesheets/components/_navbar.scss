@@ -29,9 +29,12 @@
   padding: 0;
 }
 
-.dropdown-menu {
-  a:hover {
-    background-color:$pink;
-    color:white;
-  }
-  }
+.dropdown-item a:hover {
+  background-color:$pink;
+  color:white;
+}
+
+.dropdown-item:active {
+  background-color:$pink;
+  color:white;
+}

@@ -6,7 +6,7 @@
 
     <h1>Share. Connect.<br>Showcase.</h1>
 
-   <% if !current_user %> <%= link_to t(".sign_in", default: "Register"), new_user_session_path, class: "pink-button" %> <% end %>
+   <% if !current_user %> <%= link_to t(".sign_in", default: "Sign up"), new_user_session_path, class: "pink-button" %> <% end %>
 </div>
 
 <div class="main-container">
