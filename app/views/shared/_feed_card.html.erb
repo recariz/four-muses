@@ -49,7 +49,11 @@
   <!-- POST CONTEST (IMG & DESCRIPTION) -->
   <div class="post-content">
     <!-- POST IMAGES -->
-      <img class="post-image" src="<%= cl_image_path post.photos.first.key %>" alt="">
+    <% if post.photos.first.present? %>
+        <img class="avatar-large" src="<%= cl_image_path post.photos.first.key %>" />
+
+    <% end %>
+
     <!-- END OF IMAGES -->
 
     <!-- DESCRIPTION -->
