@@ -34,12 +34,19 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     authorize @post
+    @categories = Category.pluck(:name, :id)
+
   end
 
   def create
+
     @post = Post.new(post_params)
     authorize @post
     @post.user = current_user
+    if params[:category_ids]
+      categories = Category.where(id: params[:category_ids])
+      @post.post_tags << categories.map {|c| PostTag.new(category: c)}
+    end
     if @post.save
       redirect_to user_path(current_user), notice: "Posting"
       # GUYS WE NEED TO CHANGE THE REDIRECT ONCE WE HAVE THE FEED

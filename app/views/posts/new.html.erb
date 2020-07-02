@@ -15,9 +15,16 @@
                 autocomplete: false,
                 input_html: { autocomplete: "description"} %>
           <div class="ml-5">
+            <%#= f.association :post_tags,
+                              as: :check_boxes,
+                              collection: @categories,
+                              label: false,
+                              item_wrapper_class: "col-sm-6 category-choice js-checkbox",
+                              input_html: {class: "d-none"}
+            %>
           <% Category.all.each do |category| %>
-            <input type="checkbox" class="hidden" value="<%= category.id %>" name="post[category_ids][]" id="post_category_ids_<%= category.id %>">
-            <label class="category-choice" for="post_category_ids_<%= category.id %>">
+            <input type="checkbox" class="hidden" value="<%= category.id %>" name="category_ids[]" id="category_ids_<%= category.id %>">
+            <label class="category-choice" for="category_ids_<%= category.id %>">
               <%= category.name %>
               <i class="fa fa-check"></i>
             </label>
