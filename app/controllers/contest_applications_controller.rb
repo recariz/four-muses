@@ -39,8 +39,8 @@ class ContestApplicationsController < ApplicationController
             currency: 'eur',
             quantity: 1
           }],
-          success_url: "http://www.four-muses.com//contest_applications/#{@contest_application.id}",
-          cancel_url: "http://www.four-muses.com//contest_applications/#{@contest_application.id}"
+          success_url: "http://www.four-muses.com/contest_applications/#{@contest_application.id}",
+          cancel_url: "http://www.four-muses.com/contest_applications/#{@contest_application.id}"
         )
 
         p contest_application_url(@contest_application)
